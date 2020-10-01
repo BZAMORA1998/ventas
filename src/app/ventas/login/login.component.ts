@@ -21,7 +21,20 @@ export class LoginComponent implements OnInit {
     private _autenticacionService:AutenticacionService
   ) { 
 
-  }
+    }
+
+    typeInputF="password";
+    showPF:boolean=true;
+    mostrarPassword(){
+  
+      if(this.typeInputF=="text"){
+        this.showPF=true;
+        this.typeInputF="password";
+      }else{
+        this.showPF=false;
+        this.typeInputF="text";
+      }
+    }
 
   loading(activar){
     Swal.fire({

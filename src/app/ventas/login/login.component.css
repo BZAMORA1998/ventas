@@ -15,10 +15,5 @@
     background-image: url("./../../../assets/img/ventas.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    border: 1px solid red;
-    height: 100% !important;
-}
-
-.row{
-    height: 100% !important;
+    height:100%;
 }
