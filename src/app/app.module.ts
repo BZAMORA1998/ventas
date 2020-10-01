@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShareModule } from './share/share.module';
 import { VentasComponent } from './ventas/ventas.component';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { VentasComponent } from './ventas/ventas.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]

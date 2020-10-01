@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
+import {Sweetalert2Component} from '../../share/sweetalert2/sweetalert2.component'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
-    private _autenticacionService:AutenticacionService
+    private _autenticacionService:AutenticacionService,
+    private sweetalert2Component:Sweetalert2Component
   ) { 
 
     }
@@ -36,35 +38,7 @@ export class LoginComponent implements OnInit {
       }
     }
 
-  loading(activar){
-    Swal.fire({
-      html: "<div class='row loading'>"+
-                "<div class='col-2'>"+
-                    "<div class='spinner-border'></div>"+
-                '</div>'+
-                "<div class='col-10'>"+
-                    "<p class='text-dark'>Procesando, espere por favor...</p>"+
-                '</div>'+
-            "</div>",    
-      showCancelButton: false,
-      showConfirmButton: false,
-      width: '380px',
-    });
-
-    if(!activar){
-      Swal.close();
-    }
-  }
-
-  showModalError(message){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: message,
-      confirmButtonColor:'#ea792d',
-    })
-  }
-
+ 
   public data:any;
 
   ngOnInit(): void {
@@ -78,15 +52,14 @@ export class LoginComponent implements OnInit {
    * @description Autenticacion de usuario
    */
   postAutenticacion(){
-    this.loading(true);
+    this.sweetalert2Component.loading(true);
     this._autenticacionService.postAutenticacion(this.usuario,this.contrasena).subscribe(
         Response=>{
           console.log(Response.data);
-          this.loading(false);
+          this.sweetalert2Component.loading(false);
         },
         error=>{
-          this.loading(false);
-          this.showModalError(error.error.message);
+          this.sweetalert2Component.showModalError(error.error.message);
         }
       );
     }

@@ -8,6 +8,12 @@ import { Sweetalert2Component } from './sweetalert2/sweetalert2.component';
   declarations: [Sweetalert2Component],
   imports: [
     CommonModule
+  ],
+  entryComponents:[
+    Sweetalert2Component
+  ],
+  exports:[
+    Sweetalert2Component
   ]
 })
 export class ShareModule { }
