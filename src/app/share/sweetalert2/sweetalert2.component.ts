@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root',
 })
+
 export class Sweetalert2Component implements OnInit {
 
   constructor() { }
@@ -19,17 +20,18 @@ export class Sweetalert2Component implements OnInit {
 
   public loading(activar){
     Swal.fire({
-      html: "<div class='row loading'>"+
-                "<div class='col-2'>"+
+      html: "<div class='row loading '>"+
+                "<div class='col-2 pt-2'>"+
                     "<div class='spinner-border'></div>"+
                 '</div>'+
-                "<div class='col-10'>"+
+                "<div class='col-10 pt-2'>"+
                     "<p class='text-dark'>Procesando, espere por favor...</p>"+
                 '</div>'+
             "</div>",    
       showCancelButton: false,
       showConfirmButton: false,
-      width: '380px',
+      width: '400px',
+      padding:'5px'
     });
 
     if(!activar){

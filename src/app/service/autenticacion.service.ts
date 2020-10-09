@@ -24,6 +24,10 @@ export class AutenticacionService{
       const headers = new HttpHeaders({
         'Authorization': auth,
       });
-      return this.apiService.ApiCall("POST","/autenticacion/login",null,headers);
+      return this.apiService.ApiLogin("POST","/autenticacion/login",null,headers);
     } 
+
+    getTipoIdentificacion():Observable<any>{
+      return this.apiService.ApiCall("GET","/tipoIdentificacion",null,null);
+    }
 }

@@ -1,0 +1,61 @@
+<div class="container-fluid" >
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-5 p-3">
+            <div class="card w-100">
+                <h5 class="bg-white ml-sm-5 ml-4 mt-3">Datos Personales</h5>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="form-group col-5 m-2">
+                            <label>Primer Nombre</label>
+                            <input type="text" class="form-control" placeholder="Primer Nombre">
+                        </div>
+                        <div class="form-group col-5 m-2">
+                            <label>Segundo Nombre</label>
+                            <input type="text" class="form-control" placeholder="Segundo Nombre">
+                        </div>
+                        <div class="form-group col-5 m-2">
+                            <label>Primer Apellido</label>
+                            <input type="text" class="form-control" placeholder="Primer Apellido">
+                        </div>
+                        <div class="form-group col-5 m-2">
+                            <label>Segundo Apellido</label>
+                            <input type="text" class="form-control" placeholder="Segundo Apellido">
+                        </div>
+
+                        <div class="form-group col-5 m-2">
+                            <label>Tipo Identificacion</label>
+                            <select class="custom-select">
+                                <option selected="">Seleccionar</option>
+                                <option  *ngFor="let d of data" value="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacionnombreTipoIdentificacion}}</option>
+                              </select>
+                              
+                        </div>
+
+                        <div class="form-group col-5 m-2">
+                            <label>Número de Identificación</label>
+                            <input type="text" class="form-control" placeholder="Número de Identificación">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-11  col-sm-5 p-3">
+            <div class="card w-100">
+                <h5 class="bg-white ml-sm-5 ml-4 mt-3">Datos Personales</h5>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="form-group col-5 m-2">
+                            <label for="formGroupExampleInput">Example label</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </div>
+                        <div class="form-group col-5 m-2">
+                            <label for="formGroupExampleInput2">Another label</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

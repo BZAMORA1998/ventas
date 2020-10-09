@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     this._autenticacionService.postAutenticacion(this.usuario,this.contrasena).subscribe(
         Response=>{
           console.log(Response.data);
+          localStorage.setItem("token",JSON.stringify(Response.data.token));
           this.sweetalert2Component.loading(false);
         },
         error=>{

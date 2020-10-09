@@ -5,10 +5,11 @@ import { VentasRoutingModule } from './ventas-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ShareModule } from '../share/share.module';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, CrearUsuarioComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,
