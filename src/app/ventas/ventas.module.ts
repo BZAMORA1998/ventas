@@ -6,6 +6,9 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ShareModule } from '../share/share.module';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,7 +17,16 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
     CommonModule,
     VentasRoutingModule,
     FormsModule,
-    ShareModule
+    ShareModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [ HttpClient ]
+      }
+    })
   ]
 })
 export class VentasModule { }

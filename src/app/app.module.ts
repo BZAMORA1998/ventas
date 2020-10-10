@@ -1,11 +1,14 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+//Translation
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShareModule } from './share/share.module';
 import { VentasComponent } from './ventas/ventas.component';
+import { FormsModule } from '@angular/forms';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,16 @@ import { VentasComponent } from './ventas/ventas.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ShareModule
+    ShareModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [ HttpClient ]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

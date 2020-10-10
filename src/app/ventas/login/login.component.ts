@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import {Sweetalert2Component} from '../../share/sweetalert2/sweetalert2.component'
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +17,23 @@ export class LoginComponent implements OnInit {
 
   public usuario:String;
   public contrasena:String;
-
+  public activeLang =environment.languaje;
+  
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
     private _autenticacionService:AutenticacionService,
-    private sweetalert2Component:Sweetalert2Component
+    private sweetalert2Component:Sweetalert2Component,
+    private translate: TranslateService
   ) { 
-
+      this.translate.setDefaultLang(this.activeLang);
     }
-
+  
+    public cambiarLenguaje(lang) {
+      this.activeLang = lang;
+      this.translate.use(lang);
+    }
+    
     typeInputF="password";
     showPF:boolean=true;
     mostrarPassword(){

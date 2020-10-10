@@ -1,0 +1,11 @@
+{
+    "login": {
+        "usuario": "User",
+        "contraseña": "Password",
+        "aceptar": "To accept",
+        "crearNuevoUsuario":"Create New User"
+    },
+    "global":{
+        "lenguaje":"Language"
+    }
+  }

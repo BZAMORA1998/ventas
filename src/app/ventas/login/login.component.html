@@ -1,27 +1,34 @@
 <div class="container-fluid">
-    <div class="row justify-content-center WXL-25">
-        <div class="d-flex mt-5 w-25 W-25 mb-5">
-            <form class="flex-fill" (ngSubmit)="postAutenticacion()" >
+    <div class="row justify-content-center WXL-25 mt-4">
+        <div class="col-sm-3 col-9">
+            <form (ngSubmit)="postAutenticacion()" >
                 <div class="card">
+                    <div class="form-group text-right">
+                        <select class="custom-select w-25" (change)="cambiarLenguaje($event.target.value)">
+                            <option selected value="es">Es</option>
+                            <option value="en">En</option>
+                        </select>
+                    </div>
+
                     <img class="card-img-top" width="200" height="200" src="./../../../assets/img/user.svg" alt="Card image cap">
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Usuario</label>
-                            <input type="text" class="form-control" placeholder="Usuario" name="txt_usuario"  #txt_usuario="ngModel" [(ngModel)]="usuario" autofocus required>
+                            <label>{{'login.usuario' | translate }}</label>
+                            <input type="text" class="form-control" placeholder="{{'login.usuario' | translate }}" name="txt_usuario"  #txt_usuario="ngModel" [(ngModel)]="usuario" autofocus required>
                         </div>
                         <div class="form-group">
-                            <label>Contraseña</label>
-                            <input autocomplete="off" class="form-control" placeholder="Contraseña" [type]="typeInputF" type="password" name="txt_contrasena" #txt_contrasena="ngModel" [(ngModel)]="contrasena" required/>
+                            <label>{{'login.contraseña' | translate }}</label>
+                            <input autocomplete="off" class="form-control" placeholder="{{'login.contraseña' | translate }}" [type]="typeInputF" type="password" name="txt_contrasena" #txt_contrasena="ngModel" [(ngModel)]="contrasena" required/>
                             <label *ngIf="showPF" (click)="mostrarPassword()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
                             <label *ngIf="!showPF" (click)="mostrarPassword()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
                         </div>
                         <div class="form-group ">
-                            <button type="submit" class="btn btn-info w-100">Aceptar</button>
+                            <button type="submit" class="btn btn-info w-100">{{'login.aceptar' | translate }}</button>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <div class="p-2"> <a [routerLink]="['../crear-usuario']" >Crear nuevo usuario</a></div>
+                        <div class="p-2"> <a [routerLink]="['../crear-usuario']" >{{'login.crearNuevoUsuario' | translate }}</a></div>
                     </div>
                 </div>
             </form>
