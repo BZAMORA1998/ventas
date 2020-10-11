@@ -6,6 +6,8 @@
       "crearNuevoUsuario":"Crear Nuevo Usuario"
   },
   "global":{
-    "lenguaje":"Lenguaje"
+    "lenguaje":"Lenguaje",
+    "español":"Español (es)",
+    "ingles":"Inglés (en)"
 }
 }
