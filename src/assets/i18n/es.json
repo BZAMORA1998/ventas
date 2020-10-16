@@ -9,5 +9,9 @@
     "lenguaje":"Lenguaje",
     "español":"Español (es)",
     "ingles":"Inglés (en)"
-}
+  },
+  "etiqueta":{
+      "F":"Femenino",
+      "M":"Masculino"
+  }
 }

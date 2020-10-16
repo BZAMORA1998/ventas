@@ -15,14 +15,22 @@ export class CrearUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTipoIdentificacion();
+    this.getGenero();
   }
 
-  public data:any=[
+  public tipoIdentificacion:any=[
                     {
                       codigoTipoIdentificacion:0,
                       nombreTipoIdentificacion:""
                    }
                 ];
+  public genero:any=[
+                    {
+                      codigoGenero:0,
+                      nombreGenero:"",
+                      descripcionGenero:""
+                    }
+              ];
 
   /**
      * @author Bryan Zamora
@@ -31,11 +39,37 @@ export class CrearUsuarioComponent implements OnInit {
   getTipoIdentificacion(){
     this._autenticacionService.getTipoIdentificacion().subscribe(
         Response=>{
-          this.data=Response.data;
+          this.tipoIdentificacion=Response.data;
+          console.log("data =>",this.tipoIdentificacion);
         },
         error=>{
           console.log(error.error.message);
         }
     ); 
   }
+
+    /**
+     * @author Bryan Zamora
+     * @description Genero
+     */
+    getGenero(){
+      this._autenticacionService.getGenero().subscribe(
+          Response=>{
+            this.genero=Response.data;
+
+            this.genero.forEach(element => {
+              if(element.nombreGenero=='M'){
+                element.descripcionGenero="Masculino";
+              }else{
+                element.descripcionGenero="Femenino";
+              }
+            });
+
+            console.log("data =>",this.genero);
+          },
+          error=>{
+            console.log(error.error.message);
+          }
+      ); 
+    }
 }

@@ -30,4 +30,8 @@ export class AutenticacionService{
     getTipoIdentificacion():Observable<any>{
       return this.apiService.ApiCall("GET","/tipoIdentificacion",null,null);
     }
+
+    getGenero():Observable<any>{
+      return this.apiService.ApiCall("GET","/genero",null,null);
+    }
 }

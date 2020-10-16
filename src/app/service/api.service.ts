@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Observable';
 export class ApiService {
     
     URL_API = environment.apiUrl;
-    TOKEN=environment.token;
+    //TOKEN=environment.token;
 
     constructor(private http: HttpClient) { }
     
@@ -30,11 +30,11 @@ export class ApiService {
         
         if(headers!=null){
             headers.set("Content-Type","application/json");
-            headers.set("Authorization",this.TOKEN);
+            //headers.set("Authorization",this.TOKEN);
         }else{
             headers = new HttpHeaders({
               "Content-Type":"application/json",
-              "Authorization":this.TOKEN,
+              //"Authorization":this.TOKEN,
             });
         }
 

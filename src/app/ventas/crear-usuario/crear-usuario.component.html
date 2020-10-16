@@ -26,7 +26,7 @@
                             <label>Tipo Identificacion</label>
                             <select class="custom-select">
                                 <option selected="">Seleccionar</option>
-                                <option  *ngFor="let d of data" value="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacionnombreTipoIdentificacion}}</option>
+                                <option  *ngFor="let d of tipoIdentificacion" value="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
                               </select>
                         </div>
 
@@ -39,7 +39,7 @@
                             <label>Género</label>
                             <select class="custom-select">
                                 <option selected="">Seleccionar</option>
-                                <option  *ngFor="let d of data" value="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacionnombreTipoIdentificacion}}</option>
+                                <option  *ngFor="let d of genero" value="d.codigoGenero">{{d.descripcionGenero}}</option>
                               </select>
                         </div>
 
