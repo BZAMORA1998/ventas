@@ -16,3 +16,18 @@
     padding-right: 0px !important;
     padding-left: 0px !important;
 }
+
+.fa{
+    position: absolute;
+    margin-top: -14%;
+    margin-left: 90%;
+    border: none;
+    background-color: transparent;
+}
+
+@media(max-width: 600px){
+    .fa{
+        margin-top: -28%;
+        margin-left: 88%;
+    }
+}

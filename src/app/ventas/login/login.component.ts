@@ -4,8 +4,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import {Sweetalert2Component} from '../../share/sweetalert2/sweetalert2.component'
 import { TranslateService } from '@ngx-translate/core';
-import Swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
     private _router:Router,
     private _autenticacionService:AutenticacionService,
     private sweetalert2Component:Sweetalert2Component,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private auth: AuthService,
   ) { 
       this.translate.setDefaultLang(this.activeLang);
     }
@@ -62,10 +63,8 @@ export class LoginComponent implements OnInit {
    */
   postAutenticacion(){
     this.sweetalert2Component.loading(true);
-    this._autenticacionService.postAutenticacion(this.usuario,this.contrasena).subscribe(
+    this.auth.loginP(this.usuario,this.contrasena).subscribe(
         Response=>{
-          console.log(Response.data);
-          localStorage.setItem("token",JSON.stringify(Response.data.token));
           this.sweetalert2Component.loading(false);
         },
         error=>{

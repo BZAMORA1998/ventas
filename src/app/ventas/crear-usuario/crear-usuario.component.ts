@@ -40,7 +40,6 @@ export class CrearUsuarioComponent implements OnInit {
     this._autenticacionService.getTipoIdentificacion().subscribe(
         Response=>{
           this.tipoIdentificacion=Response.data;
-          console.log("data =>",this.tipoIdentificacion);
         },
         error=>{
           console.log(error.error.message);
@@ -65,11 +64,35 @@ export class CrearUsuarioComponent implements OnInit {
               }
             });
 
-            console.log("data =>",this.genero);
           },
           error=>{
             console.log(error.error.message);
           }
       ); 
+    }
+
+    typeInputF2="password";
+    showPF2:boolean=true;
+    mostrarPassword2(){
+  
+      if(this.typeInputF2=="text"){
+        this.showPF2=true;
+        this.typeInputF2="password";
+      }else{
+        this.showPF2=false;
+        this.typeInputF2="text";
+      }
+    }
+    typeInputF1="password";
+    showPF1:boolean=true;
+    mostrarPassword1(){
+  
+      if(this.typeInputF1=="text"){
+        this.showPF1=true;
+        this.typeInputF1="password";
+      }else{
+        this.showPF1=false;
+        this.typeInputF1="text";
+      }
     }
 }
