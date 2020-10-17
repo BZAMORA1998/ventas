@@ -9,23 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AutenticacionService{
 
-  URL_API = environment.apiUrl;
-  
   constructor(private apiService: ApiService,private http: HttpClient){}
-
-    /**
-     * @author Bryan Zamora
-     * @param user 
-     * @param password 
-     * @description Autenticacion de usuario
-     */
-    postAutenticacion(user,password):Observable<any>{
-      var auth ="Basic "+ btoa(user+":"+password);
-      const headers = new HttpHeaders({
-        'Authorization': auth,
-      });
-      return this.apiService.ApiLogin("POST","/autenticacion/login",null,headers);
-    } 
 
     getTipoIdentificacion():Observable<any>{
       return this.apiService.ApiCall("GET","/tipoIdentificacion",null,null);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpHeaders,HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,6 @@ import {Observable} from 'rxjs/Observable';
 export class ApiService {
     
     URL_API = environment.apiUrl;
-    //TOKEN=environment.token;
 
     constructor(private http: HttpClient) { }
     
@@ -27,18 +27,16 @@ export class ApiService {
 
 
     public ApiCall(method,endpoint,data,headers):Observable<any>{
-        
+
         if(headers!=null){
             headers.set("Content-Type","application/json");
-            //headers.set("Authorization",this.TOKEN);
+            headers.set("Authorization","Bearer " + this.getToken());
         }else{
             headers = new HttpHeaders({
               "Content-Type":"application/json",
-              //"Authorization":this.TOKEN,
+              "Authorization":"Bearer " + this.getToken()
             });
         }
-
-        console.log(headers);
 
         switch (method) {
             case "GET":
@@ -52,4 +50,10 @@ export class ApiService {
             return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
         }        
     }
+
+
+    getToken(){
+        var data = JSON.parse(localStorage.getItem('data'));
+        return data["token"];
+      }
 }
