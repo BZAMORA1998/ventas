@@ -1,89 +1,99 @@
 <div class="container-fluid" >
-    <div class="row justify-content-center mt-5">
-        <div class="col-11 col-sm-9">
-            <div class="card w-100">
-                <h5 class="bg-white ml-sm-4 ml-4 mt-3">Datos Personales</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="form-group col-5 col-sm-3 ml-4">
-                            <label>Primer Nombre</label>
-                            <input type="text" class="form-control" placeholder="Primer Nombre">
-                        </div>
-                        <div class="form-group col-5 col-sm-3 ml-2">
-                            <label>Segundo Nombre</label>
-                            <input type="text" class="form-control" placeholder="Segundo Nombre">
-                        </div>
-                        <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                            <label>Primer Apellido</label>
-                            <input type="text" class="form-control" placeholder="Primer Apellido">
-                        </div>
-                        <div class="form-group col-5 col-sm-2 ml-2">
-                            <label>Segundo Apellido</label>
-                            <input type="text" class="form-control" placeholder="Segundo Apellido">
-                        </div>
+    <form #formLogin="ngForm" (ngSubmit)="crearUsuario()" class="form">
+        <div class="row justify-content-center mt-5">
+            <div class="col-11 col-sm-9">
+                <div class="card w-100">
+                    <h5 class="bg-white ml-sm-4 ml-4 mt-3">Datos Personales</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-5 col-sm-3 ml-4">
+                                <label>Primer Nombre</label>
+                                <input type="text" class="form-control" placeholder="Primer Nombre"
+                                name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre">
+                            </div>
+                            <div class="form-group col-5 col-sm-3 ml-2">
+                                <label>Segundo Nombre</label>
+                                <input type="text" class="form-control" placeholder="Segundo Nombre"
+                                name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre">
+                            </div>
+                            <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
+                                <label>Primer Apellido</label>
+                                <input type="text" class="form-control" placeholder="Primer Apellido"
+                                name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido">
+                            </div>
+                            <div class="form-group col-5 col-sm-2 ml-2">
+                                <label>Segundo Apellido</label>
+                                <input type="text" class="form-control" placeholder="Segundo Apellido"
+                                name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido">
+                            </div>
 
-                        <div class="form-group col-5 col-sm-3 ml-4">
-                            <label>Tipo Identificacion</label>
-                            <select class="custom-select">
-                                <option selected="">Seleccionar</option>
-                                <option  *ngFor="let d of tipoIdentificacion" value="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
-                              </select>
-                        </div>
+                            <div class="form-group col-5 col-sm-3 ml-4">
+                                <label>Tipo Identificacion</label>
+                                <select class="custom-select" name="identificacion"  #tipo="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
+                                    <option selected="" [ngValue]=0>Seleccionar</option>
+                                    <option  *ngFor="let d of tipoIdentificacion" [ngValue]="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group col-5 col-sm-3  ml-2">
-                            <label>Identificación</label>
-                            <input type="text" class="form-control" placeholder="Número de Identificación">
-                        </div>
+                            <div class="form-group col-5 col-sm-3  ml-2">
+                                <label>Identificación</label>
+                                <input type="text" class="form-control" placeholder="Número de Identificación"
+                                 name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion">
+                            </div>
 
-                        <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                            <label>Género</label>
-                            <select class="custom-select">
-                                <option selected="">Seleccionar</option>
-                                <option  *ngFor="let d of genero" value="d.codigoGenero">{{d.descripcionGenero}}</option>
-                              </select>
-                        </div>
+                            <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
+                                <label>Género</label>
+                                <select class="custom-select" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
+                                    <option selected="" [ngValue]=0>Seleccionar</option>
+                                    <option  *ngFor="let d of genero" [ngValue]="d.codigoGenero">{{d.descripcionGenero}}</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group col-5 col-sm-2  ml-2">
-                            <label>Fecha de Naci</label>
-                            <input type="date" class="form-control" placeholder="Fecha de Nacimiento">
+                            <div class="form-group col-5 col-sm-2  ml-2">
+                                <label>Fecha de Naci</label>
+                                <input type="date" class="form-control" placeholder="Fecha de Nacimiento"
+                                name="fechaNacimiento"  #fechaNacimiento="ngModel" [(ngModel)]="data.fechaNacimiento">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center">
-        
-        <div class="col-11 col-sm-9 p-3">
-            <div class="card w-100">
-                <h5 class="bg-white ml-4 mt-3">Datos del Usuario</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="form-group col-10 col-sm-3 ml-4">
-                            <label>Usuario</label>
-                            <input type="text" class="form-control" placeholder="Usuario">
-                        </div>
-                        <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                            <label>Contraseña</label>
-                            <input autocomplete="off" class="form-control" placeholder="Contraseña" [type]="typeInputF1" type="password" name="txt_contrasena" required/>
-                            <label *ngIf="showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
-                            <label *ngIf="!showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
-                        </div>
+        <div class="row justify-content-center">
+            
+            <div class="col-11 col-sm-9 p-3">
+                <div class="card w-100">
+                    <h5 class="bg-white ml-4 mt-3">Datos del Usuario</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-10 col-sm-3 ml-4">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control" placeholder="Usuario"
+                                name="user"  #user="ngModel" [(ngModel)]="data.user">
+                            </div>
+                            <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
+                                <label>Contraseña</label>
+                                <input autocomplete="off" class="form-control" placeholder="Contraseña" [type]="typeInputF1" type="password" name="txt_contrasena" required
+                                name="password"  #password="ngModel" [(ngModel)]="data.password"/>
+                                <label *ngIf="showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
+                                <label *ngIf="!showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
+                            </div>
 
-                        <div class="form-group col-5 col-sm-3 ml-2">
-                            <label>Contraseña Conf</label>
-                            <input autocomplete="off" class="form-control" placeholder="Contraseña Con" [type]="typeInputF2" type="password" name="txt_contrasena" required/>
-                            <label *ngIf="showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
-                            <label *ngIf="!showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
-                        </div>
+                            <div class="form-group col-5 col-sm-3 ml-2">
+                                <label>Contraseña Conf</label>
+                                <input autocomplete="off" class="form-control" placeholder="Contraseña Con" [type]="typeInputF2" type="password" name="txt_contrasena" required/>
+                                <label *ngIf="showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
+                                <label *ngIf="!showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
+                            </div>
 
-                        <div class="form-group col-10 col-sm-2 ml-4 ml-sm-4 text-center pt-1">
-                         <button type="button" class="btn btn-primary mt-sm-4 w-100">Crear Usuario</button>
+                            <div class="form-group col-10 col-sm-2 ml-4 ml-sm-4 text-center pt-1">
+                            <button type="submit" class="btn btn-primary mt-sm-4 w-100">Crear Usuario</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>

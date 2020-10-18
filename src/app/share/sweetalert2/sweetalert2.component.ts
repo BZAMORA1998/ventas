@@ -1,4 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,7 +14,11 @@ import Swal from 'sweetalert2';
 
 export class Sweetalert2Component implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _route:ActivatedRoute,
+    private _router:Router
+  ) { 
+  }
 
   ngOnInit(): void {
   }
@@ -48,5 +53,25 @@ export class Sweetalert2Component implements OnInit {
     })
   }
 
+  public showModalConfirmacion(message){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: message,
+      confirmButtonColor:'#ea792d',
+      showConfirmButton: true,
+    }).then((result) => {
+      if (result.value) {
+        this.redirigirLogin();
+      }
+     });
+  }
+
+  public redirigirLogin(){
+    setTimeout(()=>{
+      window.location.reload();
+    }, 100);
+    return this._router.navigate(['/login']);
+  }
 
 }

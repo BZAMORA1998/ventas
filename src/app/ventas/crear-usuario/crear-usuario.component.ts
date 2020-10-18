@@ -1,17 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
 
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
   styleUrls: ['./crear-usuario.component.css'],
-  providers:[AutenticacionService]
+  providers:[AutenticacionService,UsuarioService]
 })
 export class CrearUsuarioComponent implements OnInit {
 
   constructor(
-    private _autenticacionService:AutenticacionService
+    private _autenticacionService:AutenticacionService,
+    private _usuarioService:UsuarioService,
+    private sweetalert2Component:Sweetalert2Component
+
   ) { }
+
+  data={
+    primerNombre:"",
+    segundoNombre:"",
+    primerApellido:"",
+    segundoApellido:"",
+    codigoTipoIdentificacion:0,
+    codigoGenero:0,
+    fechaNacimiento:"",
+    user:"",
+    password:"",
+    numeroIdentificacion:""
+}
 
   ngOnInit(): void {
     this.getTipoIdentificacion();
@@ -94,5 +112,20 @@ export class CrearUsuarioComponent implements OnInit {
         this.showPF1=false;
         this.typeInputF1="text";
       }
+    }
+
+    crearUsuario(){
+      this.sweetalert2Component.loading(true);
+      this._usuarioService.postCrearUsuario(this.data).subscribe(
+        Response=>{
+          this.sweetalert2Component.loading(false);
+          this.sweetalert2Component.showModalConfirmacion(Response.message);
+
+        },
+        error=>{
+          this.sweetalert2Component.loading(false);
+          this.sweetalert2Component.showModalError(error.error.message);
+        }
+    ); 
     }
 }
