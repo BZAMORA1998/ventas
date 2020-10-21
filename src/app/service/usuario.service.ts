@@ -11,8 +11,8 @@ export class UsuarioService {
   constructor(private apiService: ApiService,private http: HttpClient){}
 
     postCrearUsuario(user):Observable<any>{
-      user.password=btoa(user.password);
-      return this.apiService.ApiCall("POST","/usuariosSistema/crearUsuario",user,null);
+      user.password=btoa(user.password1);
+      return this.apiService.ApiCallSinToken("POST","/usuariosSistema/crearUsuario",user,null);
     }
 
 

@@ -26,7 +26,7 @@ export class ApiService {
     }
 
 
-    public ApiCall(method,endpoint,data,headers):Observable<any>{
+    public ApiCallConToken(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
@@ -35,6 +35,29 @@ export class ApiService {
             headers = new HttpHeaders({
               "Content-Type":"application/json",
               "Authorization":"Bearer " + this.getToken()
+            });
+        }
+
+        switch (method) {
+            case "GET":
+                return this.http.get(this.URL_API + endpoint, { headers: headers , params: data })
+            case "POST":
+                return this.http.post(this.URL_API + endpoint, data, { headers: headers , params : data});
+            
+            case "PUT":
+                return this.http.put(this.URL_API + endpoint, data, { headers: headers , params : data});
+            case "DELETE":
+            return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
+        }        
+    }
+
+    public ApiCallSinToken(method,endpoint,data,headers):Observable<any>{
+
+        if(headers!=null){
+            headers.set("Content-Type","application/json");
+        }else{
+            headers = new HttpHeaders({
+              "Content-Type":"application/json",
             });
         }
 

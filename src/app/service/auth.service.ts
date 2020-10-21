@@ -10,8 +10,6 @@ export class AuthService {
 
   constructor(private apiService: ApiService) { }
   
-  private auth:boolean=false;
-
   loginP(user,password) {
     var auth ="Basic "+ btoa(user+":"+password);
     
@@ -21,8 +19,7 @@ export class AuthService {
     return this.apiService.ApiLogin("POST","/autenticacion/login",null,headers)
       .pipe(map(resp => {
         
-        this.auth=true;
-
+        localStorage.setItem("autenticado",JSON.stringify(true));
         localStorage.setItem("data",JSON.stringify(resp["data"]));
 
         return resp;
@@ -30,6 +27,6 @@ export class AuthService {
   }
 
   estaAutenticado(): boolean {
-    return this.auth;
+    return JSON.parse(localStorage.getItem('autenticado'));
   }
 }

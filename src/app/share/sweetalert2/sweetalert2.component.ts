@@ -49,7 +49,7 @@ export class Sweetalert2Component implements OnInit {
       icon: 'error',
       title: 'Oops...',
       text: message,
-      confirmButtonColor:'#ea792d',
+      confirmButtonColor:'#007bff',
     })
   }
 
@@ -58,7 +58,7 @@ export class Sweetalert2Component implements OnInit {
       position: 'center',
       icon: 'success',
       title: message,
-      confirmButtonColor:'#ea792d',
+      confirmButtonColor:'#007bff',
       showConfirmButton: true,
     }).then((result) => {
       if (result.value) {

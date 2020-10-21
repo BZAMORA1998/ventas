@@ -2,14 +2,15 @@
     <form #formLogin="ngForm" (ngSubmit)="crearUsuario()" class="form">
         <div class="row justify-content-center mt-5">
             <div class="col-11 col-sm-9">
-                <div class="card w-100">
+                <div class="card w-100 mt-5">
                     <h5 class="bg-white ml-sm-4 ml-4 mt-3">Datos Personales</h5>
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-5 col-sm-3 ml-4">
-                                <label>Primer Nombre</label>
+                                <label>Primer Nombre <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" placeholder="Primer Nombre"
-                                name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre">
+                                name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" required>
+                                <br><span class="validacion" *ngIf="primerNombre.touched && !primerNombre.valid">Debe ingresar el primer nombre</span>
                             </div>
                             <div class="form-group col-5 col-sm-3 ml-2">
                                 <label>Segundo Nombre</label>
@@ -17,9 +18,10 @@
                                 name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre">
                             </div>
                             <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>Primer Apellido</label>
+                                <label>Primer Apellido <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" placeholder="Primer Apellido"
-                                name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido">
+                                name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido" required>
+                                <br><span class="validacion" *ngIf="primerApellido.touched  && !primerApellido.valid">Debe ingresar el primer apellido</span>
                             </div>
                             <div class="form-group col-5 col-sm-2 ml-2">
                                 <label>Segundo Apellido</label>
@@ -28,29 +30,32 @@
                             </div>
 
                             <div class="form-group col-5 col-sm-3 ml-4">
-                                <label>Tipo Identificacion</label>
-                                <select class="custom-select" name="identificacion"  #tipo="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
+                                <label>Tipo Identificación <span class="text-red">*</span></label>
+                                <select class="custom-select" id="select-tipoIdentificacion"  (change)="validarSelect('tipoIdentificacion')" name="identificacion"  #tipo="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
                                     <option selected="" [ngValue]=0>Seleccionar</option>
                                     <option  *ngFor="let d of tipoIdentificacion" [ngValue]="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
                                 </select>
+                                <br><span class="validacion" id="validar-tipoIdentificacion">Debe seleccionar el tipo de identificación</span>
                             </div>
 
                             <div class="form-group col-5 col-sm-3  ml-2">
-                                <label>Identificación</label>
+                                <label>Número de Identificación <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" placeholder="Número de Identificación"
-                                 name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion">
+                                 name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion" required>
+                                 <br><span class="validacion" *ngIf="numeroIdentificacion.touched  && !numeroIdentificacion.valid">Debe ingresar el número de identificación</span>
                             </div>
 
                             <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>Género</label>
-                                <select class="custom-select" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
+                                <label>Género <span class="text-red">*</span></label>
+                                <select class="custom-select" id="select-genero" (change)="validarSelect('genero')" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
                                     <option selected="" [ngValue]=0>Seleccionar</option>
                                     <option  *ngFor="let d of genero" [ngValue]="d.codigoGenero">{{d.descripcionGenero}}</option>
                                 </select>
+                                <br><span class="validacion" id="validar-genero">Debe seleccionar el género</span>
                             </div>
 
                             <div class="form-group col-5 col-sm-2  ml-2">
-                                <label>Fecha de Naci</label>
+                                <label>Fecha de Nacimiento <span class="text-red">*</span></label>
                                 <input type="date" class="form-control" placeholder="Fecha de Nacimiento"
                                 name="fechaNacimiento"  #fechaNacimiento="ngModel" [(ngModel)]="data.fechaNacimiento">
                             </div>
@@ -68,27 +73,34 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-10 col-sm-3 ml-4">
-                                <label>Usuario</label>
+                                <label>Usuario <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" placeholder="Usuario"
-                                name="user"  #user="ngModel" [(ngModel)]="data.user">
+                                name="user"  #user="ngModel" [(ngModel)]="data.user" required>
+                                <br><span class="validacion" *ngIf="user.touched  && !user.valid">Debe ingresar el usuario</span>
                             </div>
                             <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>Contraseña</label>
+                                <label>Contraseña <span class="text-red">*</span></label>
                                 <input autocomplete="off" class="form-control" placeholder="Contraseña" [type]="typeInputF1" type="password" name="txt_contrasena" required
-                                name="password"  #password="ngModel" [(ngModel)]="data.password"/>
+                                name="password1"  #password1="ngModel" [(ngModel)]="data.password1"/>
                                 <label *ngIf="showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
                                 <label *ngIf="!showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
                             </div>
 
                             <div class="form-group col-5 col-sm-3 ml-2">
-                                <label>Contraseña Conf</label>
-                                <input autocomplete="off" class="form-control" placeholder="Contraseña Con" [type]="typeInputF2" type="password" name="txt_contrasena" required/>
+                                <label>Confirmar Contraseña <span class="text-red">*</span></label>
+                                <input autocomplete="off" class="form-control" placeholder="Confirmar Contraseña" [type]="typeInputF2" type="password" name="txt_contrasena" required
+                                name="passwordCon"  #passwordCon="ngModel" [(ngModel)]="data.passwordCon" (change)="validarContrasenia()"/>
                                 <label *ngIf="showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
                                 <label *ngIf="!showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
+                                <br><span class="validacion" *ngIf="!validarContrasenia()">Las contraseñas no coinciden</span>
                             </div>
 
                             <div class="form-group col-10 col-sm-2 ml-4 ml-sm-4 text-center pt-1">
-                            <button type="submit" class="btn btn-primary mt-sm-4 w-100">Crear Usuario</button>
+                            <button type="submit" class="btn btn-primary mt-sm-4 w-100"
+                            [disabled]="primerNombre.value=='' || !primerNombre.valid 
+                                        || primerApellido.value=='' || !primerApellido.valid
+                                        || numeroIdentificacion.value=='' || !numeroIdentificacion.valid 
+                                        || !validarContrasenia()">Crear Usuario</button>
                             </div>
                         </div>
                     </div>

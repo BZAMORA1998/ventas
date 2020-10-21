@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
   public data:any;
 
   ngOnInit(): void {
-  
+    localStorage.clear();
   }
 
   /**
@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
     this.auth.loginP(this.usuario,this.contrasena).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
+          this._router.navigate(['../ventas/home']);
         },
         error=>{
           this.sweetalert2Component.showModalError(error.error.message);
@@ -73,3 +74,6 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
+
+  

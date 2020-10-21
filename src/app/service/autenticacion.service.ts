@@ -12,10 +12,10 @@ export class AutenticacionService{
   constructor(private apiService: ApiService,private http: HttpClient){}
 
     getTipoIdentificacion():Observable<any>{
-      return this.apiService.ApiCall("GET","/tipoIdentificacion",null,null);
+      return this.apiService.ApiCallSinToken("GET","/tipoIdentificacion",null,null);
     }
 
     getGenero():Observable<any>{
-      return this.apiService.ApiCall("GET","/genero",null,null);
+      return this.apiService.ApiCallSinToken("GET","/genero",null,null);
     }
 }

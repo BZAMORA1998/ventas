@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -7,14 +8,16 @@ import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.comp
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
   styleUrls: ['./crear-usuario.component.css'],
-  providers:[AutenticacionService,UsuarioService]
+  providers:[AutenticacionService,UsuarioService,DatePipe]
 })
 export class CrearUsuarioComponent implements OnInit {
 
+  
   constructor(
     private _autenticacionService:AutenticacionService,
     private _usuarioService:UsuarioService,
-    private sweetalert2Component:Sweetalert2Component
+    private sweetalert2Component:Sweetalert2Component,
+    private _datePipe: DatePipe
 
   ) { }
 
@@ -25,9 +28,11 @@ export class CrearUsuarioComponent implements OnInit {
     segundoApellido:"",
     codigoTipoIdentificacion:0,
     codigoGenero:0,
-    fechaNacimiento:"",
+    fechaNacimiento:this._datePipe.transform(new Date(),'dd-MM-yyyy'),
     user:"",
+    password1:"",
     password:"",
+    passwordCon:"",
     numeroIdentificacion:""
 }
 
@@ -116,6 +121,7 @@ export class CrearUsuarioComponent implements OnInit {
 
     crearUsuario(){
       this.sweetalert2Component.loading(true);
+      this.data.fechaNacimiento=this._datePipe.transform(this.data.fechaNacimiento,'dd-MM-yyyy');
       this._usuarioService.postCrearUsuario(this.data).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
@@ -127,5 +133,27 @@ export class CrearUsuarioComponent implements OnInit {
           this.sweetalert2Component.showModalError(error.error.message);
         }
     ); 
+    }
+
+    validarSelect(strId){
+      var f = (document.getElementById("select-"+strId) as HTMLInputElement).value;
+
+      var valor=f.split(":",2);
+      var valor2=parseInt(valor[0]);
+      if(valor2==0){
+        document.getElementById("validar-"+strId).style.display = 'block';
+      }else{
+        document.getElementById("validar-"+strId).style.display = 'none';;
+      }
+    }
+
+    validarContrasenia(){
+      if(this.data.passwordCon==this.data.password1){
+        console.log("true");
+        return true
+      }else{
+        console.log("False");
+          return false
+      }
     }
 }

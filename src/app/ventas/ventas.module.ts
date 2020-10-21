@@ -9,10 +9,11 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, CrearUsuarioComponent],
+  declarations: [LoginComponent, CrearUsuarioComponent, HomeComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,
