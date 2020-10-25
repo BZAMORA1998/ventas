@@ -1,6 +1,8 @@
-html,
-body,
-.container-fluid {
-  height: 100%;
+input{
+  text-transform: capitalize;
+}
+
+.text-transform-none{
+  text-transform: none;
 }
 

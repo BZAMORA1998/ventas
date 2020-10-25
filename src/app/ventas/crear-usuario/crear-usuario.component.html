@@ -3,60 +3,60 @@
         <div class="row justify-content-center mt-5">
             <div class="col-11 col-sm-9">
                 <div class="card w-100 mt-5">
-                    <h5 class="bg-white ml-sm-4 ml-4 mt-3">Datos Personales</h5>
+                    <h5 class="bg-white ml-sm-4 ml-4 mt-3">{{'crearUsuario.datosPersonales' | translate }}</h5>
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-5 col-sm-3 ml-4">
-                                <label>Primer Nombre <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="Primer Nombre"
-                                name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" required>
-                                <br><span class="validacion" *ngIf="primerNombre.touched && !primerNombre.valid">Debe ingresar el primer nombre</span>
+                                <label>{{'crearUsuario.primerNombre' | translate }}<span class="text-red">*</span></label>
+                                <input type="text" class="form-control" placeholder="{{'crearUsuario.primerNombre' | translate }}"
+                                name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" autocomplete="off"  required>
+                                <br><span class="validacion" *ngIf="primerNombre.touched && !primerNombre.valid">{{'crearUsuario.primerNombreValidacion' | translate }}</span>
                             </div>
                             <div class="form-group col-5 col-sm-3 ml-2">
-                                <label>Segundo Nombre</label>
-                                <input type="text" class="form-control" placeholder="Segundo Nombre"
-                                name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre">
+                                <label>{{'crearUsuario.segundoNombre' | translate }}</label>
+                                <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoNombre' | translate }}"
+                                name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre" autocomplete="off" >
                             </div>
                             <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>Primer Apellido <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="Primer Apellido"
-                                name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido" required>
-                                <br><span class="validacion" *ngIf="primerApellido.touched  && !primerApellido.valid">Debe ingresar el primer apellido</span>
+                                <label>{{'crearUsuario.primerApellido' | translate }} <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" placeholder="{{'crearUsuario.primerApellido' | translate }}"
+                                name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido" autocomplete="off"  required>
+                                <br><span class="validacion" *ngIf="primerApellido.touched  && !primerApellido.valid">{{'crearUsuario.primerApellidoValidacion' | translate }}</span>
                             </div>
                             <div class="form-group col-5 col-sm-2 ml-2">
-                                <label>Segundo Apellido</label>
-                                <input type="text" class="form-control" placeholder="Segundo Apellido"
-                                name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido">
+                                <label>{{'crearUsuario.segundoApellido' | translate }}</label>
+                                <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoApellido' | translate }}"
+                                name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido" autocomplete="off" >
                             </div>
 
                             <div class="form-group col-5 col-sm-3 ml-4">
-                                <label>Tipo Identificación <span class="text-red">*</span></label>
-                                <select class="custom-select" id="select-tipoIdentificacion"  (change)="validarSelect('tipoIdentificacion')" name="identificacion"  #tipo="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
-                                    <option selected="" [ngValue]=0>Seleccionar</option>
+                                <label>{{'crearUsuario.tipoIdentificacion' | translate }}<span class="text-red">*</span></label>
+                                <select class="custom-select" id="select-tipoIdentificacion"  (change)="validarSelect('tipoIdentificacion')" name="codigoTipoIdentificacion"  #codigoTipoIdentificacion="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
+                                    <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
                                     <option  *ngFor="let d of tipoIdentificacion" [ngValue]="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
                                 </select>
-                                <br><span class="validacion" id="validar-tipoIdentificacion">Debe seleccionar el tipo de identificación</span>
+                                <br><span class="validacion" id="validar-tipoIdentificacion">{{'crearUsuario.tipoIdentificacionValidacion' | translate }}</span>
                             </div>
 
                             <div class="form-group col-5 col-sm-3  ml-2">
-                                <label>Número de Identificación <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="Número de Identificación"
-                                 name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion" required>
-                                 <br><span class="validacion" *ngIf="numeroIdentificacion.touched  && !numeroIdentificacion.valid">Debe ingresar el número de identificación</span>
+                                <label>{{'crearUsuario.numeroIdentificacion' | translate }} <span class="text-red">*</span></label>
+                                <input type="number" class="form-control" placeholder="{{'crearUsuario.numeroIdentificacion' | translate }}"
+                                 name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion" autocomplete="off"  required>
+                                 <br><span class="validacion" *ngIf="numeroIdentificacion.touched  && !numeroIdentificacion.valid">{{'crearUsuario.tipoIdentificacionValidacion' | translate }}</span>
                             </div>
 
                             <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>Género <span class="text-red">*</span></label>
+                                <label>{{'crearUsuario.genero' | translate }} <span class="text-red">*</span></label>
                                 <select class="custom-select" id="select-genero" (change)="validarSelect('genero')" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
-                                    <option selected="" [ngValue]=0>Seleccionar</option>
+                                    <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
                                     <option  *ngFor="let d of genero" [ngValue]="d.codigoGenero">{{d.descripcionGenero}}</option>
                                 </select>
-                                <br><span class="validacion" id="validar-genero">Debe seleccionar el género</span>
+                                <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
                             </div>
 
                             <div class="form-group col-5 col-sm-2  ml-2">
-                                <label>Fecha de Nacimiento <span class="text-red">*</span></label>
-                                <input type="date" class="form-control" placeholder="Fecha de Nacimiento"
+                                <label>{{'crearUsuario.fechaNacimiento' | translate }} <span class="text-red">*</span></label>
+                                <input type="date" class="form-control" placeholder="{{'crearUsuario.fechaNacimiento' | translate }}"
                                 name="fechaNacimiento"  #fechaNacimiento="ngModel" [(ngModel)]="data.fechaNacimiento">
                             </div>
                         </div>
@@ -69,30 +69,30 @@
             
             <div class="col-11 col-sm-9 p-3">
                 <div class="card w-100">
-                    <h5 class="bg-white ml-4 mt-3">Datos del Usuario</h5>
+                    <h5 class="bg-white ml-4 mt-3">{{'crearUsuario.datosUsuario' | translate }}</h5>
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-10 col-sm-3 ml-4">
-                                <label>Usuario <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="Usuario"
-                                name="user"  #user="ngModel" [(ngModel)]="data.user" required>
-                                <br><span class="validacion" *ngIf="user.touched  && !user.valid">Debe ingresar el usuario</span>
+                                <label>{{'crearUsuario.usuario' | translate }} <span class="text-red">*</span></label>
+                                <input type="text" class="form-control text-transform-none" placeholder="{{'crearUsuario.usuario' | translate }} "
+                                name="user"  #user="ngModel" [(ngModel)]="data.user" autocomplete="off"  required>
+                                <br><span class="validacion" *ngIf="user.touched  && !user.valid">{{'crearUsuario.usuarioValidacion' | translate }}</span>
                             </div>
                             <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>Contraseña <span class="text-red">*</span></label>
-                                <input autocomplete="off" class="form-control" placeholder="Contraseña" [type]="typeInputF1" type="password" name="txt_contrasena" required
+                                <label>{{'crearUsuario.contrasena' | translate }} <span class="text-red">*</span></label>
+                                <input autocomplete="off" class="form-control text-transform-none" placeholder="{{'crearUsuario.contrasena' | translate }}" [type]="typeInputF1" type="password" name="txt_contrasena" required
                                 name="password1"  #password1="ngModel" [(ngModel)]="data.password1"/>
                                 <label *ngIf="showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
                                 <label *ngIf="!showPF1" (click)="mostrarPassword1()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
                             </div>
 
                             <div class="form-group col-5 col-sm-3 ml-2">
-                                <label>Confirmar Contraseña <span class="text-red">*</span></label>
-                                <input autocomplete="off" class="form-control" placeholder="Confirmar Contraseña" [type]="typeInputF2" type="password" name="txt_contrasena" required
+                                <label>{{'crearUsuario.confirmarContrasena' | translate }} <span class="text-red">*</span></label>
+                                <input autocomplete="off" class="form-control text-transform-none" placeholder="{{'crearUsuario.confirmarContrasena' | translate }}" [type]="typeInputF2" type="password" name="txt_contrasena" required
                                 name="passwordCon"  #passwordCon="ngModel" [(ngModel)]="data.passwordCon" (change)="validarContrasenia()"/>
                                 <label *ngIf="showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye showPass" aria-hidden="true"></i></label>
                                 <label *ngIf="!showPF2" (click)="mostrarPassword2()" type="button" class="button"><i class="fa fa-eye-slash showPass" aria-hidden="true"></i></label>
-                                <br><span class="validacion" *ngIf="!validarContrasenia()">Las contraseñas no coinciden</span>
+                                <br><span class="validacion" *ngIf="!validarContrasenia()">{{'crearUsuario.contrasenaValidacion' | translate }}</span>
                             </div>
 
                             <div class="form-group col-10 col-sm-2 ml-4 ml-sm-4 text-center pt-1">
@@ -100,7 +100,8 @@
                             [disabled]="primerNombre.value=='' || !primerNombre.valid 
                                         || primerApellido.value=='' || !primerApellido.valid
                                         || numeroIdentificacion.value=='' || !numeroIdentificacion.valid 
-                                        || !validarContrasenia()">Crear Usuario</button>
+                                        || password1.value==''
+                                        || !validarContrasenia()">{{'crearUsuario.crearUsuario' | translate }}</button>
                             </div>
                         </div>
                     </div>

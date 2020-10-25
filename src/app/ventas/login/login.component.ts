@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
@@ -32,7 +31,8 @@ export class LoginComponent implements OnInit {
   
     public cambiarLenguaje(lang) {
       this.activeLang = lang;
-      this.translate.use(lang);
+      this.translate.use(this.activeLang);
+      localStorage.setItem("languaje",JSON.stringify(this.activeLang));
     }
     
     typeInputF="password";
@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.clear();
+    localStorage.setItem("languaje",JSON.stringify(this.activeLang));
   }
 
   /**

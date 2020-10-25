@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
@@ -13,13 +14,18 @@ import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.comp
 export class CrearUsuarioComponent implements OnInit {
 
   
+  public activeLang =JSON.parse(localStorage.getItem("languaje"));
+
   constructor(
     private _autenticacionService:AutenticacionService,
     private _usuarioService:UsuarioService,
     private sweetalert2Component:Sweetalert2Component,
-    private _datePipe: DatePipe
+    private _datePipe: DatePipe,
+    private translate: TranslateService,
 
-  ) { }
+  ) {
+    this.translate.setDefaultLang(this.activeLang);
+   }
 
   data={
     primerNombre:"",
@@ -28,7 +34,7 @@ export class CrearUsuarioComponent implements OnInit {
     segundoApellido:"",
     codigoTipoIdentificacion:0,
     codigoGenero:0,
-    fechaNacimiento:this._datePipe.transform(new Date(),'dd-MM-yyyy'),
+    fechaNacimiento:"",
     user:"",
     password1:"",
     password:"",
@@ -137,9 +143,9 @@ export class CrearUsuarioComponent implements OnInit {
 
     validarSelect(strId){
       var f = (document.getElementById("select-"+strId) as HTMLInputElement).value;
-
       var valor=f.split(":",2);
       var valor2=parseInt(valor[0]);
+      console.log("=>",valor2);
       if(valor2==0){
         document.getElementById("validar-"+strId).style.display = 'block';
       }else{
