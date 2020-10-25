@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public data:any;
+  public activeLang =JSON.parse(localStorage.getItem("languaje"));
+
+  constructor( private translate: TranslateService) { }
 
   ngOnInit(): void {
+    this.data=JSON.parse(localStorage.getItem('data'));
+    this.translate.setDefaultLang(this.activeLang);
   }
 
 }

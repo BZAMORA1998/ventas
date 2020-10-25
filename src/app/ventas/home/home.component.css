@@ -1,0 +1,10 @@
+.nav-right{
+    clear: both;
+    margin-left: 71%;
+}
+
+@media(max-width: 767.98px){
+    .nav-right{
+        margin-left: 0%;
+    }
+}

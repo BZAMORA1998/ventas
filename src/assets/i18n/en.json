@@ -36,5 +36,9 @@
         "generoValidacion":"You must select the gender",
         "usuarioValidacion":"You must enter the user",
         "contrasenaValidacion":"Passwords do not match"
-    }
+    },
+    "home":{
+        "perfilUsuario":"User Profile",
+        "cerrarSesion":"Sign off"
+      }
   }

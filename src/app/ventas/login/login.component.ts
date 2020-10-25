@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
         Response=>{
           this.sweetalert2Component.loading(false);
           this._router.navigate(['../ventas/home']);
+          localStorage.setItem("data",JSON.stringify(Response['data']));
         },
         error=>{
           this.sweetalert2Component.showModalError(error.error.message);

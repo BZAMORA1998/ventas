@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VentasComponent implements OnInit {
 
+  public activeLang =JSON.parse(localStorage.getItem("languaje"));
+
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

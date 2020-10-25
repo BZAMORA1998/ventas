@@ -36,5 +36,9 @@
       "generoValidacion":"Debes seleccionar el género",
       "usuarioValidacion":"Debes ingresar el usuario",
       "contrasenaValidacion":"Las contraseñas no coinciden"
+  },
+  "home":{
+    "perfilUsuario":"Perfil del Usuario",
+    "cerrarSesion":"Cerrar Sesión"
   }
 }
