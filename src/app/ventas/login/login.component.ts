@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   public usuario:String;
   public contrasena:String;
-  public activeLang =environment.languaje;
+  public activeLang:string;
   
   constructor(
     private _route:ActivatedRoute,
@@ -25,15 +25,19 @@ export class LoginComponent implements OnInit {
     private sweetalert2Component:Sweetalert2Component,
     private translate: TranslateService,
     private auth: AuthService,
+    
   ) { 
-      this.translate.setDefaultLang(this.activeLang);
-    }
+
+  }
   
-    public cambiarLenguaje(lang) {
-      this.activeLang = lang;
-      this.translate.use(this.activeLang);
-      localStorage.setItem("languaje",JSON.stringify(this.activeLang));
-    }
+    /**
+   * @author Bryan Zamora
+   * @description  Captura el evento del input select para cambiar el idioma.
+   **/
+  public cambiarLenguaje(lang) {
+    this.translate.use(lang);
+    localStorage.setItem("languaje",JSON.stringify(lang));
+  }
     
     typeInputF="password";
     showPF:boolean=true;
@@ -52,8 +56,9 @@ export class LoginComponent implements OnInit {
   public data:any;
 
   ngOnInit(): void {
-    localStorage.clear();
-    localStorage.setItem("languaje",JSON.stringify(this.activeLang));
+    localStorage.removeItem("data");
+    localStorage.removeItem("autenticado");
+    this.capturarLenguaje();
   }
 
   /**
@@ -74,6 +79,20 @@ export class LoginComponent implements OnInit {
           this.sweetalert2Component.showModalError(error.error.message);
         }
       );
+    }
+
+  /**
+   * @author Bryan Zamora
+   * @description  Captura el lenguage que existe en memoria caso contrario setea 'es' por defecto.
+   **/
+    capturarLenguaje(){
+      if(this.activeLang!=null || this.activeLang==undefined){
+        this.activeLang=JSON.parse(localStorage.getItem("languaje"));
+        this.translate.use(this.activeLang);
+      }else{
+        this.activeLang='es';
+        this.translate.setDefaultLang(this.activeLang);
+      }
     }
   }
 

@@ -5,8 +5,8 @@
                 <div class="card">
                     <div class="form-group text-right">
                         <select class="custom-select w-50" (change)="cambiarLenguaje($event.target.value)">
-                            <option selected value="es">{{'global.español' | translate }}</option>
-                            <option value="en">{{'global.ingles' | translate }}</option>
+                            <option value="es" [selected]="activeLang=='es'">{{'global.español' | translate }}</option>
+                            <option value="en"  [selected]="activeLang=='en'">{{'global.ingles' | translate }}</option>
                         </select>
                     </div>
 
