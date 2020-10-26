@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="form-group col-5 col-sm-3 ml-4">
                                 <label>{{'crearUsuario.primerNombre' | translate }}<span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="{{'crearUsuario.primerNombre' | translate }}"
+                                <input  type="text" class="form-control" placeholder="{{'crearUsuario.primerNombre' | translate }}"
                                 name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" autocomplete="off"  required>
                                 <br><span class="validacion" *ngIf="primerNombre.touched && !primerNombre.valid">{{'crearUsuario.primerNombreValidacion' | translate }}</span>
                             </div>

@@ -17,8 +17,8 @@ const routes: Routes = [
       { 
         path: 'crear-usuario',  component: CrearUsuarioComponent
       },
-      { 
-        path: 'home',  component: HomeComponent,canActivate:[AuthGuard]
+      {
+        path: 'home',loadChildren:()=> import('./home/home.module').then(m => m.HomeModule)
       },
       {
         path: '', redirectTo: 'login', pathMatch: 'full'

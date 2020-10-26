@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { FormsModule } from '@angular/forms';
 import { ShareModule } from './share/share.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ShareModule } from './share/share.module';
         },
         deps: [ HttpClient ]
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

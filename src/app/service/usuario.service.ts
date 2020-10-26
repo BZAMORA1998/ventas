@@ -15,5 +15,13 @@ export class UsuarioService {
       return this.apiService.ApiCallSinToken("POST","/usuariosSistema/crearUsuario",user,null);
     }
 
+    getConsultaUsuario():Observable<any>{
+      return this.apiService.ApiCallConToken("GET","/usuariosSistema/usuarios",null,null);
+    }
+
+    deleteUsuario(idUsuario):Observable<any>{
+      return this.apiService.ApiCallConToken("DELETE",`/usuariosSistema/${idUsuario}/usuarios`,null,null);
+    }
+
 
 }
