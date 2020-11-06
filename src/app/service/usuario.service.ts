@@ -23,5 +23,7 @@ export class UsuarioService {
       return this.apiService.ApiCallConToken("DELETE",`/usuariosSistema/${idUsuario}/usuarios`,null,null);
     }
 
-
+    getUsuarioXId(idUsuario):Observable<any>{
+      return this.apiService.ApiCallConToken("GET",`/usuariosSistema/${idUsuario}/basica`,null,null);
+    }
 }

@@ -11,3 +11,8 @@
         margin-left: 0%;
     }
 }
+
+.enlace_desactivado {
+    pointer-events: none;
+    cursor: default;
+    }

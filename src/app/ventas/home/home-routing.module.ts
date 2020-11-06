@@ -15,10 +15,10 @@ const routes: Routes = [
         path: 'prueba',  component: PruebaComponent 
       },
       {
-        path: '', redirectTo: 'usuarios', pathMatch: 'full'
+        path: '', redirectTo: 'prueba', pathMatch: 'full'
       },
       { 
-        path: '**', component: UsuariosComponent 
+        path: '**', component: PruebaComponent 
       }
     ]
   }

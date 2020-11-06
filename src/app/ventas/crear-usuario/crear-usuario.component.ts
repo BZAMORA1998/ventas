@@ -127,12 +127,10 @@ export class CrearUsuarioComponent implements OnInit {
 
     crearUsuario(){
       this.sweetalert2Component.loading(true);
-      this.data.fechaNacimiento=this._datePipe.transform(this.data.fechaNacimiento,'dd-MM-yyyy');
       this._usuarioService.postCrearUsuario(this.data).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
           this.sweetalert2Component.showModalConfirmacion(Response.message);
-
         },
         error=>{
           this.sweetalert2Component.loading(false);
