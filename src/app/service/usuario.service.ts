@@ -15,6 +15,10 @@ export class UsuarioService {
       return this.apiService.ApiCallSinToken("POST","/usuariosSistema/crearUsuario",user,null);
     }
 
+    putActualizarUsuario(idUsuario,user):Observable<any>{
+      return this.apiService.ApiCallConToken("PUT",`/usuariosSistema/${idUsuario}/actualizarUsuario`,user,null);
+    }
+
     getConsultaUsuario():Observable<any>{
       return this.apiService.ApiCallConToken("GET","/usuariosSistema/usuarios",null,null);
     }

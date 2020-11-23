@@ -18,44 +18,46 @@ export class UsuariosComponent implements OnInit {
     private sweetalert2Component:Sweetalert2Component,
     private _autenticacionService:AutenticacionService,
     private _datePipe: DatePipe) { 
+      
+    }
+
+    public data=[
+      {
+          numeroIdentificacion: "",
+          primerNombre: "",
+          segundoNombre: "",
+          primerApellido: "",
+          segundoApellido: "",
+          usuario: "",
+          fechaNacimiento: null,
+          codigoTipoIdentificacion: null,
+          codigoGenero: null,
+          secuenciaUsuarioSistema: 0,
+          esActivo:"S"
+      }];
+  
+    public dataAct={
+      numeroIdentificacion: "",
+      primerNombre: "",
+      segundoNombre: "",
+      primerApellido: "",
+      segundoApellido: "",
+      codigoTipoIdentificacion: 0,
+      codigoGenero: 0,
+      fechaNacimiento:null,
+      usuario:"",
+      secuenciaUsuarioSistema:0,
+      rolSistema:""
     }
 
   ngOnInit(): void {
-    this.crearUsuario();
+    this.listarUsuario();
     this.getTipoIdentificacion();
     this.getGenero();
   }
 
-  public data=[
-    {
-        numeroIdentificacion: "",
-        primerNombre: "",
-        segundoNombre: "",
-        primerApellido: "",
-        segundoApellido: "",
-        usuario: "",
-        fechaNacimiento: null,
-        codigoTipoIdentificacion: null,
-        codigoGenero: null,
-        secuenciaUsuarioSistema: 0,
-        esActivo:"S"
-    }];
 
-  public dataAct={
-    numeroIdentificacion: "",
-    primerNombre: "",
-    segundoNombre: "",
-    primerApellido: "",
-    segundoApellido: "",
-    usuario:"",
-    fechaNacimiento:null,
-    codigoTipoIdentificacion: 0,
-    codigoGenero: 0,
-    secuenciaUsuarioSistema: 0,
-    rolSistema:""
-  }
-
-  crearUsuario(){
+  listarUsuario(){
     this._usuarioService.getConsultaUsuario().subscribe(
       Response=>{
         this.data=Response["data"];
@@ -70,7 +72,21 @@ export class UsuariosComponent implements OnInit {
     this.sweetalert2Component.loading(true);
     this._usuarioService.deleteUsuario(idUsuario).subscribe(
       Response=>{
-        this.crearUsuario();
+        this.listarUsuario();
+        this.sweetalert2Component.loading(false);
+      },
+      error=>{
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalError(error.error.message);
+      }
+    ); 
+  }
+
+  putActualizarUsuario(idUsuario){
+    this.sweetalert2Component.loading(true);
+    this._usuarioService.putActualizarUsuario(idUsuario,this.dataAct).subscribe(
+      Response=>{
+        this.listarUsuario();
         this.sweetalert2Component.loading(false);
       },
       error=>{
@@ -83,6 +99,7 @@ export class UsuariosComponent implements OnInit {
   getUsuarioXId(idUsuario){
     this._usuarioService.getUsuarioXId(idUsuario).subscribe(
       Response=>{
+        this.limpiar();
         this.dataAct=Response["data"];
       },
       error=>{
@@ -140,5 +157,21 @@ getGenero(){
         console.log(error.error.message);
       }
     ); 
+  }
+
+  limpiar(){
+    this.dataAct={
+      numeroIdentificacion: "",
+      primerNombre: "",
+      segundoNombre: "",
+      primerApellido: "",
+      segundoApellido: "",
+      usuario:"",
+      fechaNacimiento:null,
+      codigoTipoIdentificacion: 0,
+      codigoGenero: 0,
+      secuenciaUsuarioSistema: 0,
+      rolSistema:""
+    }
   }
 }

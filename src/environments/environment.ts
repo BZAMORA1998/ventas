@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl:"http://localhost:8081/ventas/v1",
-  //apiUrl:"https://sistema-ventas-api.herokuapp.com/ventas/v1",
+  //apiUrl:"https://sistema-ventas-api.herokuapp.com/ventas/v1/autenticacion/login",
  // token:"Bearer "+JSON.parse(localStorage.getItem("token")),
   languaje:"es"
 };
