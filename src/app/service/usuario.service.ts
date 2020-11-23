@@ -19,8 +19,8 @@ export class UsuarioService {
       return this.apiService.ApiCallConToken("PUT",`/usuariosSistema/${idUsuario}/actualizarUsuario`,user,null);
     }
 
-    getConsultaUsuario():Observable<any>{
-      return this.apiService.ApiCallConToken("GET","/usuariosSistema/usuarios",null,null);
+    getConsultaUsuario(page,perPage):Observable<any>{
+      return this.apiService.ApiCallConToken("GET",`/usuariosSistema/usuarios?page=${page}&perPage=${perPage}`,null,null);
     }
 
     deleteUsuario(idUsuario):Observable<any>{

@@ -1,6 +1,5 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
@@ -57,13 +56,31 @@ export class UsuariosComponent implements OnInit {
   }
 
 
+
+  getpaginacion(page){
+    this.page=page;
+    this.listarUsuario();
+  }
+
+  
+  public page:Number=1;
+  public perPage:Number=5;
+  public totalRows:Number=0;
+  public mostrarPag:Boolean=false;
   listarUsuario(){
-    this._usuarioService.getConsultaUsuario().subscribe(
+    this._usuarioService.getConsultaUsuario(this.page,this.perPage).subscribe(
       Response=>{
-        this.data=Response["data"];
+        this.mostrarPag=false;
+        this.data=Response["data"].rows;
+        this.totalRows=Response["data"].totalRows;
+        console.log("=>",this.perPage);
+        console.log("=>",this.page);
+        if(this.data.length>=this.perPage || this.page!=1){
+          this.mostrarPag=true;
+        }
       },
       error=>{
-        this.sweetalert2Component.showModalError(error.error.message);
+        this.sweetalert2Component.showModalError(error.message);
       }
     ); 
   }

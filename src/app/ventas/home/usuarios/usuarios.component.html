@@ -28,6 +28,7 @@
             <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuarioSistema)" matTooltip="Elimina el usuario" width="20" src="../../../../assets/img/eliminar.svg"></td>
           </tr>
       </table>
+      <app-paginador *ngIf="mostrarPag" [totalDatos]="totalRows" [datosPorpagina]="perPage" (paginaSeleccionada)="getpaginacion($event)"></app-paginador>
     </div>
 
     <!-- Modal -->
