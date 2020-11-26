@@ -17,7 +17,6 @@ export class UsuariosComponent implements OnInit {
     private sweetalert2Component:Sweetalert2Component,
     private _autenticacionService:AutenticacionService,
     private _datePipe: DatePipe) { 
-      
     }
 
     public data=[
@@ -49,10 +48,11 @@ export class UsuariosComponent implements OnInit {
       rolSistema:""
     }
 
+    public data2:any;
   ngOnInit(): void {
-    this.listarUsuario();
     this.getTipoIdentificacion();
     this.getGenero();
+    this.listarUsuario();
   }
 
 

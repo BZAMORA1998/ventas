@@ -4,22 +4,28 @@ import { Sweetalert2Component } from './sweetalert2/sweetalert2.component';
 import { PaginadorComponent } from './paginador/paginador.component';
 import { NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { TablePaginationComponent } from './table-pagination/table-pagination.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [Sweetalert2Component,PaginadorComponent],
+  declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent],
   imports: [
     CommonModule,
     NgbPaginationModule,    
-    NgbModule
+    NgbModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   entryComponents:[
     Sweetalert2Component,
-    PaginadorComponent
+    PaginadorComponent,
+    TablePaginationComponent
   ],
   exports:[
     Sweetalert2Component,
-    PaginadorComponent
+    PaginadorComponent,
+    TablePaginationComponent
   ]
 })
 export class ShareModule { }
