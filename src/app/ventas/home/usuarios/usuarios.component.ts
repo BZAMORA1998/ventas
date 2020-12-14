@@ -50,6 +50,7 @@ export class UsuariosComponent implements OnInit {
 
     public data2:any;
   ngOnInit(): void {
+    this.data=null;
     this.getTipoIdentificacion();
     this.getGenero();
     this.listarUsuario();

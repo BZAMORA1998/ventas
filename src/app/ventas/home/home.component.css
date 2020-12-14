@@ -1,3 +1,11 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+
 .nav-right{
     clear: both;
     margin-left: 71%;

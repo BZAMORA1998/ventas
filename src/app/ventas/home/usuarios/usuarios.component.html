@@ -1,35 +1,57 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-10 mt-5">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Numero de Identificacion</th>
-            <th>Primer Nombre</th>
-            <th>Segundo Nombre</th>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
-            <th>Usuario</th>
-            <th>Actualizar</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let d of data; index as i">
-            <th scope="row">{{i+1}}</th>
-            <td >{{d.numeroIdentificacion }}</td>
-            <td >{{d.primerNombre | titlecase}}</td>
-            <td >{{d.segundoNombre | titlecase}}</td>
-            <td >{{d.primerApellido | titlecase}}</td>
-            <td >{{d.segundoApellido | titlecase}}</td>
-            <td >{{d.usuario}}</td>
-            <td ><img (click)="getUsuarioXId(d.secuenciaUsuarioSistema)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
-            <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuarioSistema)" matTooltip="Elimina el usuario" width="20" src="../../../../assets/img/eliminar.svg"></td>
-          </tr>
-      </table>
-      <app-paginador *ngIf="mostrarPag" [totalDatos]="totalRows" [datosPorpagina]="perPage" (paginaSeleccionada)="getpaginacion($event)"></app-paginador>
-      <br><br>
+      <div *ngIf="data!=null; then thenBlock else elseBlock"></div>
+      <ng-template #elseBlock>
+          <div class="item">
+            <!-- Disables the animation -->
+            <ngx-skeleton-loader animation="false"></ngx-skeleton-loader>
+            <!-- Uses `progress` as animation -->
+            <ngx-skeleton-loader animation="progress"></ngx-skeleton-loader>
+             <!-- Disables the animation -->
+             <ngx-skeleton-loader animation="false"></ngx-skeleton-loader>
+             <!-- Uses `progress` as animation -->
+            <ngx-skeleton-loader animation="progress"></ngx-skeleton-loader>
+              <!-- Disables the animation -->
+            <ngx-skeleton-loader animation="false"></ngx-skeleton-loader>
+            <!-- Uses `progress` as animation -->
+            <ngx-skeleton-loader animation="progress"></ngx-skeleton-loader>
+            <ngx-skeleton-loader></ngx-skeleton-loader>
+            <!-- Uses `pulse` as animation -->
+            <ngx-skeleton-loader animation="pulse"></ngx-skeleton-loader>
+          </div>
+        </ng-template>
+      <ng-template #thenBlock>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Numero de Identificacion</th>
+                <th>Primer Nombre</th>
+                <th>Segundo Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Usuario</th>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let d of data; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td >{{d.numeroIdentificacion }}</td>
+                <td >{{d.primerNombre | titlecase}}</td>
+                <td >{{d.segundoNombre | titlecase}}</td>
+                <td >{{d.primerApellido | titlecase}}</td>
+                <td >{{d.segundoApellido | titlecase}}</td>
+                <td >{{d.usuario}}</td>
+                <td ><img (click)="getUsuarioXId(d.secuenciaUsuarioSistema)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
+                <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuarioSistema)" matTooltip="Elimina el usuario" width="20" src="../../../../assets/img/eliminar.svg"></td>
+              </tr>
+          </table>
+          <app-paginador *ngIf="mostrarPag" [totalDatos]="totalRows" [datosPorpagina]="perPage" (paginaSeleccionada)="getpaginacion($event)"></app-paginador>
+        </ng-template>
+        <br><br>
     </div>
 
     <!-- Modal -->

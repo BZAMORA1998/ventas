@@ -6,58 +6,77 @@
                     <h5 class="bg-white ml-sm-4 ml-4 mt-3">{{'crearUsuario.datosPersonales' | translate }}</h5>
                     <div class="card-body">
                         <div class="row">
-                            <div class="form-group col-5 col-sm-3 ml-4">
-                                <label>{{'crearUsuario.primerNombre' | translate }}<span class="text-red">*</span></label>
-                                <input  type="text" class="form-control" placeholder="{{'crearUsuario.primerNombre' | translate }}"
-                                name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" autocomplete="off"  required>
-                                <br><span class="validacion" *ngIf="primerNombre.touched && !primerNombre.valid">{{'crearUsuario.primerNombreValidacion' | translate }}</span>
+                            <div class="col-5 col-sm-2 ml-4 text-center justify-content-center;">
+                                <img [src]="croppedImage" width="150" height="150"/>
+                                <label class="ml-5" for="fileFoto"><u><a style="cursor:pointer; ">Foto</a></u></label>  
+                                <input 
+                                    id="fileFoto" 
+                                    style="display: none;"
+                                    type="file" 
+                                    (change)="fileChangeEvent($event)"  
+                                 /> 
                             </div>
-                            <div class="form-group col-5 col-sm-3 ml-2">
-                                <label>{{'crearUsuario.segundoNombre' | translate }}</label>
-                                <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoNombre' | translate }}"
-                                name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre" autocomplete="off" >
-                            </div>
-                            <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>{{'crearUsuario.primerApellido' | translate }} <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="{{'crearUsuario.primerApellido' | translate }}"
-                                name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido" autocomplete="off"  required>
-                                <br><span class="validacion" *ngIf="primerApellido.touched  && !primerApellido.valid">{{'crearUsuario.primerApellidoValidacion' | translate }}</span>
-                            </div>
-                            <div class="form-group col-5 col-sm-2 ml-2">
-                                <label>{{'crearUsuario.segundoApellido' | translate }}</label>
-                                <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoApellido' | translate }}"
-                                name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido" autocomplete="off" >
-                            </div>
+                            <div class="form-group col-5 col-sm-9 ml-4">
+                                <div class="row ml-5">
+                                    <div class="form-group col-5 col-sm-3 ml-3">
+                                        <label>{{'crearUsuario.segundoApellido' | translate }}</label>
+                                        <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoApellido' | translate }}"
+                                        name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido" autocomplete="off" >
+                                    </div>
 
-                            <div class="form-group col-5 col-sm-3 ml-4">
-                                <label>{{'crearUsuario.tipoIdentificacion' | translate }}<span class="text-red">*</span></label>
-                                <select class="custom-select" id="select-tipoIdentificacion"  (change)="validarSelect('tipoIdentificacion')" name="codigoTipoIdentificacion"  #codigoTipoIdentificacion="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
-                                    <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
-                                    <option  *ngFor="let d of tipoIdentificacion" [ngValue]="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
-                                </select>
-                                <br><span class="validacion" id="validar-tipoIdentificacion">{{'crearUsuario.tipoIdentificacionValidacion' | translate }}</span>
-                            </div>
+                                    <div class="form-group col-5 col-sm-3 ml-3">
+                                        <label>{{'crearUsuario.primerNombre' | translate }}<span class="text-red">*</span></label>
+                                        <input  type="text" class="form-control" placeholder="{{'crearUsuario.primerNombre' | translate }}"
+                                        name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" autocomplete="off"  required>
+                                        <br><span class="validacion" *ngIf="primerNombre.touched && !primerNombre.valid">{{'crearUsuario.primerNombreValidacion' | translate }}</span>
+                                    </div>
 
-                            <div class="form-group col-5 col-sm-3  ml-2">
-                                <label>{{'crearUsuario.numeroIdentificacion' | translate }} <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" placeholder="{{'crearUsuario.numeroIdentificacion' | translate }}"
-                                 name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion" autocomplete="off"  required>
-                                 <br><span class="validacion" *ngIf="numeroIdentificacion.touched  && !numeroIdentificacion.valid">{{'crearUsuario.tipoIdentificacionValidacion' | translate }}</span>
-                            </div>
-
-                            <div class="form-group col-5 col-sm-3 ml-4 ml-sm-2">
-                                <label>{{'crearUsuario.genero' | translate }} <span class="text-red">*</span></label>
-                                <select class="custom-select" id="select-genero" (change)="validarSelect('genero')" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
-                                    <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
-                                    <option  *ngFor="let d of genero" [ngValue]="d.codigoGenero">{{d.descripcionGenero}}</option>
-                                </select>
-                                <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
-                            </div>
-
-                            <div class="form-group col-5 col-sm-2  ml-2">
-                                <label>{{'crearUsuario.fechaNacimiento' | translate }} <span class="text-red">*</span></label>
-                                <input type="date" class="form-control" placeholder="{{'crearUsuario.fechaNacimiento' | translate }}"
-                                name="fechaNacimiento"  #fechaNacimiento="ngModel" [(ngModel)]="data.fechaNacimiento">
+                                    <div class="form-group col-5 col-sm-3 ml-3">
+                                        <label>{{'crearUsuario.segundoNombre' | translate }}</label>
+                                        <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoNombre' | translate }}"
+                                        name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre" autocomplete="off" >
+                                    </div>
+                                    <div class="form-group col-5 col-sm-3 ml-3 ml-sm-3">
+                                        <label>{{'crearUsuario.primerApellido' | translate }} <span class="text-red">*</span></label>
+                                        <input type="text" class="form-control" placeholder="{{'crearUsuario.primerApellido' | translate }}"
+                                        name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="data.primerApellido" autocomplete="off"  required>
+                                        <br><span class="validacion" *ngIf="primerApellido.touched  && !primerApellido.valid">{{'crearUsuario.primerApellidoValidacion' | translate }}</span>
+                                    </div>
+                                    <div class="form-group col-5 col-sm-3 ml-3">
+                                        <label>{{'crearUsuario.segundoApellido' | translate }}</label>
+                                        <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoApellido' | translate }}"
+                                        name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido" autocomplete="off" >
+                                    </div>
+                                    <div class="form-group col-5 col-sm-3 ml-4">
+                                        <label>{{'crearUsuario.tipoIdentificacion' | translate }}<span class="text-red">*</span></label>
+                                        <select class="custom-select" id="select-tipoIdentificacion"  (change)="validarSelect('tipoIdentificacion')" name="codigoTipoIdentificacion"  #codigoTipoIdentificacion="ngModel"  [(ngModel)]="data.codigoTipoIdentificacion" ngControl="d.codigoTipoIdentificacion">
+                                            <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
+                                            <option  *ngFor="let d of tipoIdentificacion" [ngValue]="d.codigoTipoIdentificacion">{{d.nombreTipoIdentificacion}}</option>
+                                        </select>
+                                        <br><span class="validacion" id="validar-tipoIdentificacion">{{'crearUsuario.tipoIdentificacionValidacion' | translate }}</span>
+                                    </div>
+                                    <div class="form-group col-5 col-sm-3  ml-sm-3">
+                                        <label>{{'crearUsuario.numeroIdentificacion' | translate }} <span class="text-red">*</span></label>
+                                        <input type="text" class="form-control" placeholder="{{'crearUsuario.numeroIdentificacion' | translate }}"
+                                         name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="data.numeroIdentificacion" autocomplete="off"  required>
+                                         <br><span class="validacion" *ngIf="numeroIdentificacion.touched  && !numeroIdentificacion.valid">{{'crearUsuario.tipoIdentificacionValidacion' | translate }}</span>
+                                    </div>
+        
+                                    <div class="form-group col-5 col-sm-3 ml-4 ml-sm-3">
+                                        <label>{{'crearUsuario.genero' | translate }} <span class="text-red">*</span></label>
+                                        <select class="custom-select" id="select-genero" (change)="validarSelect('genero')" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
+                                            <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
+                                            <option  *ngFor="let d of genero" [ngValue]="d.codigoGenero">{{d.descripcionGenero}}</option>
+                                        </select>
+                                        <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
+                                    </div>
+        
+                                    <div class="form-group col-5 col-sm-3 ml-sm-3">
+                                        <label>{{'crearUsuario.fechaNacimiento' | translate }} <span class="text-red">*</span></label>
+                                        <input type="date" class="form-control" placeholder="{{'crearUsuario.fechaNacimiento' | translate }}"
+                                        name="fechaNacimiento"  #fechaNacimiento="ngModel" [(ngModel)]="data.fechaNacimiento">
+                                    </div>        
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -110,3 +129,34 @@
         </div>
     </form>
 </div>
+
+
+                    <!-- Modal Crooper-->
+                    <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenteredLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <image-cropper
+                                [imageChangedEvent]="imageChangedEvent"
+                                [maintainAspectRatio]="true"
+                                [aspectRatio]="1/1"
+                                format="png"
+                                (imageCropped)="imageCropped($event)"
+                                (imageLoaded)="imageLoaded($event)"
+                                (cropperReady)="cropperReady()"
+                                (loadImageFailed)="loadImageFailed()"
+                            ></image-cropper>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>

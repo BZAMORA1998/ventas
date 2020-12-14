@@ -1,9 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
+declare var $:any;
 
 @Component({
   selector: 'app-crear-usuario',
@@ -39,7 +41,8 @@ export class CrearUsuarioComponent implements OnInit {
     password1:"",
     password:"",
     passwordCon:"",
-    numeroIdentificacion:""
+    numeroIdentificacion:"",
+    photo:""
 }
 
   ngOnInit(): void {
@@ -47,6 +50,34 @@ export class CrearUsuarioComponent implements OnInit {
     this.getGenero();
   }
 
+  /*
+  * Crooper 
+  * Link: https://www.npmjs.com/package/ngx-image-cropper
+  */
+  imageChangedEvent: any = '';
+  croppedImage: any = '../../../assets/img/user_icon-icons.com_57997.svg';
+
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+      $(document).ready(function(){
+        ($('#exampleModalScrollable') as any).modal('show');
+      });
+  }
+  imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+      this.data.photo=this.croppedImage;
+      console.log(" this.data.photo=this.croppedImage;", this.data.photo);
+  }
+  imageLoaded(image: HTMLImageElement) {
+     
+  }
+  cropperReady() {
+      // cropper ready
+  }
+  loadImageFailed() {
+      // show message
+  }
+  //------------------------------------------------
   public tipoIdentificacion:any=[
                     {
                       codigoTipoIdentificacion:0,
@@ -143,7 +174,6 @@ export class CrearUsuarioComponent implements OnInit {
       var f = (document.getElementById("select-"+strId) as HTMLInputElement).value;
       var valor=f.split(":",2);
       var valor2=parseInt(valor[0]);
-      console.log("=>",valor2);
       if(valor2==0){
         document.getElementById("validar-"+strId).style.display = 'block';
       }else{
@@ -153,10 +183,8 @@ export class CrearUsuarioComponent implements OnInit {
 
     validarContrasenia(){
       if(this.data.passwordCon==this.data.password1){
-        console.log("true");
         return true
       }else{
-        console.log("False");
           return false
       }
     }
