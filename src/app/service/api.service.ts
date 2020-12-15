@@ -74,6 +74,29 @@ export class ApiService {
         }        
     }
 
+    public ApiCallMultiFormSinToken(method,endpoint,data,headers):Observable<any>{
+
+        if(headers!=null){
+            headers.set("Content-Type:","multipart/form-data")
+        }else{
+            headers = new HttpHeaders({
+              "Content-Type:":"multipart/form-data",
+            });
+        }
+
+        switch (method) {
+            case "GET":
+                return this.http.get(this.URL_API + endpoint, { headers: headers , params: data })
+            case "POST":
+                return this.http.post(this.URL_API + endpoint, data, { headers: headers });
+            
+            case "PUT":
+                return this.http.put(this.URL_API + endpoint, data, { headers: headers , params : data});
+            case "DELETE":
+            return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
+        }        
+    }
+
 
     getToken(){
         var data = JSON.parse(localStorage.getItem('data'));

@@ -28,7 +28,7 @@ export class CrearUsuarioComponent implements OnInit {
   ) {
     this.translate.setDefaultLang(this.activeLang);
    }
-
+   photo:File=null;
   data={
     primerNombre:"",
     segundoNombre:"",
@@ -41,8 +41,7 @@ export class CrearUsuarioComponent implements OnInit {
     password1:"",
     password:"",
     passwordCon:"",
-    numeroIdentificacion:"",
-    photo:""
+    numeroIdentificacion:""
 }
 
   ngOnInit(): void {
@@ -55,18 +54,24 @@ export class CrearUsuarioComponent implements OnInit {
   * Link: https://www.npmjs.com/package/ngx-image-cropper
   */
   imageChangedEvent: any = '';
-  croppedImage: any = '../../../assets/img/user_icon-icons.com_57997.svg';
+  croppedImage: any = '';
 
-  fileChangeEvent(event: any): void {
+  fileChangeEvent(event: File): void {
       this.imageChangedEvent = event;
+      fetch(this.croppedImage)
+      .then(res => res.blob())
+      .then(blob => {
+          let nombreImagen = this.imageChangedEvent.target.files[0].name
+        this.photo= new File([blob], nombreImagen,{ type: "image/png" })
+      })
+
+
       $(document).ready(function(){
         ($('#exampleModalScrollable') as any).modal('show');
       });
   }
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
-      this.data.photo=this.croppedImage;
-      console.log(" this.data.photo=this.croppedImage;", this.data.photo);
   }
   imageLoaded(image: HTMLImageElement) {
      
@@ -158,14 +163,27 @@ export class CrearUsuarioComponent implements OnInit {
 
     crearUsuario(){
       this.sweetalert2Component.loading(true);
+      this.postPhoto(this.photo,109);
       this._usuarioService.postCrearUsuario(this.data).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
+          //this.postPhoto(this.data.photo,109);
           this.sweetalert2Component.showModalConfirmacion(Response.message);
         },
         error=>{
           this.sweetalert2Component.loading(false);
           this.sweetalert2Component.showModalError(error.error.message);
+        }
+    ); 
+    }
+
+    postPhoto(photo,idPersona){
+      this._usuarioService.postPhoto(photo,idPersona).subscribe(
+        Response=>{
+          console.log(Response);
+        },
+        error=>{
+          console.log(error);
         }
     ); 
     }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
@@ -12,6 +12,7 @@ export class UsuarioService {
 
     postCrearUsuario(user):Observable<any>{
       user.password=btoa(user.password1);
+      user.photo=null;
       return this.apiService.ApiCallSinToken("POST","/usuariosSistema/crearUsuario",user,null);
     }
 
@@ -29,5 +30,12 @@ export class UsuarioService {
 
     getUsuarioXId(idUsuario):Observable<any>{
       return this.apiService.ApiCallConToken("GET",`/usuariosSistema/${idUsuario}/basica`,null,null);
+    }
+
+    postPhoto(photo,idPersona):Observable<any>{
+      const formDatauser = new FormData();
+      formDatauser.append('photo',photo)
+      formDatauser.append('idPersona',idPersona);
+      return this.apiService.ApiCallMultiFormSinToken("POST",`/usuariosSistema/photo`,photo,null);
     }
 }
