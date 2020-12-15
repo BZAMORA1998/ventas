@@ -33,9 +33,14 @@ export class UsuarioService {
     }
 
     postPhoto(photo,idPersona):Observable<any>{
-      const formDatauser = new FormData();
-      formDatauser.append('photo',photo)
-      formDatauser.append('idPersona',idPersona);
-      return this.apiService.ApiCallMultiFormSinToken("POST",`/usuariosSistema/photo`,photo,null);
+      const data: FormData = new FormData();
+      data.append('idPersona',idPersona);
+      data.append('photo',photo);
+
+      var headers = new HttpHeaders();
+      headers.append('reportProgress',JSON.stringify(true));
+      headers.append('responseType','text');
+
+      return this.apiService.ApiCallMultiFormSinToken("POST",`/usuariosSistema/photo`,data,headers);
     }
 }

@@ -55,20 +55,15 @@ export class CrearUsuarioComponent implements OnInit {
   */
   imageChangedEvent: any = '';
   croppedImage: any = '';
-
-  fileChangeEvent(event: File): void {
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  fileChangeEvent(event): void {
       this.imageChangedEvent = event;
-      fetch(this.croppedImage)
-      .then(res => res.blob())
-      .then(blob => {
-          let nombreImagen = this.imageChangedEvent.target.files[0].name
-        this.photo= new File([blob], nombreImagen,{ type: "image/png" })
-      })
-
-
       $(document).ready(function(){
         ($('#exampleModalScrollable') as any).modal('show');
       });
+      this.selectedFiles=event.target.files; 
+      this.currentFileUpload=this.selectedFiles.item(0);
   }
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
@@ -163,11 +158,10 @@ export class CrearUsuarioComponent implements OnInit {
 
     crearUsuario(){
       this.sweetalert2Component.loading(true);
-      this.postPhoto(this.photo,109);
       this._usuarioService.postCrearUsuario(this.data).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
-          //this.postPhoto(this.data.photo,109);
+          this.postPhoto(this.currentFileUpload,Response.data.idPersona);
           this.sweetalert2Component.showModalConfirmacion(Response.message);
         },
         error=>{
