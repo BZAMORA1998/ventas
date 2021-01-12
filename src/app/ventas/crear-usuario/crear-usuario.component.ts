@@ -67,6 +67,7 @@ export class CrearUsuarioComponent implements OnInit {
   }
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
+      console.log("this.croppedImage",this.croppedImage);
   }
   imageLoaded(image: HTMLImageElement) {
      
@@ -161,7 +162,7 @@ export class CrearUsuarioComponent implements OnInit {
       this._usuarioService.postCrearUsuario(this.data).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
-          this.postPhoto(this.currentFileUpload,Response.data.idPersona);
+          this.postPhoto(this.currentFileUpload,Response.data.secuenciaPersona);
           this.sweetalert2Component.showModalConfirmacion(Response.message);
         },
         error=>{

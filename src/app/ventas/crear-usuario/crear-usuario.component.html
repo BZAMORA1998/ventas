@@ -19,12 +19,6 @@
                             <div class="form-group col-5 col-sm-9 ml-4">
                                 <div class="row ml-5">
                                     <div class="form-group col-5 col-sm-3 ml-3">
-                                        <label>{{'crearUsuario.segundoApellido' | translate }}</label>
-                                        <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoApellido' | translate }}"
-                                        name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="data.segundoApellido" autocomplete="off" >
-                                    </div>
-
-                                    <div class="form-group col-5 col-sm-3 ml-3">
                                         <label>{{'crearUsuario.primerNombre' | translate }}<span class="text-red">*</span></label>
                                         <input  type="text" class="form-control" placeholder="{{'crearUsuario.primerNombre' | translate }}"
                                         name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="data.primerNombre" autocomplete="off"  required>
@@ -36,6 +30,7 @@
                                         <input type="text" class="form-control" placeholder="{{'crearUsuario.segundoNombre' | translate }}"
                                         name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="data.segundoNombre" autocomplete="off" >
                                     </div>
+                
                                     <div class="form-group col-5 col-sm-3 ml-3 ml-sm-3">
                                         <label>{{'crearUsuario.primerApellido' | translate }} <span class="text-red">*</span></label>
                                         <input type="text" class="form-control" placeholder="{{'crearUsuario.primerApellido' | translate }}"

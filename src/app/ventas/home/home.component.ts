@@ -10,13 +10,12 @@ export class HomeComponent implements OnInit {
 
   public data:any;
   public activeLang =JSON.parse(localStorage.getItem("languaje"));
-
   constructor( private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.data=JSON.parse(localStorage.getItem('data'));
     this.translate.setDefaultLang(this.activeLang);
-
+    this.data.photo="data:image/png;base64,"+this.data.photo;
     if(this.data.rolSistema!='ADM'){
       var rol=document.getElementById("rol");
       rol.className="nav-link enlace_desactivado";

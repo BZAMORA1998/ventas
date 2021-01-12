@@ -22,6 +22,8 @@
                    {{data.usuario}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="text-center"><img [src]="data.photo" width="100" height="100" style="border: 1px solid rgba(0,0,0,.15); border-radius: 10px;"/></div>
+                  <hr>
                   <a class="dropdown-item" href="#">{{data.primerNombre | titlecase }} {{data.primerApellido | titlecase}}</a>
                   <a class="dropdown-item" href="#">{{'home.perfilUsuario' | translate }}</a>
                   <div class="dropdown-divider"></div>
