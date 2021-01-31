@@ -13,23 +13,23 @@ export class UsuarioService {
     postCrearUsuario(user):Observable<any>{
       user.password=btoa(user.password1);
       user.photo=null;
-      return this.apiService.ApiCallSinToken("POST","/usuariosSistema/crearUsuario",user,null);
+      return this.apiService.ApiCallSinToken("POST","/usuarios/crearUsuario",user,null);
     }
 
     putActualizarUsuario(idUsuario,user):Observable<any>{
-      return this.apiService.ApiCallConToken("PUT",`/usuariosSistema/${idUsuario}/actualizarUsuario`,user,null);
+      return this.apiService.ApiCallConToken("PUT",`/usuarios/${idUsuario}/actualizarUsuario`,user,null);
     }
 
     getConsultaUsuario(page,perPage):Observable<any>{
-      return this.apiService.ApiCallConToken("GET",`/usuariosSistema/usuarios?page=${page}&perPage=${perPage}`,null,null);
+      return this.apiService.ApiCallConToken("GET",`/usuarios/usuarios?page=${page}&perPage=${perPage}`,null,null);
     }
 
     deleteUsuario(idUsuario):Observable<any>{
-      return this.apiService.ApiCallConToken("DELETE",`/usuariosSistema/${idUsuario}/usuarios`,null,null);
+      return this.apiService.ApiCallConToken("DELETE",`/usuarios/${idUsuario}/usuarios`,null,null);
     }
 
     getUsuarioXId(idUsuario):Observable<any>{
-      return this.apiService.ApiCallConToken("GET",`/usuariosSistema/${idUsuario}/basica`,null,null);
+      return this.apiService.ApiCallConToken("GET",`/usuarios/${idUsuario}/basica`,null,null);
     }
 
     postPhoto(photo,idPersona):Observable<any>{
@@ -41,6 +41,6 @@ export class UsuarioService {
       headers.append('reportProgress',JSON.stringify(true));
       headers.append('responseType','text');
 
-      return this.apiService.ApiCallMultiFormSinToken("POST",`/usuariosSistema/photo`,data,headers);
+      return this.apiService.ApiCallMultiFormSinToken("POST",`/usuarios/photo`,data,headers);
     }
 }
