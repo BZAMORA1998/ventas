@@ -1,26 +1,88 @@
-.mat-stepper-horizontal {
-    margin-top: 8px;
-  }
-  
-  .mat-form-field {
-    margin-top: 16px;
-  }
 
-.nav-right{
-    clear: both;
-    margin-left: 71%;
+.dropdwn{
+    margin: 0 auto;
+    font-size: 11px;
 }
 
-.active{
-    color: red;
-}
-@media(max-width: 767.98px){
-    .nav-right{
-        margin-left: 0%;
-    }
+nav{
+    height: 60px;
+    background: #2c3e50;
+    box-shadow: 0 10px 15px rgba(0,0,0,0,1);
 }
 
-.enlace_desactivado {
-    pointer-events: none;
-    cursor: default;
-    }
+.logo{
+    padding: 5px 0 0 80px;
+    width: 150px;
+    height: auto;
+}
+
+nav ul{
+    padding: 0;
+    margin: 0;
+    float: right;
+    margin-right: 30px;
+}
+
+nav ul li{
+    background: #2c3e50;
+    position: relative;
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul li a{
+    display: block;
+    padding: 0 15px;
+    color: white;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 11px;
+}
+
+nav ul li a:hover{
+    background:#243342;
+}
+
+nav ul ul {
+    position: absolute;
+    top: 60px;
+    display: none;
+    z-index: 1000;
+}
+
+nav ul li:hover>ul{
+    display: block;
+}
+
+nav ul ul li{
+   width: 150px;
+   float: none;
+   display: list-item;
+   position: relative;
+}
+
+nav ul ul ul li{
+    position: relative;
+    top: -60px;
+    left: 150px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}

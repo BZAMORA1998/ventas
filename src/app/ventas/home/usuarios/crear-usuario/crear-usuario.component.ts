@@ -81,14 +81,14 @@ export class CrearUsuarioComponent implements OnInit {
   //------------------------------------------------
   public tipoIdentificacion:any=[
                     {
-                      codigoTipoIdentificacion:0,
-                      nombreTipoIdentificacion:""
+                      secuenciaTipoIdentificacion:0,
+                      nombre:""
                    }
                 ];
   public genero:any=[
                     {
-                      codigoGenero:0,
-                      nombreGenero:"",
+                      secuenciaGenero:0,
+                      nombre:"",
                       descripcionGenero:""
                     }
               ];
@@ -101,6 +101,7 @@ export class CrearUsuarioComponent implements OnInit {
     this._autenticacionService.getTipoIdentificacion().subscribe(
         Response=>{
           this.tipoIdentificacion=Response.data;
+          console.log(Response.data);
         },
         error=>{
           console.log(error.error.message);
@@ -116,9 +117,9 @@ export class CrearUsuarioComponent implements OnInit {
       this._autenticacionService.getGenero().subscribe(
           Response=>{
             this.genero=Response.data;
-
+            console.log(Response.data);
             this.genero.forEach(element => {
-              if(element.nombreGenero=='M'){
+              if(element.nombre=='M'){
                 element.descripcionGenero="Masculino";
               }else{
                 element.descripcionGenero="Femenino";

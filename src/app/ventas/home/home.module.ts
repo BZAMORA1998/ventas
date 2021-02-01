@@ -12,9 +12,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
-  declarations: [MaterialDesignComponent],
+  declarations: [MaterialDesignComponent,UsuariosComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

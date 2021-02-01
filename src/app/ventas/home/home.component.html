@@ -1,6 +1,54 @@
 <div class="container-fluid">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="dropdwn">
+    <nav>
+        <img class="logo" src="./../../../../../assets/img/ventas.jpg">
+        <ul>
+            <!-- <li class="nav-item dropdown nav-right">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{data.usuario}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="text-center"><img [src]="data.photo" width="100" height="100" style="border: 1px solid rgba(0,0,0,.15); border-radius: 10px;"/></div>
+                <hr>
+                <a class="dropdown-item" href="#">{{data.primerNombre | titlecase }} {{data.primerApellido | titlecase}}</a>
+                <a class="dropdown-item" href="#">{{'home.perfilUsuario' | translate }}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" [routerLink]="['/login']">{{'home.cerrarSesion' | translate }}</a>
+              </div>
+            </li> -->
+            <li><a class="nav-link" routerLinkActive="active" [routerLink]="['./material-design']" >Material Design <span class="sr-only">(current)</span></a></li>
+            <li><a  class="nav-link" id="rol">Usuarios</a>
+                <ul>
+                  <li><a  class="nav-link" id="rol" routerLinkActive="active" [routerLink]="['./usuarios/crear-usuario']"tabindex="-1">Crear Usuario</a></li>
+                  <li><a  class="nav-link" id="rol" routerLinkActive="active" [routerLink]="['./usuarios/listar-usuarios']"tabindex="-1">Listar Usuarios</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Tutorial</a>
+                <ul>
+                    <li><a href="#">Pytom</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">Jquery</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Web Designe <i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="#">FrontEnd</a></li>
+                    <li><a href="#">BackEnd</a></li>
+                    <li><a href="#">Other <i class="fas fa-caret-down"></i></a>
+                        <ul>
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Works</a></li>
+                            <li><a href="#">Stat</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,6 +80,7 @@
               </li>
           </ul>
         </div>
-      </nav>
-      <router-outlet></router-outlet>
+      </nav> -->
 </div>
+<router-outlet></router-outlet>
+
