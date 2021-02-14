@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.data=JSON.parse(localStorage.getItem('data'));
+    if(this.data.photo!=null)
+      this.data.photo="data:image/png;base64,"+this.data.photo;
+    else
+      this.data.photo="../../../assets/img/user_icon-icons.com_57997.svg";
   }
 
 

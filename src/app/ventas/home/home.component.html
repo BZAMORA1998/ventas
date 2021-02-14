@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div id="mySidebar" class="sidebar">
         <div class="card justify-content-center">
-          <img class="card-img-top" id="marco-img" src="../../../assets/img/user_icon-icons.com_57997.svg" alt="Card image">
+          <img class="card-img-top" id="marco-img" [src]="data.photo" alt="Card image">
           <div class="card-body">
             <h4 class="card-title p-0 m-0"><p class="ml-2">Nombre: {{data.primerNombre | titlecase}} {{data.primerApellido | titlecase}}</p></h4>
             <h4 class="card-title p-0 m-0"><p class="ml-2">Usuario: {{data.usuario | titlecase}}</p></h4>
