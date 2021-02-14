@@ -59,7 +59,7 @@
         
                                     <div class="form-group col-5 col-sm-3 ml-4 ml-sm-3">
                                         <label>{{'crearUsuario.genero' | translate }} <span class="text-red">*</span></label>
-                                        <select class="custom-select" id="select-genero" (change)="validarSelect('genero')" name="genero"  #tipo="ngModel"  [(ngModel)]="data.codigoGenero" ngControl="d.codigoGenero">
+                                        <select class="custom-select" id="select-genero" (change)="validarSelect('genero')" name="genero"  #tipo="ngModel"  [(ngModel)]="data.secuenciaGenero" ngControl="d.secuenciaGenero">
                                             <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
                                             <option  *ngFor="let d of genero" [ngValue]="d.secuenciaGenero">{{d.descripcionGenero}}</option>
                                         </select>
