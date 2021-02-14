@@ -1,88 +1,79 @@
-
-.dropdwn{
-    margin: 0 auto;
-    font-size: 11px;
+.container-fluid{
+    background-color: #f5f5f5;
+    padding: 0px;
+    margin: 0px;
 }
 
-nav{
-    height: 60px;
-    background: #2c3e50;
-    box-shadow: 0 10px 15px rgba(0,0,0,0,1);
+.d-flex {
+    height: 50px;
+    display: flex!important;
+    margin-top: -10px;
 }
 
-.logo{
-    padding: 5px 0 0 80px;
-    width: 150px;
-    height: auto;
-}
-
-nav ul{
-    padding: 0;
-    margin: 0;
-    float: right;
-    margin-right: 30px;
-}
-
-nav ul li{
-    background: #2c3e50;
-    position: relative;
-    list-style: none;
-    display: inline-block;
-}
-
-nav ul li a{
-    display: block;
-    padding: 0 15px;
-    color: white;
-    text-decoration: none;
-    line-height: 60px;
-    font-size: 11px;
-}
-
-nav ul li a:hover{
-    background:#243342;
-}
-
-nav ul ul {
-    position: absolute;
-    top: 60px;
-    display: none;
-    z-index: 1000;
-}
-
-nav ul li:hover>ul{
-    display: block;
-}
-
-nav ul ul li{
-   width: 150px;
-   float: none;
-   display: list-item;
-   position: relative;
-}
-
-nav ul ul ul li{
-    position: relative;
-    top: -60px;
-    left: 150px;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
-    z-index: 1000;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
     display: block;
-    float: left;
-    min-width: 10rem;
-    padding: .5rem 0;
-    margin: .125rem 0 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-}
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color:#f5f5f5 ;
+    color: #455a64;
+    padding: 10px 15px;
+    border: none !important;
+  }
+  
+  .openbtn:hover {
+    color: blue;
+    border: none !important;
+  }
+  
+  button{
+    outline: none;
+    box-shadow: none;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+
+  .pointer{
+    cursor: pointer;
+  }

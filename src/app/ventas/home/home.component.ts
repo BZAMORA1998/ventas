@@ -15,30 +15,27 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.data=JSON.parse(localStorage.getItem('data'));
-    this.translate.setDefaultLang(this.activeLang);
-    this.data.photo="data:image/png;base64,"+this.data.photo;
-    if(this.data.rolSistema!='ADM'){
-      var rol=document.getElementById("rol");
-      rol.className="nav-link enlace_desactivado";
-    }
+  }
 
-    $(function(){
-      $(".dropdown-menu > li > a.trigger").on("click",function(e){
-          var current=$(this).next();
-          var grandparent=$(this).parent().parent();
-          if($(this).hasClass('left-caret')||$(this).hasClass('right-caret'))
-              $(this).toggleClass('right-caret left-caret');
-          grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
-          grandparent.find(".sub-menu:visible").not(current).hide();
-          current.toggle();
-          e.stopPropagation();
-      });
-      $(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
-          var root=$(this).closest('.dropdown');
-          root.find('.left-caret').toggleClass('right-caret left-caret');
-          root.find('.sub-menu:visible').hide();
-      });
-  });
+
+  booOpen=false;
+  openOclose(booOpen){
+    if(this.booOpen!=booOpen){
+      this.openNav();
+      this.booOpen=true;
+    }else{
+      this.closeNav();
+      this.booOpen=false;
+    }
+  }
+  openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
   }
 
 }
