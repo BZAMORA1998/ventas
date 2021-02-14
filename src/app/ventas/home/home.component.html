@@ -1,6 +1,15 @@
 <div class="container-fluid">
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn"></a>
+        <div class="card justify-content-center">
+          <img class="card-img-top" id="marco-img" src="../../../assets/img/user_icon-icons.com_57997.svg" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title p-0 m-0"><p class="ml-2">Nombre: {{data.primerNombre | titlecase}} {{data.primerApellido | titlecase}}</p></h4>
+            <h4 class="card-title p-0 m-0"><p class="ml-2">Usuario: {{data.usuario | titlecase}}</p></h4>
+            <h4 class="card-title p-0 m-0"><p class="ml-2">Rol: {{data.rolSistema | titlecase}}</p></h4>
+          </div>
+        </div>
+      <hr style="background-color: white;">
+      <br>
       <a href="#">About</a>
       <a href="#">Services</a>
       <a href="#">Clients</a>
@@ -9,9 +18,9 @@
 
     <div id="main">
       <div class="d-flex">
-        <div class="mr-auto p-2"> <button class="openbtn" (click)=" openOclose(true)">☰</button></div>
-        <div class="p-2"><a><img class="pointer"width="20" height="20" src="../../../assets/img/configuraciones.svg"></a></div>
-        <div class="p-2"><a><img class="pointer" width="20" height="20" src="../../../assets/img/boton-de-encendido-apagado.svg"></a></div>
+        <div class="p-2 mr-auto"> <button class="openbtn" (click)=" openOclose(true)">☰</button></div>
+        <div class="p-2"><a><img class="pointer mt-2"width="20" height="20" src="../../../assets/img/configuraciones.svg"></a></div>
+        <div class="p-2"><a [routerLink]="['/login']"><img class="pointer mt-2" width="20" height="20" src="../../../assets/img/boton-de-encendido-apagado.svg"></a></div>
       </div>
       <hr style="color:#455a64; margin-top: -1px;">  
       <router-outlet></router-outlet>
