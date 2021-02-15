@@ -18,13 +18,20 @@
     background-color:  #111111;
 }
 
-.a-principal:hover {
-    text-decoration: underline;
+.a-principal,.dropdown-item:hover {
     background-color: #0056b3;
+}
+
+.dropdown-item:hover {
+    background-color: #1e1e37;
 }
 
 .active{
     background-color: #0056b3;
+}
+
+.active-item{
+    /* background-color:wheat;  */
 }
 
 .card{
