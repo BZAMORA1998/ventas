@@ -5,6 +5,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
+import { environment } from 'src/environments/environment';
 declare var $:any;
 
 @Component({
@@ -26,7 +27,7 @@ export class CrearUsuarioComponent implements OnInit {
     private translate: TranslateService,
 
   ) {
-    this.translate.setDefaultLang(this.activeLang);
+    this.translate.setDefaultLang(environment.languaje);
    }
    photo:File=null;
   data={
@@ -54,7 +55,7 @@ export class CrearUsuarioComponent implements OnInit {
   * Link: https://www.npmjs.com/package/ngx-image-cropper
   */
   imageChangedEvent: any = '';
-  croppedImage: any = '';
+  croppedImage: any = '../../../../assets/img/user_icon-icons.com_57997.svg';
   selectedFiles: FileList;
   currentFileUpload: File;
   fileChangeEvent(event): void {
@@ -125,7 +126,6 @@ export class CrearUsuarioComponent implements OnInit {
                 element.descripcionGenero="Femenino";
               }
             });
-
           },
           error=>{
             console.log(error.error.message);
