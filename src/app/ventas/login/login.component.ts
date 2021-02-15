@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
 
   }
   
-    /**
-   * @author Bryan Zamora
-   * @description  Captura el evento del input select para cambiar el idioma.
-   **/
-  public cambiarLenguaje(lang) {
-    this.translate.use(lang);
-    localStorage.setItem("languaje",JSON.stringify(lang));
-  }
+  //   /**
+  //  * @author Bryan Zamora
+  //  * @description  Captura el evento del input select para cambiar el idioma.
+  //  **/
+  // public cambiarLenguaje(lang) {
+  //   this.translate.use(lang);
+  //   localStorage.setItem("languaje",JSON.stringify(lang));
+  // }
     
     typeInputF="password";
     showPF:boolean=true;
@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     localStorage.removeItem("data");
     localStorage.removeItem("autenticado");
-    this.capturarLenguaje();
+    this.translate.use(environment.languaje);
+    //this.capturarLenguaje();
   }
 
   /**
@@ -90,7 +91,7 @@ export class LoginComponent implements OnInit {
         this.activeLang=JSON.parse(localStorage.getItem("languaje"));
         this.translate.use(this.activeLang);
       }else{
-        this.activeLang='es';
+        this.activeLang=environment.languaje;
         this.translate.setDefaultLang(this.activeLang);
       }
     }
