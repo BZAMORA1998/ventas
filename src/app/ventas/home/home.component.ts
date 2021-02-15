@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import * as jQuery from 'jquery'; 
+declare let $: any;
 
 @Component({
   selector: 'app-home',
@@ -19,6 +19,17 @@ export class HomeComponent implements OnInit {
       this.data.photo="data:image/png;base64,"+this.data.photo;
     else
       this.data.photo="../../../assets/img/user_icon-icons.com_57997.svg";
+
+    $(document).ready(function(){
+        $(".a-principal").click(function(e){
+          if($(this).hasClass('active')){
+            $(this).removeClass("active");
+          }else{
+            $(this).addClass("active");
+          }
+
+        })
+    });
   }
 
 

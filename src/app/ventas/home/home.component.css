@@ -2,6 +2,7 @@
     background-color: #f5f5f5;
     padding: 0px;
     margin: 0px;
+    font-size: 15px;
 }
 
 #marco-img{
@@ -10,14 +11,19 @@
     height: 150px;
     background-color: #f5f5f5;
     margin: auto;
+    font-size: 11px;
 }
 
 .dropdown-menu{
     background-color:  #111111;
 }
 
-a:hover {
+.a-principal:hover {
     text-decoration: underline;
+    background-color: #0056b3;
+}
+
+.active{
     background-color: #0056b3;
 }
 
@@ -49,7 +55,7 @@ a:hover {
   .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 15px;
     color: white;
     display: block;
     transition: 0.3s;
