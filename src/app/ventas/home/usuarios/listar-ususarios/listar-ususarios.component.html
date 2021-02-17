@@ -1,4 +1,54 @@
 <div class="container-fluid">
+  <h1 class="text-center" >Lista de Usuarios</h1>
+  <div class="d-flex flex-row justify-content-center">
+    <div class="p-2">
+      <form>
+        <div class="form-group">
+          <label for="pais">Pais</label>
+          <select class="custom-select" id="pais">
+            <option selected>seleccionar</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="p-2">
+      <form>
+        <div class="form-group">
+          <label for="provincia">Provincia</label>
+          <select class="custom-select" id="provincia">
+            <option selected>seleccionar</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="p-2">
+      <form>
+        <div class="form-group">
+          <label for="ciudad">Ciudad</label>
+          <select class="custom-select" id="ciudad">
+            <option selected>seleccionar</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="p-2">
+      <form>
+        <div class="form-group">
+          <label for="cedula">Cédula o Usuario</label>
+          <input type="text" class="form-control" id="cedula" placeholder="Cédula o Usuario">
+        </div>
+      </form>
+  </div>
+  </div>
   <div class="row justify-content-center">
     <div class="col-10 mt-5">
       <div *ngIf="data!=null; then thenBlock else elseBlock"></div>
