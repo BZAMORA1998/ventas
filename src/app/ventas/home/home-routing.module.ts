@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { MaterialDesignComponent } from './material-design/material-design.component';
+import { ModulosComponent } from './modulos/modulos.component';
 
 const routes: Routes = [
   {
@@ -10,13 +10,13 @@ const routes: Routes = [
         path: 'usuarios',loadChildren:()=> import('./usuarios/usuarios.module').then(m => m.UsuariosModule)
       },
       { 
-        path: 'material-design',  component: MaterialDesignComponent 
+        path: 'modulos',  component: ModulosComponent 
       },
       {
-        path: '', redirectTo: 'material-design', pathMatch: 'full'
+        path: '', redirectTo: 'modulos', pathMatch: 'full'
       },
       { 
-        path: '**', component: MaterialDesignComponent 
+        path: '**', component: ModulosComponent 
       }
     ]
   }

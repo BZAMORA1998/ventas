@@ -21,14 +21,14 @@ export class HomeComponent implements OnInit {
       this.data.photo="../../../assets/img/user_icon-icons.com_57997.svg";
 
     $(document).ready(function(){
-        $(".a-principal").click(function(e){
-          if($(this).hasClass('active')){
-            $(this).removeClass("active");
-          }else{
-            $(this).addClass("active");
-          }
+        // $(".a-principal").click(function(e){
+        //   if($(this).hasClass('active')){
+        //     $(this).removeClass("active");
+        //   }else{
+        //     $(this).addClass("active");
+        //   }
 
-        })
+        // })
     });
   }
 

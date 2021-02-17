@@ -18,20 +18,20 @@
     background-color:  #111111;
 }
 
-.a-principal,.dropdown-item:hover {
-    background-color: #0056b3;
+.dropdown-item:hover {
+  background-color: #1e1e37;
+}
+
+.a-principal{
+  background-color: #0056b3;
 }
 
 .dropdown-item:hover {
     background-color: #1e1e37;
 }
 
-.active{
-    background-color: #0056b3;
-}
-
 .active-item{
-    /* background-color:wheat;  */
+    background-color: #1e1e37;
 }
 
 .card{
@@ -105,6 +105,16 @@
     transition: margin-left .5s;
     padding-top: 16px;
     padding-bottom: 16px;
+  }
+
+  @media (min-width: 992px){
+    .navbar-expand-lg .navbar-nav {
+      flex-direction: column;
+    }
+
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+      position: relative;
+    }
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

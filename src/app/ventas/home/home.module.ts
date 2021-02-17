@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
-import { MaterialDesignComponent } from './material-design/material-design.component';
 import { ShareModule } from 'src/app/share/share.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,9 +12,10 @@ import { MatTabsModule} from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ModulosComponent } from './modulos/modulos.component';
 
 @NgModule({
-  declarations: [MaterialDesignComponent,UsuariosComponent],
+  declarations: [ModulosComponent,UsuariosComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
