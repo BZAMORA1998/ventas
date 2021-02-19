@@ -10,6 +10,15 @@ export class UsuarioService {
 
   constructor(private apiService: ApiService,private http: HttpClient){}
 
+    exportInternalOrder():Observable<any>{
+
+      var headers = new HttpHeaders();
+      headers.append("Application","UEhBTlRPTVhfV0VC");
+      headers.append("idOrganizacion","365509c8-9596-4506-a5b3-487782d5876e");
+      return this.http.get("http://localhost:8080/comercial/v1/tarifarios/plantilla_prestaciones", { headers: headers , params: null })
+    
+    }
+
     postCrearUsuario(user):Observable<any>{
       user.password=btoa(user.password1);
       user.photo=null;
@@ -20,8 +29,8 @@ export class UsuarioService {
       return this.apiService.ApiCallConToken("PUT",`/usuarios/${idUsuario}/actualizarUsuario`,user,null);
     }
 
-    getConsultaUsuario(page,perPage):Observable<any>{
-      return this.apiService.ApiCallConToken("GET",`/usuarios/usuarios?page=${page}&perPage=${perPage}`,null,null);
+    getConsultaUsuario(page,perPage,valor,estado):Observable<any>{
+      return this.apiService.ApiCallConToken("GET",`/usuarios/usuarios?page=${page}&perPage=${perPage}&cedulaCodigoUsuario=${valor}&estado=${estado}`,null,null);
     }
 
     deleteUsuario(idUsuario):Observable<any>{
@@ -42,5 +51,5 @@ export class UsuarioService {
       headers.append('responseType','text');
 
       return this.apiService.ApiCallMultiFormSinToken("POST",`/usuarios/photo`,data,headers);
-    }
+  }
 }

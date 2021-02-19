@@ -31,6 +31,7 @@
     "angular-i18n": "^1.8.2",
     "angular-localize": "^2.4.0",
     "bootstrap": "^4.5.2",
+    "file-saver": "^2.0.5",
     "glyphicons": "^0.2.0",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",

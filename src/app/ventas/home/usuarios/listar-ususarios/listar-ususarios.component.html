@@ -6,7 +6,7 @@
         <div class="form-group">
           <label for="estado">Estado</label>
           <select class="custom-select" id="estado">
-            <option selected>seleccionar</option>
+            <option selected>Todos</option>
             <option value="1">Activo</option>
             <option value="2">Inactivo</option>
           </select>
@@ -18,13 +18,13 @@
       <form>
         <div class="form-group">
           <label for="cedula">Cédula o Usuario</label>
-          <input type="text" class="form-control" id="cedula" placeholder="Cédula o Usuario">
+          <input type="text" class="form-control" id="cedula"  name="cedulaCodigoUsuario"  #cedulaCodigoUsuario="ngModel" [(ngModel)]="valor" placeholder="Cédula o Usuario">
         </div>
       </form>
   </div>
   <div class="p-2 align-self-center" >
     <form>
-      <button type="button" class="btn btn-primary">Buscar</button>
+      <button type="button" class="btn btn-primary" (click)="listarUsuario()">Buscar</button>
     </form>
 </div>
   </div>
@@ -51,16 +51,15 @@
           </div>
         </ng-template>
       <ng-template #thenBlock>
-          <table class="table">
+          <table class="table text-center">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Numero de Identificacion</th>
-                <th>Primer Nombre</th>
-                <th>Segundo Nombre</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
+                <th>Nombres Completos</th>
                 <th>Usuario</th>
+                <th>Rol</th>
+                <th>Estado</th>
                 <th>Actualizar</th>
                 <th>Eliminar</th>
               </tr>
@@ -69,11 +68,10 @@
               <tr *ngFor="let d of data; index as i">
                 <th scope="row">{{i+1}}</th>
                 <td >{{d.numeroIdentificacion }}</td>
-                <td >{{d.primerNombre | titlecase}}</td>
-                <td >{{d.segundoNombre | titlecase}}</td>
-                <td >{{d.primerApellido | titlecase}}</td>
-                <td >{{d.segundoApellido | titlecase}}</td>
-                <td >{{d.usuario}}</td>
+                <td >{{d.nombresCompletos | titlecase}}</td>
+                <td >{{d.usuario | titlecase}}</td>
+                <td >{{d.rol | titlecase}}</td>
+                <td >{{d.estado | titlecase}}</td>
                 <td ><img (click)="getUsuarioXId(d.secuenciaUsuarioSistema)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
                 <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuarioSistema)" matTooltip="Elimina el usuario" width="20" src="../../../../../assets/img/eliminar.svg"></td>
               </tr>

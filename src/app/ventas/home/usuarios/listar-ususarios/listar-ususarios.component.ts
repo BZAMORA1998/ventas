@@ -54,8 +54,6 @@ ngOnInit(): void {
   this.listarUsuario();
 }
 
-
-
 getpaginacion(page){
   this.page=page;
   this.listarUsuario();
@@ -66,14 +64,15 @@ public page:Number=1;
 public perPage:Number=5;
 public totalRows:Number=0;
 public mostrarPag:Boolean=false;
+public valor:String="";
+public estado:String="";
 listarUsuario(){
-  this._usuarioService.getConsultaUsuario(this.page,this.perPage).subscribe(
+  this._usuarioService.getConsultaUsuario(this.page,this.perPage,this.valor,this.estado).subscribe(
     Response=>{
       this.mostrarPag=false;
       this.data=Response["data"].rows;
+      console.log(this.data);
       this.totalRows=Response["data"].totalRows;
-      console.log("=>",this.perPage);
-      console.log("=>",this.page);
       if(this.data.length>=this.perPage || this.page!=1){
         this.mostrarPag=true;
       }
@@ -175,6 +174,7 @@ Response=>{
     }
   ); 
 }
+
 
 limpiar(){
   this.dataAct={
