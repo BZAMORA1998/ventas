@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import { AutenticacionService } from 'src/app/service/autenticacion.service';
 import {Sweetalert2Component} from '../../share/sweetalert2/sweetalert2.component'
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
@@ -9,8 +8,7 @@ import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers:[AutenticacionService]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -21,7 +19,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
-    private _autenticacionService:AutenticacionService,
     private sweetalert2Component:Sweetalert2Component,
     private translate: TranslateService,
     private auth: AuthService,
@@ -38,6 +35,8 @@ export class LoginComponent implements OnInit {
   //   this.translate.use(lang);
   //   localStorage.setItem("languaje",JSON.stringify(lang));
   // }
+
+
     
     typeInputF="password";
     showPF:boolean=true;
@@ -59,7 +58,6 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem("data");
     localStorage.removeItem("autenticado");
     this.translate.use(environment.languaje);
-    //this.capturarLenguaje();
   }
 
   /**

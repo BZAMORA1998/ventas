@@ -26,7 +26,7 @@ export class ApiService {
     }
 
 
-    public ApiCallConToken(method,endpoint,data,headers):Observable<any>{
+    public ApiCall(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
@@ -51,36 +51,15 @@ export class ApiService {
         }        
     }
 
-    public ApiCallSinToken(method,endpoint,data,headers):Observable<any>{
+    public ApiCallMultiForm(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
+            headers.set("Authorization","Bearer " + this.getToken());
         }else{
             headers = new HttpHeaders({
               "Content-Type":"application/json",
-            });
-        }
-
-        switch (method) {
-            case "GET":
-                return this.http.get(this.URL_API + endpoint, { headers: headers , params: data })
-            case "POST":
-                return this.http.post(this.URL_API + endpoint, data, { headers: headers , params : data});
-            
-            case "PUT":
-                return this.http.put(this.URL_API + endpoint, data, { headers: headers , params : data});
-            case "DELETE":
-            return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
-        }        
-    }
-
-    public ApiCallMultiFormSinToken(method,endpoint,data,headers):Observable<any>{
-
-        if(headers!=null){
-            headers.set("Content-Type","application/json");
-        }else{
-            headers = new HttpHeaders({
-              "Content-Type":"application/json",
+              "Authorization":"Bearer " + this.getToken()
             });
         }
 

@@ -1,21 +1,21 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AutenticacionService } from 'src/app/service/autenticacion.service';
+import { GeneralService } from 'src/app/service/general.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
+declare var $:any;
 
 @Component({
   selector: 'app-listar-ususarios',
   templateUrl: './listar-ususarios.component.html',
   styleUrls: ['./listar-ususarios.component.css'],
-  providers:[UsuarioService,AutenticacionService,DatePipe]
+  providers:[UsuarioService,GeneralService]
 })
 export class ListarUsusariosComponent implements OnInit {
 
   constructor(private _usuarioService:UsuarioService,
     private sweetalert2Component:Sweetalert2Component,
-    private _autenticacionService:AutenticacionService,
-    private _datePipe: DatePipe) { }
+    private _generalService:GeneralService) { }
 
   public data=[
     {
@@ -59,6 +59,13 @@ getpaginacion(page){
   this.listarUsuario();
 }
 
+/*
+*Valida si es vacio
+*/
+validarVacio(target){
+  if(target=="")
+   this.listarUsuario();
+};
 
 public page:Number=1;
 public perPage:Number=5;
@@ -142,7 +149,7 @@ public genero:any=[
 * @description Tipo de identificacion
 */
 getTipoIdentificacion(){
-this._autenticacionService.getTipoIdentificacion().subscribe(
+this._generalService.getTipoIdentificacion().subscribe(
   Response=>{
     this.tipoIdentificacion=Response.data;
     console.log(Response.data);
@@ -158,7 +165,7 @@ this._autenticacionService.getTipoIdentificacion().subscribe(
 * @description Genero
 */
 getGenero(){
-this._autenticacionService.getGenero().subscribe(
+this._generalService.getGenero().subscribe(
 Response=>{
     this.genero=Response.data;
       this.genero.forEach(element => {

@@ -18,7 +18,7 @@
       <form>
         <div class="form-group">
           <label for="cedula">Cédula o Usuario</label>
-          <input type="text" class="form-control" id="cedula"  name="cedulaCodigoUsuario"  #cedulaCodigoUsuario="ngModel" [(ngModel)]="valor" placeholder="Cédula o Usuario">
+          <input (change)="validarVacio($event.target.value)" id="cedulaCodigoUsuario" type="text" class="form-control" id="cedula"  name="cedulaCodigoUsuario"  #cedulaCodigoUsuario="ngModel" [(ngModel)]="valor" placeholder="Cédula o Usuario">
         </div>
       </form>
   </div>

@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { AutenticacionService } from 'src/app/service/autenticacion.service';
+import { GeneralService } from 'src/app/service/general.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,7 @@ declare var $:any;
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
   styleUrls: ['./crear-usuario.component.css'],
-  providers:[AutenticacionService,UsuarioService,DatePipe]
+  providers:[GeneralService,UsuarioService,DatePipe]
 })
 export class CrearUsuarioComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class CrearUsuarioComponent implements OnInit {
   public activeLang =JSON.parse(localStorage.getItem("languaje"));
 
   constructor(
-    private _autenticacionService:AutenticacionService,
+    private _generalService:GeneralService,
     private _usuarioService:UsuarioService,
     private sweetalert2Component:Sweetalert2Component,
     private _datePipe: DatePipe,
@@ -99,7 +99,7 @@ export class CrearUsuarioComponent implements OnInit {
      * @description Tipo de identificacion
      */
   getTipoIdentificacion(){
-    this._autenticacionService.getTipoIdentificacion().subscribe(
+    this._generalService.getTipoIdentificacion().subscribe(
         Response=>{
           this.tipoIdentificacion=Response.data;
           console.log(Response.data);
@@ -115,7 +115,7 @@ export class CrearUsuarioComponent implements OnInit {
      * @description Genero
      */
     getGenero(){
-      this._autenticacionService.getGenero().subscribe(
+      this._generalService.getGenero().subscribe(
           Response=>{
             this.genero=Response.data;
             console.log(Response.data);
