@@ -17,4 +17,16 @@ export class GeneralService{
     getGenero():Observable<any>{
       return this.apiService.ApiCall("GET","/general/genero",null,null);
     }
+
+    getPais():Observable<any>{
+      return this.apiService.ApiCall("GET","/general/pais",null,null);
+    }
+
+    getProvincia(secuenciaPais):Observable<any>{
+      return this.apiService.ApiCall("GET",`/general/provincia/${secuenciaPais}`,null,null);
+    }
+
+    getCiudad(secuenciaPais,secuenciaProvincia):Observable<any>{
+      return this.apiService.ApiCall("GET",`/general/ciudad/${secuenciaPais}/${secuenciaProvincia}`,null,null);
+    }
 }

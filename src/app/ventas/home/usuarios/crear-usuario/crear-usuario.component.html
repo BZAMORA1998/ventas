@@ -65,6 +65,33 @@
                                         </select>
                                         <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
                                     </div>
+
+                                    <div class="form-group col-5 col-sm-3 ml-4 ml-sm-3">
+                                        <label>Pais <span class="text-red">*</span></label>
+                                        <select class="custom-select" id="select-genero" (change)="getProvincia()" name="secuenciaPai"  #secuenciaPai="ngModel"  [(ngModel)]="secuenciaPais" ngControl="d.secuenciaPais">
+                                            <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
+                                            <option  *ngFor="let d of pais" [ngValue]="d.secuenciaPais">{{d.nombre}}</option>
+                                        </select>
+                                        <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
+                                    </div>
+
+                                    <div class="form-group col-5 col-sm-3 ml-4 ml-sm-3">
+                                        <label>Provincia <span class="text-red">*</span></label>
+                                        <select class="custom-select" id="select-genero" (change)="getCiudad()" name="secuenciaProvinci"  #secuenciaProvinci="ngModel"  [(ngModel)]="secuenciaProvincia" ngControl="p.secuenciaProvincia">
+                                            <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
+                                            <option  *ngFor="let p of provincia" [ngValue]="p.secuenciaProvincia">{{p.nombre}}</option>
+                                        </select>
+                                        <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
+                                    </div>
+
+                                    <div class="form-group col-5 col-sm-3 ml-4 ml-sm-3">
+                                        <label>Ciudad <span class="text-red">*</span></label>
+                                        <select class="custom-select" id="select-genero">
+                                            <option selected="" [ngValue]=0>{{'global.seleccionar' | translate }}</option>
+                                            <option  *ngFor="let d of ciudad" [ngValue]="d.secuenciaCiudad">{{d.nombre}}</option>
+                                        </select>
+                                        <br><span class="validacion" id="validar-genero">{{'crearUsuario.generoValidacion' | translate }}</span>
+                                    </div>
         
                                     <div class="form-group col-5 col-sm-3 ml-sm-3">
                                         <label>{{'crearUsuario.fechaNacimiento' | translate }} <span class="text-red">*</span></label>

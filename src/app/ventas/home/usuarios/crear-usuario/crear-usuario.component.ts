@@ -48,7 +48,11 @@ export class CrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.getTipoIdentificacion();
     this.getGenero();
+    this.getPais();
   }
+
+  secuenciaPais=0;
+  secuenciaProvincia=0;
 
   /*
   * Crooper 
@@ -126,6 +130,58 @@ export class CrearUsuarioComponent implements OnInit {
                 element.descripcionGenero="Femenino";
               }
             });
+          },
+          error=>{
+            console.log(error.error.message);
+          }
+      ); 
+    }
+
+     /**
+     * @author Bryan Zamora
+     * @description Genero
+     */
+     pais=[];
+    getPais(){
+      this._generalService.getPais().subscribe(
+          Response=>{
+            this.pais=Response.data;
+            console.log(Response.data);
+          },
+          error=>{
+            console.log(error.error.message);
+          }
+      ); 
+    }
+
+     /**
+     * @author Bryan Zamora
+     * @description Genero
+     */
+    provincia=[];
+    getProvincia(){
+      console.log(this.secuenciaPais);
+      this._generalService.getProvincia(this.secuenciaPais).subscribe(
+          Response=>{
+            this.provincia=Response.data;
+            console.log(Response.data);
+          },
+          error=>{
+            console.log(error.error.message);
+          }
+      ); 
+    }
+
+     /**
+     * @author Bryan Zamora
+     * @description Genero
+     */
+    ciudad=[];
+    getCiudad(){
+      this._generalService.getCiudad(this.secuenciaPais,this.secuenciaProvincia).subscribe(
+          Response=>{
+            this.ciudad=Response.data;
+            console.log(Response.data);
           },
           error=>{
             console.log(error.error.message);
