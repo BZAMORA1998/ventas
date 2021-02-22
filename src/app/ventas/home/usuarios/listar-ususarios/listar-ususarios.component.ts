@@ -72,7 +72,12 @@ public perPage:Number=5;
 public totalRows:Number=0;
 public mostrarPag:Boolean=false;
 public valor:String="";
-public estado:String="";
+public estado:String="TODOS";
+estadoUsuario(){
+  console.log(this.estado);
+  this.listarUsuario();
+}
+
 listarUsuario(){
   this._usuarioService.getConsultaUsuario(this.page,this.perPage,this.valor,this.estado).subscribe(
     Response=>{

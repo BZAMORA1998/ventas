@@ -5,10 +5,10 @@
       <form>
         <div class="form-group">
           <label for="estado">Estado</label>
-          <select class="custom-select" id="estado">
-            <option selected>Todos</option>
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
+          <select class="custom-select" id="estados" (change)="estadoUsuario()" name="estados"  #estados="ngModel"  [(ngModel)]="estado" >
+            <option selected="" value="TODOS" >Todos</option>
+            <option value="ACTIVO">Activo</option>
+            <option value="INACTIVO">Inactivo</option>
           </select>
         </div>
       </form>
