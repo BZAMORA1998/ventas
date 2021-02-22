@@ -21,7 +21,7 @@ export class UsuarioService {
     }
 
     getConsultaUsuario(page,perPage,valor,estado):Observable<any>{
-      return this.apiService.ApiCall("GET",`/usuarios/usuarios?page=${page}&perPage=${perPage}&cedulaCodigoUsuario=${valor}&estado=${estado}`,null,null);
+      return this.apiService.ApiCall("GET",`/usuarios?page=${page}&perPage=${perPage}&cedulaCodigoUsuario=${valor}&estado=${estado}`,null,null);
     }
 
     deleteUsuario(idUsuario):Observable<any>{

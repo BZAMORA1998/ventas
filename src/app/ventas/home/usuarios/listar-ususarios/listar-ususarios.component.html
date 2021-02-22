@@ -69,7 +69,7 @@
                 <th scope="row">{{i+1}}</th>
                 <td >{{d.numeroIdentificacion }}</td>
                 <td >{{d.nombresCompletos | titlecase}}</td>
-                <td >{{d.usuario | titlecase}}</td>
+                <td >{{d.usuario}}</td>
                 <td >{{d.rol | titlecase}}</td>
                 <td >{{d.estado | titlecase}}</td>
                 <td ><img (click)="getUsuarioXId(d.secuenciaUsuarioSistema)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
