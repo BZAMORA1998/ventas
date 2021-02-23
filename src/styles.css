@@ -1,6 +1,11 @@
 .container-fluid{
   margin: 0px;
   padding: 0px;
+  font-size: 15px;
+}
+
+::placeholder {
+  font-size: 15px;
 }
 
 

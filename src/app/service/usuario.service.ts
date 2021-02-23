@@ -25,7 +25,7 @@ export class UsuarioService {
     }
 
     deleteUsuario(idUsuario):Observable<any>{
-      return this.apiService.ApiCall("DELETE",`/usuarios/${idUsuario}/usuarios`,null,null);
+      return this.apiService.ApiCall("PUT",`/usuarios/${idUsuario}`,null,null);
     }
 
     getUsuarioXId(idUsuario):Observable<any>{

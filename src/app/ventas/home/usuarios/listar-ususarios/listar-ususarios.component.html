@@ -72,8 +72,8 @@
                 <td >{{d.usuario}}</td>
                 <td >{{d.rol | titlecase}}</td>
                 <td >{{d.estado | titlecase}}</td>
-                <td ><img (click)="getUsuarioXId(d.secuenciaUsuarioSistema)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
-                <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuarioSistema)" matTooltip="Elimina el usuario" width="20" src="../../../../../assets/img/eliminar.svg"></td>
+                <td ><img (click)="getUsuarioXId(d.secuenciaUsuario)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
+                <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuario)" matTooltip="Elimina el usuario" width="20" src="../../../../../assets/img/eliminar.svg"></td>
               </tr>
           </table>
           <app-paginador *ngIf="mostrarPag" [totalDatos]="totalRows" [datosPorpagina]="perPage" (paginaSeleccionada)="getpaginacion($event)"></app-paginador>
