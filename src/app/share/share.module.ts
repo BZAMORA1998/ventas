@@ -7,9 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TablePaginationComponent } from './table-pagination/table-pagination.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { UsuariosCAComponent } from './usuarios-ca/usuarios-ca.component';
 
 @NgModule({
-  declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent],
+  declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent, UsuariosCAComponent],
   imports: [
     CommonModule,
     NgbPaginationModule,    
@@ -20,12 +21,14 @@ import { MatTableModule } from '@angular/material/table';
   entryComponents:[
     Sweetalert2Component,
     PaginadorComponent,
-    TablePaginationComponent
+    TablePaginationComponent,
+    UsuariosCAComponent
   ],
   exports:[
     Sweetalert2Component,
     PaginadorComponent,
-    TablePaginationComponent
+    TablePaginationComponent,
+    UsuariosCAComponent
   ]
 })
 export class ShareModule { }
