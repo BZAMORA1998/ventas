@@ -8,6 +8,7 @@ import { TablePaginationComponent } from './table-pagination/table-pagination.co
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { UsuariosCAComponent } from './usuarios-ca/usuarios-ca.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent, UsuariosCAComponent],
@@ -16,7 +17,9 @@ import { UsuariosCAComponent } from './usuarios-ca/usuarios-ca.component';
     NgbPaginationModule,    
     NgbModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents:[
     Sweetalert2Component,
