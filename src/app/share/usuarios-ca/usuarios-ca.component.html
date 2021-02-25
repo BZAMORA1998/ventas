@@ -15,9 +15,7 @@
                             <label for="formGroupExampleInput">Tipo de Identificación</label>
                             <select class="custom-select">
                                 <option selected>Seleccionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option [value]="t.secuenciaTipoIdentificacion" *ngFor="let t of tipoIdentificacion" >{{t.nombre}}</option>
                               </select>
                         </div>
                     </div>
@@ -32,9 +30,7 @@
                             <label for="formGroupExampleInput">Sexo</label>
                             <select class="custom-select">
                                 <option selected>Seleccionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option [value]="g.secuenciaGenero" *ngFor="let g of genero" >{{g.descripcionGenero}}</option>
                               </select>
                         </div>
                     </div>
@@ -120,11 +116,9 @@
                     <div class="col-sm-3 col-6 align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Pais</label>
-                            <select class="custom-select">
+                            <select class="custom-select" name="pais" [(ngModel)]="pais">
                                 <option selected>Seleccionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option [value]="pa.secuenciaPais" *ngFor="let pa of pais" (change)="">{{pa.nombre}}</option>
                               </select>
                         </div>
                     </div>
