@@ -35,11 +35,13 @@ export class HomeComponent implements OnInit {
   openNav() {
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("menu-principal").style.width = "82%";
   }
   
   closeNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("menu-principal").style.width = "100%";
   }
 
 }

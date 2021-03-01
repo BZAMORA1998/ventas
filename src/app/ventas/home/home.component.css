@@ -131,3 +131,9 @@
   .pointer{
     cursor: pointer;
   }
+
+  #menu-principal{
+    transition: 0.5s;
+    position: fixed;
+    z-index: 5;
+  }
