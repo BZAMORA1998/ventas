@@ -8,7 +8,7 @@ const routes: Routes = [
   {
      path: '', component: HomeComponent, children: [
       { 
-        path: 'usuarios',loadChildren:()=> import('./usuarios/usuarios.module').then(m => m.UsuariosModule),canActivate:[AuthGuard]
+        path: 'seguridad',loadChildren:()=> import('./seguridad/seguridad.module').then(m => m.SeguridadModule),canActivate:[AuthGuard]
       },
       { 
         path: 'modulos',  component: ModulosComponent ,canActivate:[AuthGuard]
