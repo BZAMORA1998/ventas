@@ -26,6 +26,38 @@ export class UsuariosCAComponent implements OnInit {
   ) {
     this.translate.setDefaultLang(environment.languaje);
    }
+   consultarUsuarioDisponible(){
+     if(this.data.primerNombre.length>0 && this.data.primerApellido.length>0)
+        this.getConsultarUsuarioDisponible();
+    
+      console.log(this.data);
+   }
+
+   consultarEdad(){
+    this._generalService.getConsultarEdad(this.data.fechaNacimiento).subscribe(
+      Response=>{
+        this.data.edad=Response.data.edad;
+        console.log(Response.data);
+      },
+      error=>{
+        console.log(error.error.message);
+      }
+  ); 
+      console.log(this.data);
+   }
+
+   getConsultarUsuarioDisponible(){
+    this._usuarioService.getConsultarUsuarioDisponible(this.data.primerNombre,this.data.segundoNombre,this.data.primerApellido,this.data.segundoApellido).subscribe(
+      Response=>{
+        this.data.user=Response.data.usuarioDisponible;
+        console.log(Response.data);
+      },
+      error=>{
+        console.log(error.error.message);
+      }
+    ); 
+   }
+
    photo:File=null;
   data={
     primerNombre:"",
@@ -36,9 +68,7 @@ export class UsuariosCAComponent implements OnInit {
     secuenciaGenero:0,
     fechaNacimiento:"",
     user:"",
-    password1:"",
-    password:"",
-    passwordCon:"",
+    edad:"",
     numeroIdentificacion:""
 }
 
@@ -186,31 +216,6 @@ export class UsuariosCAComponent implements OnInit {
       ); 
     }
 
-    typeInputF2="password";
-    showPF2:boolean=true;
-    mostrarPassword2(){
-  
-      if(this.typeInputF2=="text"){
-        this.showPF2=true;
-        this.typeInputF2="password";
-      }else{
-        this.showPF2=false;
-        this.typeInputF2="text";
-      }
-    }
-    typeInputF1="password";
-    showPF1:boolean=true;
-    mostrarPassword1(){
-  
-      if(this.typeInputF1=="text"){
-        this.showPF1=true;
-        this.typeInputF1="password";
-      }else{
-        this.showPF1=false;
-        this.typeInputF1="text";
-      }
-    }
-
     crearUsuario(){
       this.sweetalert2Component.loading(true);
       this._usuarioService.postCrearUsuario(this.data).subscribe(
@@ -247,13 +252,4 @@ export class UsuariosCAComponent implements OnInit {
         document.getElementById("validar-"+strId).style.display = 'none';;
       }
     }
-
-    validarContrasenia(){
-      if(this.data.passwordCon==this.data.password1){
-        return true
-      }else{
-          return false
-      }
-    }
-
 }

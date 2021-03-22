@@ -37,38 +37,51 @@
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Primer Nombre</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Primer Nombre">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Primer Nombre"  
+                            name="primerNombre"  #primerNombre="ngModel"  [(ngModel)]="data.primerNombre" (change)="consultarUsuarioDisponible()">
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Segundo Nombre</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Segundo Nombre">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Segundo Nombre"
+                            name="segundoNombre"  #segundoNombre="ngModel"  [(ngModel)]="data.segundoNombre" (change)="consultarUsuarioDisponible()">
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Primer Apellido</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Primer Apellido">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Primer Apellido"
+                            name="primerApellido"  #primerApellido="ngModel"  [(ngModel)]="data.primerApellido" (change)="consultarUsuarioDisponible()">
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Segundo Apellido</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Segundo Apellido">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Segundo Apellido"
+                            name="segundoApellido"  #segundoApellido="ngModel"  [(ngModel)]="data.segundoApellido" (change)="consultarUsuarioDisponible()">
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Fecha de nacimiento">
+                            <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Fecha de nacimiento"
+                            name="fechaNacimiento"  #fechaNacimiento="ngModel"  [(ngModel)]="data.fechaNacimiento" (change)="consultarEdad()">
                         </div>
                     </div>
 
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Edad</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="15 años">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="15 años"
+                            name="edad"  #edad="ngModel"  [(ngModel)]="data.edad" disabled>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-6  align-self-end">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Usuario</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="TPRUEBA"
+                            name="user"  #user="ngModel"  [(ngModel)]="data.user">
                         </div>
                     </div>
                 </div>
@@ -80,12 +93,6 @@
             <h2 class="card-title pl-4 pt-4">Datos Contacto</h2>
             <div class="card-body">
                 <div class="row justify-content-start">
-                    <div class="col-sm-3 col-6  align-self-end">
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Usuario</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="TPRUEBA">
-                        </div>
-                    </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Email</label>

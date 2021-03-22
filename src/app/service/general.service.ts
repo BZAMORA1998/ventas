@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class GeneralService{
+  getConsultarEdad(fechaNacimiento: string) {
+    return this.apiService.ApiCall("GET",`/general/calcularEdad?fechaNacimiento=${fechaNacimiento}`,null,null);
+  }
 
   constructor(private apiService: ApiService,private http: HttpClient){}
 

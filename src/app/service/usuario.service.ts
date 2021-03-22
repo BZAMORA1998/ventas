@@ -7,6 +7,9 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class UsuarioService {
+  getConsultarUsuarioDisponible(primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string) {
+    return this.apiService.ApiCall("GET",`/usuarios/usuarioDisponible?primerNombre=${primerNombre}&segundoNombre=${segundoNombre}&primerApellido=${primerApellido}&segundoApellido=${segundoApellido}`,null,null);
+  }
 
   constructor(private apiService: ApiService,private http: HttpClient){}
 
