@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { GeneralService } from 'src/app/service/general.service';
@@ -15,12 +15,15 @@ declare var $:any;
   providers:[GeneralService,UsuarioService,DatePipe]
 })
 export class UsuariosCAComponent implements OnInit {
+  @Output () valueResponse: EventEmitter<any> = new EventEmitter();
 
+  crearOActualizarUsuario(){
+    this.valueResponse.emit(this.data);
+  }
   constructor(
     private _generalService:GeneralService,
     private _usuarioService:UsuarioService,
     private sweetalert2Component:Sweetalert2Component,
-    private _datePipe: DatePipe,
     private translate: TranslateService,
 
   ) {
@@ -49,7 +52,7 @@ export class UsuariosCAComponent implements OnInit {
    getConsultarUsuarioDisponible(){
     this._usuarioService.getConsultarUsuarioDisponible(this.data.primerNombre,this.data.segundoNombre,this.data.primerApellido,this.data.segundoApellido).subscribe(
       Response=>{
-        this.data.user=Response.data.usuarioDisponible;
+        this.data.usuario=Response.data.usuarioDisponible;
         console.log(Response.data);
       },
       error=>{
@@ -59,18 +62,24 @@ export class UsuariosCAComponent implements OnInit {
    }
 
    photo:File=null;
-  data={
-    primerNombre:"",
-    segundoNombre:"",
-    primerApellido:"",
-    segundoApellido:"",
-    secuenciaTipoIdentificacion:0,
-    secuenciaGenero:0,
-    fechaNacimiento:"",
-    user:"",
-    edad:"",
-    numeroIdentificacion:""
-}
+  data=
+    {
+      primerNombre:"",
+      primerApellido:"",
+      segundoNombre:"",
+      segundoApellido:"",
+      secuenciaTipoIdentificacion:0,
+      secuenciaGenero:0,
+      fechaNacimiento:"",
+      usuario:"",
+      numeroIdentificacion:"",
+      secuenciaPais:0,
+      secuenciaProvincia:0,
+      secuenciaCiudad:0,
+      secuenciaRol:2,
+      email:"",
+      edad:""
+  }
 
   ngOnInit(): void {
     this.getTipoIdentificacion();
@@ -188,7 +197,7 @@ export class UsuariosCAComponent implements OnInit {
     provincia=[];
     getProvincia(){
       console.log(this.secuenciaPais);
-      this._generalService.getProvincia(this.secuenciaPais).subscribe(
+      this._generalService.getProvincia(this.data.secuenciaPais).subscribe(
           Response=>{
             this.provincia=Response.data;
             console.log(Response.data);
@@ -205,7 +214,7 @@ export class UsuariosCAComponent implements OnInit {
      */
     ciudad=[];
     getCiudad(){
-      this._generalService.getCiudad(this.secuenciaPais,this.secuenciaProvincia).subscribe(
+      this._generalService.getCiudad(this.data.secuenciaPais,this.data.secuenciaProvincia).subscribe(
           Response=>{
             this.ciudad=Response.data;
             console.log(Response.data);
@@ -214,21 +223,6 @@ export class UsuariosCAComponent implements OnInit {
             console.log(error.error.message);
           }
       ); 
-    }
-
-    crearUsuario(){
-      this.sweetalert2Component.loading(true);
-      this._usuarioService.postCrearUsuario(this.data).subscribe(
-        Response=>{
-          this.sweetalert2Component.loading(false);
-          this.postPhoto(this.currentFileUpload,Response.data.secuenciaPersona);
-          this.sweetalert2Component.showModalConfirmacion(Response.message);
-        },
-        error=>{
-          this.sweetalert2Component.loading(false);
-          this.sweetalert2Component.showModalError(error.error.message);
-        }
-    ); 
     }
 
     postPhoto(photo,idPersona){

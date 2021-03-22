@@ -71,7 +71,7 @@ export class Sweetalert2Component implements OnInit {
     setTimeout(()=>{
       window.location.reload();
     }, 100);
-    return this._router.navigate(['/login']);
+    return this._router.navigate(['../listar-usuarios']);
   }
 
 }

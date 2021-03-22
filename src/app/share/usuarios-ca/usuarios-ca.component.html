@@ -13,7 +13,7 @@
                     <div class="col-sm-3 col-6 align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tipo de Identificación</label>
-                            <select class="custom-select">
+                            <select class="custom-select" name="secuenciaTipoIdentificacion"  #secuenciaTipoIdentificacion="ngModel"  [(ngModel)]="data.secuenciaTipoIdentificacion" ngControl="t.secuenciaTipoIdentificacion">
                                 <option selected>Seleccionar</option>
                                 <option [value]="t.secuenciaTipoIdentificacion" *ngFor="let t of tipoIdentificacion" >{{t.nombre}}</option>
                               </select>
@@ -22,16 +22,17 @@
                     <div class="col-sm-3 col-6 align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Número de Identificación</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="0999999999">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="0999999999"
+                            name="numeroIdentificacion"  #numeroIdentificacion="ngModel"  [(ngModel)]="data.numeroIdentificacion">
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Sexo</label>
-                            <select class="custom-select">
+                            <select class="custom-select" name="secuenciaGenero"  #secuenciaGenero="ngModel"  [(ngModel)]="data.secuenciaGenero" ngControl="g.secuenciaGenero">
                                 <option selected>Seleccionar</option>
                                 <option [value]="g.secuenciaGenero" *ngFor="let g of genero" >{{g.descripcionGenero}}</option>
-                              </select>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
@@ -81,7 +82,7 @@
                         <div class="form-group">
                             <label for="formGroupExampleInput">Usuario</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="TPRUEBA"
-                            name="user"  #user="ngModel"  [(ngModel)]="data.user">
+                            name="usuario"  #usuario="ngModel"  [(ngModel)]="data.usuario">
                         </div>
                     </div>
                 </div>
@@ -96,7 +97,8 @@
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Email</label>
-                            <input type="email" class="form-control" id="formGroupExampleInput" placeholder="prueba@prueba.com">
+                            <input type="email" class="form-control" id="formGroupExampleInput" placeholder="prueba@prueba.com"
+                            name="email"  #email="ngModel"  [(ngModel)]="data.email">
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
@@ -123,25 +125,25 @@
                     <div class="col-sm-3 col-6 align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Pais</label>
-                            <select class="custom-select" (change)="getProvincia()" name="secuenciaPai"  #secuenciaPai="ngModel"  [(ngModel)]="secuenciaPais" ngControl="d.secuenciaPais">
+                            <select class="custom-select" (change)="getProvincia()" name="secuenciaPais"  #secuenciaPais="ngModel"  [(ngModel)]="data.secuenciaPais" ngControl="d.secuenciaPais">
                                 <option selected="" [ngValue]=0>Seleccionar</option>
                                 <option  *ngFor="let d of pais" [ngValue]="d.secuenciaPais">{{d.nombre}}</option>
-                              </select>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-3 col-6 align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Provincia</label>
-                            <select class="custom-select" (change)="getCiudad()" name="secuenciaProvinci"  #secuenciaProvinci="ngModel"  [(ngModel)]="secuenciaProvincia" ngControl="p.secuenciaProvincia">
+                            <select class="custom-select" (change)="getCiudad()" name="secuenciaProvincia"  #secuenciaProvincia="ngModel"  [(ngModel)]="data.secuenciaProvincia" ngControl="p.secuenciaProvincia">
                                 <option selected="" [ngValue]=0>Seleccionar</option>
                                 <option  *ngFor="let p of provincia" [ngValue]="p.secuenciaProvincia">{{p.nombre}}</option>
-                              </select>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-3 col-6  align-self-end">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ciudad</label>
-                            <select class="custom-select">
+                            <select class="custom-select" name="secuenciaCiudad"  #secuenciaCiudad="ngModel"  [(ngModel)]="data.secuenciaCiudad" ngControl="p.secuenciaProvincia">
                                 <option selected="" [ngValue]=0>Seleccionar</option>
                                 <option  *ngFor="let d of ciudad" [ngValue]="d.secuenciaCiudad">{{d.nombre}}</option>
                               </select>
@@ -159,7 +161,7 @@
     </div>
     <div class="row justify-content-center mt-2">
         <div class="col-9 text-right m-0 p-0">
-            <button  type="button" class="btn btn-primary w-25">Crear Usuario</button>
+            <button  type="button" class="btn btn-primary w-25" (click)="crearOActualizarUsuario()">Crear Usuario</button>
         </div>
     </div>
 </div>
