@@ -55,25 +55,22 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Numero de Identificacion</th>
                 <th>Nombres Completos</th>
+                <th>Email</th>
                 <th>Usuario</th>
-                <th>Rol</th>
                 <th>Estado</th>
-                <th>Actualizar</th>
-                <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let d of data; index as i">
                 <th scope="row">{{i+1}}</th>
-                <td >{{d.numeroIdentificacion }}</td>
                 <td >{{d.nombresCompletos | titlecase}}</td>
+                <td >{{d.email | titlecase}}</td>
                 <td >{{d.usuario}}</td>
-                <td >{{d.rol | titlecase}}</td>
-                <td >{{d.estado | titlecase}}</td>
-                <td ><img (click)="getUsuarioXId(d.secuenciaUsuario)" data-toggle="modal" data-target="#usuario" matTooltip="Actualiza los datos del usuario" width="20" src="../../../../assets/img/captcha.svg"></td>
-                <td class="img-size"><img (click)="deleteUsuario(d.secuenciaUsuario)" matTooltip="Elimina el usuario" width="20" src="../../../../../assets/img/eliminar.svg"></td>
+                 <td ><div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitch-{{i}}" [checked]="d.estado" (change)="activarOInactivarUsuario(d.secuenciaUsuario)">
+                  <label class="custom-control-label" for="customSwitch-{{i}}"></label>
+                </div></td>
               </tr>
           </table>
           <app-paginador *ngIf="mostrarPag" [totalDatos]="totalRows" [datosPorpagina]="perPage" (paginaSeleccionada)="getpaginacion($event)"></app-paginador>

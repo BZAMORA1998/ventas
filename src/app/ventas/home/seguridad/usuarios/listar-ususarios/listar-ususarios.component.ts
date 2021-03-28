@@ -96,19 +96,30 @@ listarUsuario(){
   ); 
 }
 
-deleteUsuario(idUsuario){
-  this.sweetalert2Component.loading(true);
-  this._usuarioService.deleteUsuario(idUsuario).subscribe(
+activarOInactivarUsuario(secuenciaUsuario){
+  this._usuarioService.putActivarOInactivarUsuario(secuenciaUsuario).subscribe(
     Response=>{
-      this.listarUsuario();
-      this.sweetalert2Component.loading(false);
+      console.log("Ok");
     },
     error=>{
-      this.sweetalert2Component.loading(false);
-      this.sweetalert2Component.showModalError(error.error.message);
+      console.log(error.error.message);
     }
   ); 
 }
+
+// deleteUsuario(idUsuario){
+//   this.sweetalert2Component.loading(true);
+//   this._usuarioService.deleteUsuario(idUsuario).subscribe(
+//     Response=>{
+//       this.listarUsuario();
+//       this.sweetalert2Component.loading(false);
+//     },
+//     error=>{
+//       this.sweetalert2Component.loading(false);
+//       this.sweetalert2Component.showModalError(error.error.message);
+//     }
+//   ); 
+// }
 
 putActualizarUsuario(idUsuario){
   this.sweetalert2Component.loading(true);

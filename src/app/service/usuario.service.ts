@@ -7,6 +7,9 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class UsuarioService {
+  putActivarOInactivarUsuario(secuenciaUsuario: any) {
+    return this.apiService.ApiCall("PUT",`/usuarios/activarOInactivarUsuario/${secuenciaUsuario}`,null,null);
+  }
   getConsultarUsuarioDisponible(primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string) {
     return this.apiService.ApiCall("GET",`/usuarios/usuarioDisponible?primerNombre=${primerNombre}&segundoNombre=${segundoNombre}&primerApellido=${primerApellido}&segundoApellido=${segundoApellido}`,null,null);
   }
@@ -25,10 +28,6 @@ export class UsuarioService {
 
     getConsultaUsuario(page,perPage,valor,estado):Observable<any>{
       return this.apiService.ApiCall("GET",`/usuarios?page=${page}&perPage=${perPage}&cedulaCodigoUsuario=${valor}&estado=${estado}`,null,null);
-    }
-
-    deleteUsuario(idUsuario):Observable<any>{
-      return this.apiService.ApiCall("PUT",`/usuarios/${idUsuario}`,null,null);
     }
 
     getUsuarioXId(idUsuario):Observable<any>{
