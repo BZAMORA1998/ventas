@@ -5,7 +5,6 @@
           <div class="card-body">
             <h4 class="card-title p-0 m-0"><p class="ml-2">Nombre: {{data.primerNombre | titlecase}} {{data.primerApellido | titlecase}}</p></h4>
             <h4 class="card-title p-0 m-0"><p class="ml-2">Usuario: {{data.usuario | titlecase}}</p></h4>
-            <h4 class="card-title p-0 m-0"><p class="ml-2">Rol: {{data.rolSistema | titlecase}}</p></h4>
           </div>
         </div>
       <hr style="background-color: white;">
@@ -23,8 +22,8 @@
                 Seguridad
               </a>
               <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item w-100"  routerLinkActive="active-item" [routerLink]="['./seguridad/usuarios/crear-usuario']">Crear Usuario</a>
-                <a class="dropdown-item w-100" routerLinkActive="active-item" [routerLink]="['./seguridad/usuarios/listar-usuarios']">Listar Usuarios</a>
+                <!-- <a class="dropdown-item w-100"  routerLinkActive="active-item" [routerLink]="['./seguridad/usuarios/crear-usuario']">Crear Usuario</a> -->
+                <a class="dropdown-item w-100" routerLinkActive="active-item" [routerLink]="['./seguridad/usuarios']">Usuarios</a>
               </div>
             </li>
           </ul>

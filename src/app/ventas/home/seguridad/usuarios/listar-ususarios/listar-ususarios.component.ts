@@ -49,8 +49,6 @@ export class ListarUsusariosComponent implements OnInit {
   public data2:any;
 ngOnInit(): void {
   this.data=null;
-  this.getTipoIdentificacion();
-  this.getGenero();
   this.listarUsuario();
 }
 
@@ -99,6 +97,7 @@ listarUsuario(){
 activarOInactivarUsuario(secuenciaUsuario){
   this._usuarioService.putActivarOInactivarUsuario(secuenciaUsuario).subscribe(
     Response=>{
+      this.listarUsuario();
       console.log("Ok");
     },
     error=>{
@@ -106,114 +105,4 @@ activarOInactivarUsuario(secuenciaUsuario){
     }
   ); 
 }
-
-// deleteUsuario(idUsuario){
-//   this.sweetalert2Component.loading(true);
-//   this._usuarioService.deleteUsuario(idUsuario).subscribe(
-//     Response=>{
-//       this.listarUsuario();
-//       this.sweetalert2Component.loading(false);
-//     },
-//     error=>{
-//       this.sweetalert2Component.loading(false);
-//       this.sweetalert2Component.showModalError(error.error.message);
-//     }
-//   ); 
-// }
-
-putActualizarUsuario(idUsuario){
-  this.sweetalert2Component.loading(true);
-  this._usuarioService.putActualizarUsuario(idUsuario,this.dataAct).subscribe(
-    Response=>{
-      this.listarUsuario();
-      this.sweetalert2Component.loading(false);
-    },
-    error=>{
-      this.sweetalert2Component.loading(false);
-      this.sweetalert2Component.showModalError(error.error.message);
-    }
-  ); 
-}
-
-getUsuarioXId(idUsuario){
-  this._usuarioService.getUsuarioXId(idUsuario).subscribe(
-    Response=>{
-      this.limpiar();
-      this.dataAct=Response["data"];
-    },
-    error=>{
-      this.sweetalert2Component.showModalError(error.error.message);
-    }
-  ); 
-}
-
-public tipoIdentificacion:any=[
-  {
-    secuenciaTipoIdentificacion:0,
-    nombre:""
- }
-];
-public genero:any=[
-  {
-    secuenciaGenero:0,
-    nombre:"",
-    descripcionGenero:""
-  }
-];
-
-/**
-* @author Bryan Zamora
-* @description Tipo de identificacion
-*/
-getTipoIdentificacion(){
-this._generalService.getTipoIdentificacion().subscribe(
-  Response=>{
-    this.tipoIdentificacion=Response.data;
-    console.log(Response.data);
-  },
-  error=>{
-    console.log(error.error.message);
-  }
-); 
-}
-
-/**
-* @author Bryan Zamora
-* @description Genero
-*/
-getGenero(){
-this._generalService.getGenero().subscribe(
-Response=>{
-    this.genero=Response.data;
-      this.genero.forEach(element => {
-      if(element.nombre=='M'){
-      element.descripcionGenero="Masculino";
-      }else{
-      element.descripcionGenero="Femenino";
-      }
-  });
-    },
-    error=>{
-      console.log(error.error.message);
-    }
-  ); 
-}
-
-
-limpiar(){
-  this.dataAct={
-    numeroIdentificacion: "",
-    primerNombre: "",
-    segundoNombre: "",
-    primerApellido: "",
-    segundoApellido: "",
-    usuario:"",
-    fechaNacimiento:null,
-    secuenciaTipoIdentificacion: 0,
-    secuenciaGenero: 0,
-    secuenciaUsuarioSistema: 0,
-    rolSistema:""
-  }
-}
-
 }

@@ -1,32 +1,43 @@
 <div class="container-fluid">
   <h1 class="text-center" >Lista de Usuarios</h1>
   <div class="d-flex flex-row justify-content-center">
-    <div class="p-2">
+      <div class="p-2">
+        <form>
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <select class="custom-select" id="estados" (change)="estadoUsuario()" name="estados"  #estados="ngModel"  [(ngModel)]="estado" >
+              <option selected="" value="TODOS" >Todos</option>
+              <option value="ACTIVO">Activo</option>
+              <option value="INACTIVO">Inactivo</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="p-2">
+        <form>
+          <div class="form-group">
+            <label for="cedula">Cédula o Usuario</label>
+            <input (change)="validarVacio($event.target.value)" id="cedulaCodigoUsuario" type="text" class="form-control" id="cedula"  name="cedulaCodigoUsuario"  #cedulaCodigoUsuario="ngModel" [(ngModel)]="valor" placeholder="Cédula o Usuario">
+          </div>
+        </form>
+    </div>
+    <div class="p-2 align-self-center" >
       <form>
-        <div class="form-group">
-          <label for="estado">Estado</label>
-          <select class="custom-select" id="estados" (change)="estadoUsuario()" name="estados"  #estados="ngModel"  [(ngModel)]="estado" >
-            <option selected="" value="TODOS" >Todos</option>
-            <option value="ACTIVO">Activo</option>
-            <option value="INACTIVO">Inactivo</option>
-          </select>
-        </div>
+        <button type="button" class="btn btn-primary" (click)="listarUsuario()">Buscar</button>
       </form>
     </div>
-
-    <div class="p-2">
-      <form>
-        <div class="form-group">
-          <label for="cedula">Cédula o Usuario</label>
-          <input (change)="validarVacio($event.target.value)" id="cedulaCodigoUsuario" type="text" class="form-control" id="cedula"  name="cedulaCodigoUsuario"  #cedulaCodigoUsuario="ngModel" [(ngModel)]="valor" placeholder="Cédula o Usuario">
+    <div class="p-2 align-self-center" >
+      <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Crear Usuario
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Empleado registrado</a>
+          <a class="dropdown-item" [routerLink]="['../crear-usuario']">Empleado no registrado</a>
         </div>
-      </form>
-  </div>
-  <div class="p-2 align-self-center" >
-    <form>
-      <button type="button" class="btn btn-primary" (click)="listarUsuario()">Buscar</button>
-    </form>
-</div>
+      </div>
+    </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-10 mt-5">
@@ -55,6 +66,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>Nro Identificacion</th>
                 <th>Nombres Completos</th>
                 <th>Email</th>
                 <th>Usuario</th>
@@ -64,12 +76,13 @@
             <tbody>
               <tr *ngFor="let d of data; index as i">
                 <th scope="row">{{i+1}}</th>
+                <td >{{d.numeroIdentificacion}}</td>
                 <td >{{d.nombresCompletos | titlecase}}</td>
                 <td >{{d.email | titlecase}}</td>
                 <td >{{d.usuario}}</td>
-                 <td ><div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="customSwitch-{{i}}" [checked]="d.estado" (change)="activarOInactivarUsuario(d.secuenciaUsuario)">
-                  <label class="custom-control-label" for="customSwitch-{{i}}"></label>
+                 <td ><div class="form-check form-switch">
+                  <input type="checkbox" class="form-check-input" id="customSwitch-{{i}}" [checked]="d.estado" (change)="activarOInactivarUsuario(d.secuenciaUsuario)">
+                  <label class="form-check-label" for="customSwitch-{{i}}"></label>
                 </div></td>
               </tr>
           </table>
@@ -77,92 +90,4 @@
         </ng-template>
         <br><br>
     </div>
-
-    <!-- Modal -->
-    <div class="modal" id="usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenteredLabel">Actualizacion de Usuario</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container-fluid">
-              <form>
-                  <div class="row justify-content-center">
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label>Primer Nombre</label>
-                        <input  type="text" class="form-control" placeholder="Primer Nombre"
-                        name="primerNombre"  #primerNombre="ngModel" [(ngModel)]="dataAct.primerNombre">
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label >Segundo Nombre</label>
-                        <input type="text" class="form-control" placeholder="Segundo Nombre"
-                        name="segundoNombre"  #segundoNombre="ngModel" [(ngModel)]="dataAct.segundoNombre">
-                      </div>
-                    </div>
-
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label >Primer Apellido</label>
-                        <input  type="text" class="form-control" placeholder="Example input"
-                        name="primerApellido"  #primerApellido="ngModel" [(ngModel)]="dataAct.primerApellido">
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label>Segundo Apellido</label>
-                        <input type="text" class="form-control" placeholder="Example input"
-                        name="segundoApellido"  #segundoApellido="ngModel" [(ngModel)]="dataAct.segundoApellido">
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label>{{'crearUsuario.tipoIdentificacion' | translate }}</label>
-                        <select class="custom-select" id="select-tipoIdentificacion">
-                            <option  [ngValue]=0>{{'global.seleccionar' | translate }}</option>
-                            <option  [selected]="dataAct.secuenciaTipoIdentificacion==d.secuenciaTipoIdentificacion" *ngFor="let d of tipoIdentificacion" [ngValue]="d.secuenciaTipoIdentificacion">{{d.nombre}}</option>
-                        </select>
-                    </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label >Numero de Identificacion</label>
-                        <input type="text" class="form-control" placeholder="Example input"
-                        name="numeroIdentificacion"  #numeroIdentificacion="ngModel" [(ngModel)]="dataAct.numeroIdentificacion">
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label>Género</label>
-                        <select class="custom-select" id="select-genero">
-                          <option [ngValue]=0>{{'global.seleccionar' | translate }}</option>
-                          <option [selected]="d.secuenciaGenero==dataAct.secuenciaGenero" *ngFor="let d of genero" [ngValue]="d.codigoGenero">{{d.descripcionGenero}}</option>
-                      </select>
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label>FechaNacimiento</label>
-                        <input type="date" class="form-control" placeholder="Example input"
-                        name="fechaNacimiento"  #fechaNacimiento="ngModel" [(ngModel)]="dataAct.fechaNacimiento">
-                      </div>
-                    </div>
-                  </div>
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" (click)="putActualizarUsuario(dataAct.secuenciaUsuarioSistema)"class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
