@@ -25,7 +25,7 @@ export class Sweetalert2Component implements OnInit {
 
   public loading(activar){
     Swal.fire({
-      html: "<div class='row loading '>"+
+      html: "<div class='row loading'>"+
                 "<div class='col-2 pt-2'>"+
                     "<div class='spinner-border'></div>"+
                 '</div>'+
