@@ -9,10 +9,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
+import { OlvidoContrasenaComponent } from './olvido-contrasena/olvido-contrasena.component';
 
 
 @NgModule({
-  declarations: [LoginComponent,HomeComponent],
+  declarations: [LoginComponent,HomeComponent, CambiarContrasenaComponent,OlvidoContrasenaComponent],
   imports: [
     CommonModule,
     VentasRoutingModule,

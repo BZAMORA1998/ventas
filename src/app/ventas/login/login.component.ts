@@ -71,7 +71,12 @@ export class LoginComponent implements OnInit {
     this.auth.loginP(this.usuario,this.contrasena).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
-          this._router.navigate(['../ventas/home']);
+          console.log(Response);
+          if(Response['data'].esContrasenaPrimeraVez==null || Response['data'].esContrasenaPrimeraVez==false){
+             this._router.navigate(['../ventas/home']);
+          }else{
+            this._router.navigate(['../ventas/cambiar-contrasena']);
+          }
           localStorage.setItem("data",JSON.stringify(Response['data']));
         },
         error=>{

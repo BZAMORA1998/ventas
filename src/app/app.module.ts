@@ -16,7 +16,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @NgModule({
   declarations: [
     AppComponent,
-    VentasComponent,
+    VentasComponent
   ],
   imports: [
     BrowserModule,
