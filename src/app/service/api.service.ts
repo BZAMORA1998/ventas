@@ -9,11 +9,12 @@ import { AuthService } from './auth.service';
 })
 export class ApiService {
     
-    URL_API = environment.apiUrl;
+    URL_API_SPRING = environment.apiUrlSpring;
+    URL_API_NODEJS = environment.apiUrlNodeJS;
 
     constructor(private http: HttpClient) { }
     
-    public ApiLogin(method,endpoint,data,headers):Observable<any>{
+    public ApiLoginSpring(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
@@ -21,12 +22,12 @@ export class ApiService {
 
         switch (method) {
             case "POST":
-                return this.http.post(this.URL_API + endpoint, data, { headers: headers , params : data});
+                return this.http.post(this.URL_API_SPRING + endpoint, data, { headers: headers , params : data});
         }        
     }
 
 
-    public ApiCall(method,endpoint,data,headers):Observable<any>{
+    public ApiCallSpring(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
@@ -40,18 +41,41 @@ export class ApiService {
 
         switch (method) {
             case "GET":
-                return this.http.get(this.URL_API + endpoint, { headers: headers , params: data })
+                return this.http.get(this.URL_API_SPRING + endpoint, { headers: headers , params: data })
             case "POST":
-                return this.http.post(this.URL_API + endpoint, data, { headers: headers , params : data});
+                return this.http.post(this.URL_API_SPRING + endpoint, data, { headers: headers , params : data});
             
             case "PUT":
-                return this.http.put(this.URL_API + endpoint, data, { headers: headers , params : data});
+                return this.http.put(this.URL_API_SPRING + endpoint, data, { headers: headers , params : data});
             case "DELETE":
-            return this.http.delete(this.URL_API + endpoint, { headers: headers, params: data });
+            return this.http.delete(this.URL_API_SPRING + endpoint, { headers: headers, params: data });
         }        
     }
 
-    public ApiCallMultiForm(method,endpoint,data,headers):Observable<any>{
+    public ApiCallNodeJS(method,endpoint,data,headers):Observable<any>{
+
+        if(headers!=null){
+            headers.set("Content-Type","application/json");
+        }else{
+            headers = new HttpHeaders({
+              "Content-Type":"application/json",
+            });
+        }
+
+        switch (method) {
+            case "GET":
+                return this.http.get(this.URL_API_NODEJS + endpoint, { headers: headers , params: data })
+            case "POST":
+                return this.http.post(this.URL_API_NODEJS + endpoint, data, { headers: headers , params : data});
+            
+            case "PUT":
+                return this.http.put(this.URL_API_NODEJS + endpoint, data, { headers: headers , params : data});
+            case "DELETE":
+            return this.http.delete(this.URL_API_NODEJS + endpoint, { headers: headers, params: data });
+        }        
+    }
+
+    public ApiCallMultiFormSpring(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
@@ -66,7 +90,7 @@ export class ApiService {
         switch (method) {
            
             case "POST":
-                return this.http.post(this.URL_API + endpoint, data,headers);
+                return this.http.post(this.URL_API_SPRING + endpoint, data,headers);
         }        
     }
 

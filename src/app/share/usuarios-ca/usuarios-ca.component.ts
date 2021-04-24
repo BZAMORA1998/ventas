@@ -142,7 +142,7 @@ export class UsuariosCAComponent implements OnInit {
     this._generalService.getTipoIdentificacion().subscribe(
         Response=>{
           this.tipoIdentificacion=Response.data;
-          console.log(Response.data);
+          console.log("Hola",Response.data);
         },
         error=>{
           console.log(error.error.message);

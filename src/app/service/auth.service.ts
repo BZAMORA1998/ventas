@@ -16,7 +16,7 @@ export class AuthService {
     const headers = new HttpHeaders({
       'Authorization': auth
     });
-    return this.apiService.ApiLogin("POST","/autenticacion/login",null,headers)
+    return this.apiService.ApiLoginSpring("POST","/autenticacion/login",null,headers)
       .pipe(map(resp => {
         
         localStorage.setItem("autenticado",JSON.stringify(true));

@@ -14,3 +14,7 @@
     border: none;
     background-color: transparent;
 }
+
+.card{
+    min-height: 75%;
+}
