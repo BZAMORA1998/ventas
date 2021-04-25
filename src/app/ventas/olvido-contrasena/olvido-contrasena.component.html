@@ -11,7 +11,7 @@
                         <input (change)="validaSiEsVacion()" type="text" class="form-control" id="formGroupExampleInput" placeholder="Email o Usuario" name="email" #email="ngModel" [(ngModel)]="correo" required>
                       </div>
                     <div class="form-group ">
-                        <button id="aceptar" matTooltip="Info about the action" type="submit" class="btn btn-info w-100">Enviar Contraseña</button>
+                        <button (click)="recuperarContrasena()" id="aceptar" matTooltip="Info about the action" type="submit" class="btn btn-info w-100">Enviar Contraseña</button>
                     </div>
                 </form>
             </div>
