@@ -53,7 +53,7 @@ export class Sweetalert2Component implements OnInit {
     })
   }
 
-  public showModalConfirmacion(message){
+  public showModalConfirmacion(message,url){
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -62,16 +62,16 @@ export class Sweetalert2Component implements OnInit {
       showConfirmButton: true,
     }).then((result) => {
       if (result.value) {
-        this.redirigirLogin();
+        this.redirigir(url);
       }
      });
   }
 
-  public redirigirLogin(){
+  public redirigir(url){
     setTimeout(()=>{
       window.location.reload();
     }, 100);
-    return this._router.navigate(['../listar-usuarios']);
+    return this._router.navigate([url]);
   }
 
 }

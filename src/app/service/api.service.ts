@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpHeaders,HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -25,20 +26,16 @@ export class ApiService {
     }
 
 
-    public ApiCallSpring(method,endpoint,data,headers,seg):Observable<any>{
+    public ApiCallSpring(method,endpoint,data,headers):Observable<any>{
 
         if(headers!=null){
             headers.set("Content-Type","application/json");
-
-            if(seg!=null && seg==true)
-             headers.set("Authorization","Bearer " + this.getToken());
-
+            headers.set("Authorization","Bearer " + this.getToken());
         }else{
-            headers = new HttpHeaders();
-            headers.set("Content-Type","application/json");
-              if(seg!=null && seg==true)
-                headers.set("Authorization","Bearer " + this.getToken());
-            
+            headers = new HttpHeaders({
+              "Content-Type":"application/json",
+              "Authorization":"Bearer " + this.getToken()
+            });
         }
 
         switch (method) {
@@ -53,6 +50,30 @@ export class ApiService {
             return this.http.delete(this.URL_API_SPRING + endpoint, { headers: headers, params: data });
         }        
     }
+
+    public ApiCallSpringSinSeg(method,endpoint,data,headers):Observable<any>{
+
+        if(headers!=null){
+            headers.set("Content-Type","application/json");
+        }else{
+            headers = new HttpHeaders({
+              "Content-Type":"application/json"
+            });
+        }
+
+        switch (method) {
+            case "GET":
+                return this.http.get(this.URL_API_SPRING + endpoint, { headers: headers , params: data })
+            case "POST":
+                return this.http.post(this.URL_API_SPRING + endpoint, data, { headers: headers , params : data});
+            
+            case "PUT":
+                return this.http.put(this.URL_API_SPRING + endpoint, data, { headers: headers , params : data});
+            case "DELETE":
+            return this.http.delete(this.URL_API_SPRING + endpoint, { headers: headers, params: data });
+        }        
+    }
+
 
     public ApiCallNodeJS(method,endpoint,data,headers):Observable<any>{
 

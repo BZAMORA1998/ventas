@@ -72,7 +72,7 @@ export class CrearUsuarioComponent implements OnInit {
         Response=>{
           this.sweetalert2Component.loading(false);
          // this.postPhoto(this.currentFileUpload,Response.data.secuenciaPersona);
-          this.sweetalert2Component.showModalConfirmacion(Response.message);
+          this.sweetalert2Component.showModalConfirmacion(Response.message,"../ventas/home/seguridad/usuarios/listar-usuarios");
         },
         error=>{
           this.sweetalert2Component.loading(false);

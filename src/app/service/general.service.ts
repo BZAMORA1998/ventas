@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class GeneralService{
   getConsultarEdad(fechaNacimiento: string) {
-    return this.apiService.ApiCallSpring("GET",`/general/calcularEdad?fechaNacimiento=${fechaNacimiento}`,null,null,true);
+    return this.apiService.ApiCallSpring("GET",`/general/calcularEdad?fechaNacimiento=${fechaNacimiento}`,null,null);
   }
 
   constructor(private apiService: ApiService,private http: HttpClient){}

@@ -35,7 +35,7 @@ export class OlvidoContrasenaComponent implements OnInit {
     this._usuarioService.postRecuperarContrasena(this.correo).subscribe(
       Response=>{
         this.sweetalert2Component.loading(false);
-        this.sweetalert2Component.showModalConfirmacion(Response.message);
+        this.sweetalert2Component.showModalConfirmacion(Response.message,"../ventas/login");
       },
       error=>{
         this.sweetalert2Component.loading(false);

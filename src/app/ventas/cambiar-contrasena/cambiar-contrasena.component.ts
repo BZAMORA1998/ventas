@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
 
 @Component({
   selector: 'app-cambiar-contrasena',
   templateUrl: './cambiar-contrasena.component.html',
-  styleUrls: ['./cambiar-contrasena.component.css']
+  styleUrls: ['./cambiar-contrasena.component.css'],
+  providers:[UsuarioService]
 })
 export class CambiarContrasenaComponent implements OnInit {
 
-  constructor() { }
+  constructor(  private _usuarioService:UsuarioService,
+    private sweetalert2Component:Sweetalert2Component,) { 
+    
+  }
 
   ngOnInit(): void {
   }
@@ -50,6 +56,20 @@ export class CambiarContrasenaComponent implements OnInit {
       console.log("No");
       $("#aceptar").prop('disabled', true);
     }
+  }
+
+  cambiarContrasena(){
+    this.sweetalert2Component.loading(true);
+    this._usuarioService.postCambiarContrasena(this.contrasena1).subscribe(
+      Response=>{
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalConfirmacion(Response.message,"../ventas/home/modulos");
+      },
+      error=>{
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalError(error.error.message);
+      }
+    ); 
   }
 
 }
