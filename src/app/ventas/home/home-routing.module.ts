@@ -8,16 +8,16 @@ const routes: Routes = [
   {
      path: '', component: HomeComponent, children: [
       { 
-        path: 'seguridad',loadChildren:()=> import('./seguridad/seguridad.module').then(m => m.SeguridadModule),canActivate:[AuthGuard]
+        path: 'seguridad',loadChildren:()=> import('./seguridad/seguridad.module').then(m => m.SeguridadModule)
       },
       { 
-        path: 'modulos',  component: ModulosComponent ,canActivate:[AuthGuard]
+        path: 'modulos',  component: ModulosComponent,canActivate:[AuthGuard],data: {roles: ['MOD']}
       },
       {
-        path: '', redirectTo: 'modulos', pathMatch: 'full',canActivate:[AuthGuard]
+        path: '', redirectTo: 'modulos',canActivate:[AuthGuard],data: {roles: ['MOD']}
       },
       { 
-        path: '**', component: ModulosComponent ,canActivate:[AuthGuard]
+        path: '**', component: ModulosComponent,canActivate:[AuthGuard],data: {roles: ['MOD']}
       }
     ]
   }

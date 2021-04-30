@@ -34,7 +34,7 @@ export class UsuarioService {
     postCambiarContrasena(contrasenia):Observable<any>{
 
       const objcontrasenia={
-        "contrasenia":contrasenia
+        "contrasenia":btoa(contrasenia)
       }
 
       return this.apiService.ApiCallSpring("POST","/usuarios/cambioContrasena",objcontrasenia,null);
