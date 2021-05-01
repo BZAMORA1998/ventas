@@ -26,6 +26,23 @@ export class AuthService {
       }));
   }
 
+  getRefreshToken(token) {
+
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer "+token
+    });
+
+    return this.apiService.ApiLoginSpring("GET","/autenticacion/refreshToken",null,headers)
+      .pipe(map(resp => {
+
+        var data=localStorage.getItem("data");
+        data['token']=resp.token;
+        localStorage.setItem("data",JSON.stringify(resp["data"]));
+        return resp.token;;
+      }));
+  }
+
+
   estaAutenticado(): boolean {
     return JSON.parse(localStorage.getItem('autenticado'));
   }
