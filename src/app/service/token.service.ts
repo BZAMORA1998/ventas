@@ -41,7 +41,7 @@ export class TokenService {
    'Authorization': "Bearer "+token
  });
 
- return this.http.get(environment.apiUrlSpring+"/autenticacion/refreshtoken",{headers:headers})
+ return this.http.get(environment.apiUrlSpring+"/autenticacion/refreshToken",{headers:headers})
    .pipe(map(resp => {
      var data=localStorage.getItem("data");
      data['token']=resp['token'];
