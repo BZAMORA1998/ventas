@@ -63,4 +63,7 @@ export class UsuarioService {
 
       return this.apiService.ApiCallMultiFormSpring("POST",`/usuarios/photo`,data,headers);
   }
+
+  
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
 })
 export class AuthService {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,private http: HttpClient) { }
   
   loginP(user,password) {
     var auth ="Basic "+ btoa(user+":"+password);
@@ -25,23 +25,6 @@ export class AuthService {
         return resp;
       }));
   }
-
-  getRefreshToken(token) {
-
-    const headers = new HttpHeaders({
-      'Authorization': "Bearer "+token
-    });
-
-    return this.apiService.ApiLoginSpring("GET","/autenticacion/refreshToken",null,headers)
-      .pipe(map(resp => {
-
-        var data=localStorage.getItem("data");
-        data['token']=resp.token;
-        localStorage.setItem("data",JSON.stringify(resp["data"]));
-        return resp.token;;
-      }));
-  }
-
 
   estaAutenticado(): boolean {
     return JSON.parse(localStorage.getItem('autenticado'));
