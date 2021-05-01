@@ -14,6 +14,7 @@ export class TokenService {
  token(){
 
    var data = JSON.parse(localStorage.getItem('data'));
+   console.log("token1: ",data['token']);
    var token=this.parseJwt(data['token']);
    var exp=new Date(1000*token.exp);
 
@@ -24,11 +25,12 @@ export class TokenService {
        this.getRefreshToken(data['token']).subscribe(
            Response=>{
               console.log("RenovarToken: ",Response);
-              data.token=Response.token;
-              localStorage.setItem('data',JSON.stringify(data));  
+              data['token']=Response['data'].token;
+              localStorage.setItem('data',JSON.stringify(data)); 
+              console.log("token2: ",data['token']); 
            },
            error=>{
-             console.log(error.error);
+             console.log("Error: ",error.error);
            }
        ); 
    }
@@ -41,13 +43,8 @@ export class TokenService {
    'Authorization': "Bearer "+token
  });
 
- return this.http.get(environment.apiUrlSpring+"/autenticacion/refreshToken",{headers:headers})
-   .pipe(map(resp => {
-     var data=localStorage.getItem("data");
-     data['token']=resp['token'];
-     localStorage.setItem("data",JSON.stringify(resp["data"]));
-     return resp['token'];
-   }));
+  return this.http.get(environment.apiUrlSpring+"/autenticacion/refreshToken",{headers:headers});
+
 }
 
  parseJwt (token) {

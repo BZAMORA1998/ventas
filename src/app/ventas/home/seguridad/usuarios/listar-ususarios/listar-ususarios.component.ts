@@ -89,7 +89,6 @@ listarUsuario(){
     },
     error=>{
       console.log(error.error.message);
-      this.sweetalert2Component.showModalError(error.error.message);
     }
   ); 
 }

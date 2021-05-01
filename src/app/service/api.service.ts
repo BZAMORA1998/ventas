@@ -119,6 +119,6 @@ export class ApiService {
 
 
     getToken(){
-        return this._tokenService.token();;
+        return this._tokenService.token();
     }
 }
