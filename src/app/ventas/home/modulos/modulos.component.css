@@ -19,14 +19,11 @@
   min-width: 15%;
 }
 
-/* .card:hover{
+.card:hover{
   border: 1px solid blue;
   color: blue;
-} */
+} 
 
-/* .card-title{
-  border-bottom: 1px solid blue;
-} */
 
   /deep/ .cdk-overlay-pane {
     position: absolute;
