@@ -17,7 +17,7 @@ const routes: Routes = [
         path: 'login',  component: LoginComponent 
       },
       { 
-        path: 'cambiar-contrasena',  component: CambiarContrasenaComponent , canActivate:[AuthGuard],data: {roles: ['GEN']}
+        path: 'cambiar-contrasena',  component: CambiarContrasenaComponent , canActivate:[AuthGuard]
       },
       {
         path: 'home',loadChildren:()=> import('./home/home.module').then(m => m.HomeModule)

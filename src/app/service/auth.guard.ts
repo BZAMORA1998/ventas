@@ -13,37 +13,48 @@ export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService,
               private router:Router,
               private _rolesService:RolesService
-              ){
+              ){  console.log("Url Completa: ",this.router.url);
               }
 
-  roles=[];
+  rolesUsu=[];
+  rolesRut:any;
   entro=false;
   canActivate(route: ActivatedRouteSnapshot):Observable<boolean>{
-    return  this._rolesService.getConsultarRolesPorUsuario().map(Response => {
-        this.roles=Response['data'];
-        console.log(this.roles);
-        console.log("Roles: ",route.data.roles);
-        console.log("Url: ",route);
-        console.log("Url Completa: ",this.router.navigateByUrl);
-        if(this.auth.estaAutenticado() && route.data.roles!=null){
-          this.entro=false;
-          route.data.roles.forEach(a => {
-            this.roles.forEach(b=> {
-              if(a==b.abreviatura){
-                this.entro=true;
-              }
-            });
-          });
-        }
 
-        if(this.entro){
-          return this.entro;
-        }else{
-          localStorage.setItem("autenticado",JSON.stringify(false));
-          this.router.navigate(['../ventas/login']);
-          return false;
-        }
-       
-  });
+        this._rolesService.getConsultarRolesPorRutas(route.url[0].path).subscribe(Response => {
+          this.rolesRut=Response['data'];
+        });
+
+
+        return  this._rolesService.getConsultarRolesPorUsuario().map(Response => {
+            this.rolesUsu=Response['data'];
+
+            console.log(this.rolesUsu);
+            console.log("Roles: ",route.data.roles);
+            console.log("Url: ",route.url[0].path);
+
+            console.log("Rutas: ", this.rolesRut);
+            console.log("USUARIO: ", this.rolesUsu);
+            console.log("Entro",this.auth.estaAutenticado());
+            if(this.auth.estaAutenticado()){
+              this.entro=false;
+              this.rolesUsu.forEach(a => {
+                this.rolesRut.forEach(b=> {
+                  if(a.secuenciaRol==b.secuenciaRol){
+                    this.entro=true;
+                  }
+                });
+              });
+            }
+
+            if(this.entro){
+              return this.entro;
+            }else{
+              localStorage.setItem("autenticado",JSON.stringify(false));
+              this.router.navigate(['../ventas/login']);
+              return false;
+            }
+          
+      });
   }
 }
