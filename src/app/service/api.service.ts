@@ -27,7 +27,7 @@ export class ApiService {
 
 
     public ApiCallSpring(method,endpoint,data,headers):Observable<any>{
-
+        
         if(headers!=null){
             headers.set("Content-Type","application/json");
             headers.set("Authorization","Bearer " + this.getToken());

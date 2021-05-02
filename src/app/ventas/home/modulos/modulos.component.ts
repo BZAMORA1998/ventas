@@ -3,14 +3,14 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
+import { ModulosService } from 'src/app/service/modulos.service';
 declare let $: any;
 
 @Component({
   selector: 'app-modulos-design',
   templateUrl: './modulos.component.html',
   styleUrls: ['./modulos.component.css'],
-  providers:[UsuarioService]
+  providers:[ModulosService]
 })
 export class ModulosComponent implements OnInit {
   
@@ -19,15 +19,11 @@ export class ModulosComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private _usuarioService:UsuarioService,
-              private sweetalert2Component:Sweetalert2Component,
-              private _formBuilder: FormBuilder) { }
-  
-  control = new FormControl();
-  streets:any=[];
-  filteredStreets: Observable<string[]>;
+  constructor(private _modulosService:ModulosService,
+              private sweetalert2Component:Sweetalert2Component) { }
   
   ngOnInit(): void {
+    this.consularModulosPorUsuario();
     $(document).ready(function(){
       $('.card').hover(
         function () {
@@ -41,5 +37,21 @@ export class ModulosComponent implements OnInit {
        }
       );
     });
+  }
+
+    /**
+   * @author Bryan Zamora
+   * @description Consulta los modulos disponibles del usuario
+   */
+  data:any;
+  consularModulosPorUsuario(){
+    this._modulosService.getConsultarModulosPorUsuario().subscribe(
+      Response=>{
+          this.data=Response['data'];
+      },
+      Error=>{
+        this.sweetalert2Component.showModalError(Error.error);
+      }
+    );
   }
 }

@@ -13,10 +13,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ModulosComponent } from './modulos/modulos.component';
 import { SeguridadComponent } from './seguridad/seguridad.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ProductosComponent } from './productos/productos.component';
 
 
 @NgModule({
-  declarations: [ModulosComponent,SeguridadComponent],
+  declarations: [ModulosComponent,SeguridadComponent, ProveedoresComponent, ProductosComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

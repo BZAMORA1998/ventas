@@ -14,7 +14,7 @@ export class UsuarioService {
     return this.apiService.ApiCallSpring("GET",`/usuarios/usuarioDisponible?primerNombre=${primerNombre}&segundoNombre=${segundoNombre}&primerApellido=${primerApellido}&segundoApellido=${segundoApellido}`,null,null);
   }
 
-  constructor(private apiService: ApiService,private http: HttpClient){}
+    constructor(private apiService: ApiService,private http: HttpClient){}
 
     postCrearUsuario(user):Observable<any>{
       user.password=btoa(user.password1);
@@ -64,6 +64,6 @@ export class UsuarioService {
       return this.apiService.ApiCallMultiFormSpring("POST",`/usuarios/photo`,data,headers);
   }
 
-  
+
 
 }
