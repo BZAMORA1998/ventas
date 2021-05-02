@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'seguridad',loadChildren:()=> import('./seguridad/seguridad.module').then(m => m.SeguridadModule)
       },
       { 
-        path: 'modulos',  component: ModulosComponent,canActivate:[AuthGuard],data: {roles: ['GEN','ADM']}
+        path: 'modulos',  component: ModulosComponent
       },
       { 
         path: 'productos',  component: ProductosComponent,canActivate:[AuthGuard],data: {roles: ['PRO','ADM']}
@@ -22,10 +22,10 @@ const routes: Routes = [
         path: 'proveedores',  component: ProveedoresComponent,canActivate:[AuthGuard],data: {roles: ['PRO','ADM']}
       },
       {
-        path: '', redirectTo: 'modulos',canActivate:[AuthGuard],data: {roles: ['MOD']}
+        path: '', redirectTo: 'modulos'
       },
       { 
-        path: '**', component: ModulosComponent,canActivate:[AuthGuard],data: {roles: ['MOD']}
+        path: '**', component: ModulosComponent
       }
     ]
   }
