@@ -112,6 +112,10 @@
     padding-bottom: 16px;
   }
 
+  hr{
+    margin-bottom: 30px; color:#455a64; margin-top: -1px;
+  }
+
   @media (min-width: 992px){
     .navbar-expand-lg .navbar-nav {
       flex-direction: column;
