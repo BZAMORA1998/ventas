@@ -13,3 +13,7 @@
   .posionIco{
     margin-right: 10px;
   }  
+
+  .checkOculto{
+    display: none;
+  }

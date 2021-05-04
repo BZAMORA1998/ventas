@@ -57,9 +57,11 @@ export class CheckboxRecursiveComponent implements OnInit {
       console.log(`#check-${valor}-${i+1}`);
       if($(`#check-${valor}-${i}`).css('display') == 'none'){
         $(`#check-${valor}-${i}`).show();
+        $(`#img-${valor}-${i}`).attr("src","../../../assets/img/mas.svg");
         console.log("Entro");
       }else{
         $(`#check-${valor}-${i}`).hide();
+        $(`#img-${valor}-${i}`).attr("src","../../../assets/img/signo-menos.svg");
         console.log("Salio");
       }
      });

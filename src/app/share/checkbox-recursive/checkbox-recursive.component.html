@@ -28,9 +28,11 @@
     <li *ngFor="let item of list ; index as i">
       <div class="form-inline">
       
-        <div *ngIf="item.children.length > 0" for="defaultCheck1">
-            <div *ngIf="false ; else elseBlock"><img class="posionIco" for="defaultCheck1" width="10" height="10" src="../../../assets/img/signo-menos.svg"></div>
-            <ng-template #elseBlock><img (click)="isCheck(item.title,i+1)" class="posionIco" for="defaultCheck1" width="10" height="10" src="../../../assets/img/mas.svg"></ng-template>
+        <div *ngIf="item.children.length > 0">
+          <img (click)="isCheck(item.title,i+1)" 
+          id="img-{{item.title}}-{{i+1}}" 
+          class="posionIco" for="defaultCheck1" width="10" height="10" 
+          src="../../../assets/img/mas.svg">
         </div>
 
         <input class="form-check-input" type="checkbox" id="defaultCheck1">
@@ -39,7 +41,7 @@
         </label>
 
       </div>
-       <ul *ngIf="item.children.length > 0" id="check-{{item.title}}-{{i+1}}">
+       <ul *ngIf="item.children.length > 0" class="checkOculto" id="check-{{item.title}}-{{i+1}}">
          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
        </ul>
     </li>
