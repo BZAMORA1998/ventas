@@ -1,38 +1,13 @@
-  <!-- <section class="example-section">
-    <span class="example-list-section">
-      <mat-checkbox class="example-margin"
-                    [checked]="allComplete"
-                    [color]="task.color"
-                    [indeterminate]="someComplete()"
-                    (change)="setAll($event.checked)">
-        {{task.name}}
-      </mat-checkbox>
-    </span>
-    <span class="example-list-section">
-      <ul>
-        <li *ngFor="let subtask of task.subtasks">
-          <mat-checkbox [(ngModel)]="subtask.completed"
-                        [color]="subtask.color"
-                        (ngModelChange)="updateAllComplete()">
-            {{subtask.name}}
-          </mat-checkbox>
-        </li>
-      </ul>
-    </span>
-  </section>
-  
-  
--->
 <ul>
   <ng-template #recursiveList let-list>
     <li *ngFor="let item of list ; index as i">
       <div class="form-inline">
       
         <div *ngIf="item.children.length > 0">
-          <img (click)="isCheck(item.title,i+1)" 
-          id="img-{{item.title}}-{{i+1}}" 
-          class="posionIco" for="defaultCheck1" width="10" height="10" 
-          src="../../../assets/img/mas.svg">
+            <img (click)="isCheck(item.title,i+1)" 
+            id="img-{{item.title}}-{{i+1}}" 
+            class="posionIco" for="defaultCheck1" width="10" height="10" 
+            src="../../../assets/img/mas.svg">
         </div>
 
         <input class="form-check-input" type="checkbox" id="defaultCheck1">
@@ -41,11 +16,14 @@
         </label>
 
       </div>
+
        <ul *ngIf="item.children.length > 0" class="checkOculto" id="check-{{item.title}}-{{i+1}}">
          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
        </ul>
+       
     </li>
   </ng-template>
+  
   <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
 </ul>
 
