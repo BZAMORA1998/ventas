@@ -13,7 +13,7 @@ const routes: Routes = [
           path: 'usuarios',loadChildren:()=> import('./usuarios/usuarios.module').then(m => m.UsuariosModule)
       },
       { 
-        path: 'roles',component: RolesComponent
+        path: 'roles',component: RolesComponent,canActivate:[AuthGuard]
       },
       {
         path: '', redirectTo: 'usuarios', pathMatch: 'full'

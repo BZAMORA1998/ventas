@@ -16,10 +16,10 @@ const routes: Routes = [
         path: 'modulos',  component: ModulosComponent
       },
       { 
-        path: 'productos',  component: ProductosComponent,canActivate:[AuthGuard],data: {roles: ['PRO','ADM']}
+        path: 'productos',  component: ProductosComponent,canActivate:[AuthGuard]
       },
       { 
-        path: 'proveedores',  component: ProveedoresComponent,canActivate:[AuthGuard],data: {roles: ['PRO','ADM']}
+        path: 'proveedores',  component: ProveedoresComponent,canActivate:[AuthGuard]
       },
       {
         path: '', redirectTo: 'modulos'

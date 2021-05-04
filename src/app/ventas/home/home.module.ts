@@ -21,17 +21,9 @@ import { ProductosComponent } from './productos/productos.component';
   declarations: [ModulosComponent,SeguridadComponent, ProveedoresComponent, ProductosComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
-    ShareModule,
-    MatTooltipModule,
-    MatStepperModule,
-    MatInputModule,
-    MatButtonModule,
-    MatAutocompleteModule,    
-    ReactiveFormsModule, 
-    MatFormFieldModule, 
-    MatTabsModule,
-    MatInputModule ,
+     HomeRoutingModule,
+     ShareModule,
+     MatTooltipModule,
     FormsModule,
     NgxSkeletonLoaderModule.forRoot()
   ]

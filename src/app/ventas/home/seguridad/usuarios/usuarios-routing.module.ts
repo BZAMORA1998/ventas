@@ -11,21 +11,20 @@ const routes: Routes = [
   {
      path: '', component: UsuariosComponent, children: [
       { 
-        path: 'crear-usuario',  component: CrearUsuarioComponent, canActivate:[AuthGuard],data: {roles: ['SEG']}
+        path: 'crear-usuario',  component: CrearUsuarioComponent, canActivate:[AuthGuard]
       },
       { 
-        path: 'listar-usuarios',  component: ListarUsusariosComponent ,canActivate:[AuthGuard],data: {roles: ['SEG']}
+        path: 'listar-usuarios',  component: ListarUsusariosComponent ,canActivate:[AuthGuard]
       },
       { 
-        path: 'prueba',  component: PruebaComponent,canActivate:[AuthGuard],data: {roles: ['SEG']}
+        path: 'prueba',  component: PruebaComponent,canActivate:[AuthGuard]
       },
       {
-        path: '', redirectTo: 'listar-usuarios', pathMatch: 'full',canActivate:[AuthGuard],data: {roles: ['SEG']}
+        path: '', redirectTo: 'listar-usuarios', pathMatch: 'full',canActivate:[AuthGuard]
       },
       { 
-        path: '**', component: ListarUsusariosComponent ,canActivate:[AuthGuard],data: {roles: ['SEG']}
+        path: '**', component: ListarUsusariosComponent ,canActivate:[AuthGuard]
       }
-
     ]
   }
 ];
