@@ -7,6 +7,7 @@ import { RolesComponent } from './roles/roles.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShareModule } from 'src/app/share/share.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SeguridadRoutingModule,
     MatStepperModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ShareModule
   ]
 })
 export class SeguridadModule { }

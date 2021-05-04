@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
+declare var $:any;
 
 export interface Task {
   name: string;
@@ -50,9 +51,97 @@ export class CheckboxRecursiveComponent implements OnInit {
     }
     this.task.subtasks.forEach(t => t.completed = completed);
   }
+
+  public isCheck(valor,i){
+    $(document).ready(function(){  
+      console.log(`#check-${valor}-${i+1}`);
+      if($(`#check-${valor}-${i}`).css('display') == 'none'){
+        $(`#check-${valor}-${i}`).show();
+        console.log("Entro");
+      }else{
+        $(`#check-${valor}-${i}`).hide();
+        console.log("Salio");
+      }
+     });
+  }
+
+  // its just list data from here down
+  public list = [
+    {
+      title: 'great_grandparent',
+      children: [
+        {
+          title: 'childless_grandsibiling',
+          children: []
+        },
+        {
+          title: 'grandparent',
+          children: [
+            {
+              title: 'childless_sibiling',
+              children: []
+            },
+            {
+              title: 'another_childless_sibiling',
+              children: []
+            },
+            {
+              title: 'parent',
+              children: [
+                {
+                  title: 'child',
+                  children: []
+                },
+                {
+                  title: 'another_child',
+                  children: []
+                },
+              ]
+            },
+            {
+              title: 'another_parent',
+              children: [
+                {
+                  title: 'child',
+                  children: []
+                },
+              ]
+            },
+          ]
+        },
+        {
+          title: 'another_grandparent',
+          children: [
+            {
+              title: 'parent',
+              children: [
+                {
+                  title: 'child',
+                  children: []
+                },
+                {
+                  title: 'another_child',
+                  children: []
+                },
+                {
+                  title: 'a third_child',
+                  children: []
+                },
+                {
+                  title: 'teen_mother',
+                  children: [
+                    {
+                      title: 'accident',
+                      children: []
+                    },
+                  ]
+                },
+              ]
+            },
+          ]
+        },
+      ]
+    },
+  ];
 }
 
-
-/**  Copyright 2020 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
