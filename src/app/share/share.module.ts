@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TablePaginationComponent } from './table-pagination/table-pagination.component';
 import { UsuariosCAComponent } from './usuarios-ca/usuarios-ca.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxRecursiveComponent } from './checkbox-recursive/checkbox-recursive.component';
+import { CheckboxRecursiveRolComponent } from './checkbox-recursive-rol/checkbox-recursive-rol.component';
 /*--------------------------------------------------------------------------------------------*/
 import {NgModule} from '@angular/core';
 import {A11yModule} from '@angular/cdk/a11y';
@@ -54,7 +54,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
-  declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent, UsuariosCAComponent, CheckboxRecursiveComponent],
+  declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent, UsuariosCAComponent, CheckboxRecursiveRolComponent],
   imports: [
     CommonModule,
     NgbPaginationModule,    
@@ -113,14 +113,14 @@ import {OverlayModule} from '@angular/cdk/overlay';
     PaginadorComponent,
     TablePaginationComponent,
     UsuariosCAComponent,
-    CheckboxRecursiveComponent
+    CheckboxRecursiveRolComponent
   ],
   exports:[
     Sweetalert2Component,
     PaginadorComponent,
     TablePaginationComponent,
     UsuariosCAComponent,
-    CheckboxRecursiveComponent
+    CheckboxRecursiveRolComponent
   ]
 })
 export class ShareModule { }

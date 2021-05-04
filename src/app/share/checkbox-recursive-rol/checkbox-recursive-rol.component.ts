@@ -10,11 +10,11 @@ export interface Task {
 }
 
 @Component({
-  selector: 'app-checkbox-recursive',
-  templateUrl: './checkbox-recursive.component.html',
-  styleUrls: ['./checkbox-recursive.component.css']
+  selector: 'app-checkbox-recursive-rol',
+  templateUrl: './checkbox-recursive-rol.component.html',
+  styleUrls: ['./checkbox-recursive-rol.component.css']
 })
-export class CheckboxRecursiveComponent implements OnInit {
+export class CheckboxRecursiveRolComponent implements OnInit {
 
   ngOnInit(): void {
 
@@ -57,11 +57,11 @@ export class CheckboxRecursiveComponent implements OnInit {
       console.log(`#check-${valor}-${i+1}`);
       if($(`#check-${valor}-${i}`).css('display') == 'none'){
         $(`#check-${valor}-${i}`).show();
-        $(`#img-${valor}-${i}`).attr("src","../../../assets/img/mas.svg");
+        $(`#img-${valor}-${i}`).attr("src","../../../assets/img/signo-menos.svg");
         console.log("Entro");
       }else{
         $(`#check-${valor}-${i}`).hide();
-        $(`#img-${valor}-${i}`).attr("src","../../../assets/img/signo-menos.svg");
+        $(`#img-${valor}-${i}`).attr("src","../../../assets/img/mas.svg");
         console.log("Salio");
       }
      });
