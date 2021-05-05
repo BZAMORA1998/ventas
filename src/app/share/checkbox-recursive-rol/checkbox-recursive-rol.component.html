@@ -1,31 +1,31 @@
 <ul>
-  <ng-template #recursiveList let-list>
-    <li *ngFor="let item of list ; index as i">
+  <ng-template #recursiveList let-data>
+    <li *ngFor="let item of data ; index as i">
       <div class="form-inline">
       
         <div class="posionIco">
-          <div *ngIf="item.children.length > 0">
-              <img (click)="isCheckImg(item.title,i+1)" 
-              id="img-{{item.title}}-{{i+1}}" 
+          <div *ngIf="item.rutas.length > 0">
+              <img (click)="isCheckImg(item.nombre,i+1)" 
+              id="img-{{item.nombre}}-{{i+1}}" 
                width="10" height="10" 
               src="../../../assets/img/mas.svg">
           </div>    
         </div>
 
-        <input class="form-check-input"  [checked]="item.esCheck" (change)="chequearTodo(item.title)" type="checkbox" id="d-{{item.title}}-{{i+1}}">
-        <label class="form-check-label" for="d-{{item.title}}-{{i+1}}">
-          {{item.title}}
+        <input class="form-check-input"  [checked]="item.esSelect" type="checkbox" id="d-{{item.nombre}}-{{i+1}}">
+        <label class="form-check-label" for="d-{{item.nombre}}-{{i+1}}">
+          {{item.nombre}}
         </label>
 
       </div>
 
-       <ul *ngIf="item.children.length > 0" class="checkOculto" id="check-{{item.title}}-{{i+1}}">
-         <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children}"></ng-container>
+       <ul *ngIf="item.rutas.length > 0" class="checkOculto" id="check-{{item.nombre}}-{{i+1}}">
+         <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.rutas}"></ng-container>
        </ul>
        
     </li>
   </ng-template>
   
-  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list}"></ng-container>
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: data}"></ng-container>
 </ul>
 

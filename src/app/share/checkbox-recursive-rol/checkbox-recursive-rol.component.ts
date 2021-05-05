@@ -1,16 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
+import { RolesService } from 'src/app/service/roles.service';
 declare var $:any;
 
 @Component({
   selector: 'app-checkbox-recursive-rol',
   templateUrl: './checkbox-recursive-rol.component.html',
-  styleUrls: ['./checkbox-recursive-rol.component.css']
+  styleUrls: ['./checkbox-recursive-rol.component.css'],
+  providers:[RolesService]
 })
 export class CheckboxRecursiveRolComponent implements OnInit {
 
   ngOnInit(): void {
+    this.consultarUrlPorRol(3);
+  }
 
+  constructor(private _rolesService:RolesService){}
+
+  data=[];
+  public consultarUrlPorRol(idRol){
+    this._rolesService.getConsultarRutasPorRol(idRol).subscribe(
+      response=>{
+        console.log("data: ",response['data']);
+        this.data=response['data'];
+      },
+      error=>{
+        console.log(error);
+      }
+    );
   }
 
   public isCheckImg(valor,i){
@@ -27,130 +44,5 @@ export class CheckboxRecursiveRolComponent implements OnInit {
       }
      });
   }
-
-  a:number;
-  public chequearTodo(value):any{
-     this.list.forEach(b => {
-       this.a=this.a+1;
-
-       if(b.children=[]){ 
-          b.children=this.chequearTodo(value);
-       }
-     });
-
-  }
-
-  // its just list data from here down
-  public list = [
-    {
-      i:0,
-      title: 'great_grandparent',
-      esCheck:true,
-      children: [
-        {
-          i:0,
-          title: 'childless_grandsibiling',
-          esCheck:true,
-          children: []
-        },
-        {
-          i:0,
-          title: 'grandparent',
-          esCheck:true,
-          children: [
-            {
-              i:0,
-              title: 'childless_sibiling',
-              esCheck:true,
-              children: []
-            },
-            {
-              i:0,
-              title: 'another_childless_sibiling',
-              esCheck:true,
-              children: []
-            },
-            {
-              i:0,
-              title: 'parent',
-              esCheck:true,
-              children: [
-                {
-                  i:0,
-                  title: 'child',
-                  esCheck:true,
-                  children: []
-                },
-                {
-                  i:0,
-                  title: 'another_child',
-                  esCheck:true,
-                  children: []
-                },
-              ]
-            },
-            {
-              i:0,
-              title: 'another_parent',
-              esCheck:true,
-              children: [
-                {
-                  i:0,
-                  title: 'child',
-                  esCheck:true,
-                  children: []
-                },
-              ]
-            },
-          ]
-        },
-        {
-          i:0,
-          title: 'another_grandparent',
-          esCheck:true,
-          children: [
-            {
-              i:0,
-              title: 'parent',
-              esCheck:true,
-              children: [
-                {
-                  i:0,
-                  title: 'child',
-                  esCheck:true,
-                  children: []
-                },
-                {
-                  i:0,
-                  title: 'another_child',
-                  esCheck:true,
-                  children: []
-                },
-                {
-                  i:0,
-                  title: 'a third_child',
-                  esCheck:true,
-                  children: []
-                },
-                {
-                  i:0,
-                  title: 'teen_mother',
-                  esCheck:true,
-                  children: [
-                    {
-                      i:0,
-                      title: 'accident',
-                      esCheck:true,
-                      children: []
-                    },
-                  ]
-                },
-              ]
-            },
-          ]
-        },
-      ]
-    },
-  ];
 }
 
