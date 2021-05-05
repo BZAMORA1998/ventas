@@ -2,13 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 declare var $:any;
 
-export interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
-
 @Component({
   selector: 'app-checkbox-recursive-rol',
   templateUrl: './checkbox-recursive-rol.component.html',
@@ -20,39 +13,7 @@ export class CheckboxRecursiveRolComponent implements OnInit {
 
   }
 
-  task: Task = {
-    name: 'Indeterminate',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      {name: 'Primary', completed: false, color: 'primary'},
-      {name: 'Accent', completed: false, color: 'accent'},
-      {name: 'Warn', completed: false, color: 'warn'}
-    ]
-  };
-
-  allComplete: boolean = false;
-
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-  }
-
-  someComplete(): boolean {
-    if (this.task.subtasks == null) {
-      return false;
-    }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
-  }
-
-  setAll(completed: boolean) {
-    this.allComplete = completed;
-    if (this.task.subtasks == null) {
-      return;
-    }
-    this.task.subtasks.forEach(t => t.completed = completed);
-  }
-
-  public isCheck(valor,i){
+  public isCheckImg(valor,i){
     $(document).ready(function(){  
       console.log(`#check-${valor}-${i+1}`);
       if($(`#check-${valor}-${i}`).css('display') == 'none'){
@@ -67,44 +28,76 @@ export class CheckboxRecursiveRolComponent implements OnInit {
      });
   }
 
+  a:number;
+  public chequearTodo(value):any{
+     this.list.forEach(b => {
+       this.a=this.a+1;
+
+       if(b.children=[]){ 
+          b.children=this.chequearTodo(value);
+       }
+     });
+
+  }
+
   // its just list data from here down
   public list = [
     {
+      i:0,
       title: 'great_grandparent',
+      esCheck:true,
       children: [
         {
+          i:0,
           title: 'childless_grandsibiling',
+          esCheck:true,
           children: []
         },
         {
+          i:0,
           title: 'grandparent',
+          esCheck:true,
           children: [
             {
+              i:0,
               title: 'childless_sibiling',
+              esCheck:true,
               children: []
             },
             {
+              i:0,
               title: 'another_childless_sibiling',
+              esCheck:true,
               children: []
             },
             {
+              i:0,
               title: 'parent',
+              esCheck:true,
               children: [
                 {
+                  i:0,
                   title: 'child',
+                  esCheck:true,
                   children: []
                 },
                 {
+                  i:0,
                   title: 'another_child',
+                  esCheck:true,
                   children: []
                 },
               ]
             },
             {
+              i:0,
               title: 'another_parent',
+              esCheck:true,
               children: [
                 {
+                  i:0,
                   title: 'child',
+                  esCheck:true,
                   children: []
                 },
               ]
@@ -112,28 +105,42 @@ export class CheckboxRecursiveRolComponent implements OnInit {
           ]
         },
         {
+          i:0,
           title: 'another_grandparent',
+          esCheck:true,
           children: [
             {
+              i:0,
               title: 'parent',
+              esCheck:true,
               children: [
                 {
+                  i:0,
                   title: 'child',
+                  esCheck:true,
                   children: []
                 },
                 {
+                  i:0,
                   title: 'another_child',
+                  esCheck:true,
                   children: []
                 },
                 {
+                  i:0,
                   title: 'a third_child',
+                  esCheck:true,
                   children: []
                 },
                 {
+                  i:0,
                   title: 'teen_mother',
+                  esCheck:true,
                   children: [
                     {
+                      i:0,
                       title: 'accident',
+                      esCheck:true,
                       children: []
                     },
                   ]
