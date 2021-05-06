@@ -30,6 +30,25 @@ export class CheckboxRecursiveRolComponent implements OnInit {
     );
   }
 
+  public clickCheckBox(secuencia){
+    this.data.forEach(e=>{
+      console.log("CodigoRuta: ",e.secuenciaRuta);
+      if( e.rutas.length>0){
+        e.rutas=this.recorrerLista(e.rutas);
+      }
+    });
+  }
+
+  public recorrerLista(rutas):any{
+    rutas.forEach(e=>{
+      console.log("CodigoRuta: ",e.secuenciaRuta);
+      if( e.rutas.length>0){
+         e.rutas=this.recorrerLista(e.rutas);
+      }
+    });
+    return rutas;
+  }
+
   public isCheckImg(valor,i){
     $(document).ready(function(){  
       console.log(`#check-${valor}-${i+1}`);

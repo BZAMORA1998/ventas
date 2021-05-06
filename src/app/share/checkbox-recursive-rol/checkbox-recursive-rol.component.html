@@ -12,9 +12,9 @@
           </div>    
         </div>
 
-        <input class="form-check-input"  [checked]="item.esSelect" type="checkbox" id="d-{{item.nombre}}-{{i+1}}">
+        <input (click)="clickCheckBox(item.secuenciaRuta)" class="form-check-input"  [checked]="item.esSelect" type="checkbox" id="d-{{item.nombre}}-{{i+1}}">
         <label class="form-check-label" for="d-{{item.nombre}}-{{i+1}}">
-          {{item.nombre}}
+          {{item.secuenciaRuta}}:{{item.description}}
         </label>
 
       </div>
