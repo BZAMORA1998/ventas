@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+declare var $:any;
 
 @Component({
   selector: 'app-roles',
@@ -15,6 +16,11 @@ export class RolesComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    
+    $(document).ready(function(){
+            $('.toast').toast();
+    });
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
