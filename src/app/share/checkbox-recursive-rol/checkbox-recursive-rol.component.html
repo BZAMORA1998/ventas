@@ -12,8 +12,8 @@
           </div>    
         </div>
 
-        <input (click)="clickCheckBox(item.secuenciaRuta)" class="form-check-input"  [checked]="item.esSelect" type="checkbox" id="d-{{item.nombre}}-{{i+1}}">
-        <label class="form-check-label" for="d-{{item.nombre}}-{{i+1}}">
+        <input  (click)='evento(item.id)' class="form-check-input {{item.id}}"  [checked]="item.esSelect" type="checkbox" id="d-{{item.id}}">
+        <label class="form-check-label" for="d-{{item.nombre}}-{{item.id}}">
           {{item.secuenciaRuta}}:{{item.description}}
         </label>
 
