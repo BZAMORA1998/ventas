@@ -33,33 +33,43 @@ export class CheckboxRecursiveRolComponent implements OnInit {
   }
 
   evento(id){
+    console.log(id);
     var check=false;
-    var esPadre=false;
+    var a;
+    var i=this.i
 
-    this.listPadre.forEach(element => {
-      if(element==id){
-        esPadre=true;
-      }
+    this.listI.forEach(element => {
+      a=element;
     });
 
     this.listI.forEach(element => {
-        $(document).ready(function(){  
-          console.log(element);
 
-            if(id<element && esPadre){
+      console.log("Hoooola",a);
+        $(document).ready(function(){  
+          if(id<element || id==a){ 
               if($(`#d-${id}`).prop("checked") == true){
                 check=true
               }else{
                 check=false
               }
-
-              do{
-  
+              
+              if(id==a){
+                do{
+                  console.log("dddd",i);
                   console.log(`#d-${id}`)
                   $(`#d-${id}`).prop( "checked", check );
                   id=id+1;
                 
-              }while(id<element);
+                 }while(id<=i);
+              }else{
+                do{
+    
+                  console.log(`#d-${id}`)
+                  $(`#d-${id}`).prop( "checked", check );
+                  id=id+1;
+                
+                 }while(id<element);
+              }
             } 
         });
     });
