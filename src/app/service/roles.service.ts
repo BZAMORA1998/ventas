@@ -8,8 +8,12 @@ import { ApiService } from './api.service';
 export class RolesService {
 
   constructor(private apiService: ApiService,private http: HttpClient){}
-
+  
   getConsultarRolesPorUsuario() {
+    return this.apiService.ApiCallSpring("GET","/roles/usuario",null,null);
+  }
+
+  getConsultarRoles() {
     return this.apiService.ApiCallSpring("GET","/roles",null,null);
   }
   

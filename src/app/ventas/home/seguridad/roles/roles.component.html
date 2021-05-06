@@ -1,56 +1,67 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-8">
+            <h1 class="text-center">Roles</h1>
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
-            <mat-step [stepControl]="firstFormGroup" label="Lista de usuarios y sus roles">
-                <h1 class="text-center">Usuario por rol</h1>
+            <mat-step [stepControl]="firstFormGroup" label="Lista de roles">
+                <h1 class="text-center">Lista de roles</h1>
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <table class="table text-center">
                             <thead>
                               <tr>
                                 <th>#</th>
-                                <th>Usuario</th>
-                                <th>Roles</th>
+                                <th>Secuencia Rol</th>
+                                <th>Nombre Rol</th>
+                                <th>Abreviatura</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td >BZAMORA</td>
-                                <td ><div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="toast-header">
-                                      <strong class="mr-auto">Bootstrap</strong>
-                                      <small>11 mins ago</small>
-                                      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="toast-body">
-                                      Hello, world! This is a toast message.
-                                    </div>
-                                  </div></td>
+                              <tr *ngFor="let item of data2;index as i" (click)=" consultarUrlPorRol(item.secuenciaRol)">
+                                <td>{{i+1}}</td>
+                                <td>{{item.secuenciaRol}}</td>
+                                <td>{{item.descripcion | titlecase}}</td>
+                                <td>{{item.abreviatura | titlecase}}</td>
                               </tr>
+                            </tbody>
                           </table>
                     </div>
                 </div>
                 <h3><b>Privilegios</b></h3>
-                <app-checkbox-recursive-rol></app-checkbox-recursive-rol>
+                <ul>
+                    <ng-template #recursiveList let-data>
+                      <li *ngFor="let item of data ; index as i">
+                        <div class="form-inline">
+                        
+                          <div class="posionIco">
+                            <div *ngIf="item.rutas.length > 0">
+                                <img (click)="isCheckImg(item.nombre,i+1)" 
+                                id="img-{{item.nombre}}-{{i+1}}" 
+                                 width="10" height="10" 
+                                src="../../../assets/img/signo-menos.svg">
+                            </div>    
+                          </div>
+                  
+                          <input  (click)='evento(item.id)' class="form-check-input {{item.id}}"  [checked]="item.esSelect" type="checkbox" id="d-{{item.id}}">
+                          <label class="form-check-label" for="d-{{item.nombre}}-{{item.id}}">
+                            {{item.secuenciaRuta}}:{{item.description}}
+                          </label>
+                  
+                        </div>
+                  
+                         <ul *ngIf="item.rutas.length > 0" class="checkOculto" id="check-{{item.nombre}}-{{i+1}}">
+                           <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.rutas}"></ng-container>
+                         </ul>
+                         
+                      </li>
+                    </ng-template>
+                    
+                    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: data}"></ng-container>
+                  </ul>
+                  
+                  
             </mat-step>
             <mat-step [stepControl]="secondFormGroup" label="Crear un nuevo rol">
-                <form [formGroup]="secondFormGroup">
-                <mat-form-field>
-                    <mat-label>Crear un nuevo rol</mat-label>
-                    <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                            required>
-                </mat-form-field>
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
-                </div>
-                </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup" label="Actualizar rol">
                 <form [formGroup]="secondFormGroup">
                 <mat-form-field>
                     <mat-label>Crear un nuevo rol</mat-label>
