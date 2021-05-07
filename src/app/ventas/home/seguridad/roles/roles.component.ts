@@ -32,6 +32,17 @@ export class RolesComponent implements OnInit {
     });
   }
 
+  seleccionarTr(i){
+        console.log(i);
+    $(document).ready(function(){
+      $(`tr`).css("background-color","white")
+      .css("color","black");
+
+      $(`#tr-${i}`).css("background-color","#bdbdbd")
+                   .css("color","white");
+    });
+  }
+
   data2=[];
   consultarRoles(){
     this._rolesService.getConsultarRoles().subscribe(

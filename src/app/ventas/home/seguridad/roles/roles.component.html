@@ -17,7 +17,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let item of data2;index as i" (click)=" consultarUrlPorRol(item.secuenciaRol)">
+                              <tr id="tr-{{i+1}}" (click)="seleccionarTr(i+1)" *ngFor="let item of data2;index as i" (click)=" consultarUrlPorRol(item.secuenciaRol)">
                                 <td>{{i+1}}</td>
                                 <td>{{item.secuenciaRol}}</td>
                                 <td>{{item.descripcion | titlecase}}</td>
