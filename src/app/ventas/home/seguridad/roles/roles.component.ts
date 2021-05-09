@@ -15,6 +15,7 @@ export class RolesComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  nombre:String;
 
   constructor(private _formBuilder: FormBuilder,
     private _rolesService:RolesService,
@@ -22,12 +23,38 @@ export class RolesComponent implements OnInit {
 
   ngOnInit() {
     this.consultarRoles();
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    // this.firstFormGroup = this._formBuilder.group({
+    //   firstCtrl: ['', Validators.required]
+    // });
+    // this.secondFormGroup = this._formBuilder.group({
+    //   secondCtrl: ['', Validators.required]
+    // });
+  }
+
+  postRol(){
+    this.sweetalert2Component.loading(true);
+    this._rolesService.postRol(this.nombre).subscribe(
+      response=>{
+        this.sweetalert2Component.loading(false);
+        this.consultarRoles();
+      },
+      error=>{
+        console.log(error.error.message);
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalError(error.error.message);
+      }
+    );
+  }
+
+  validaSiEsVacion(){
+    console.log(" Nombre",this.nombre);
+    if(this.nombre!=""){
+      console.log("Si");
+      $("#aceptar").prop('disabled', false);
+    }else{
+      console.log("No");
+      $("#aceptar").prop('disabled', true);
+    }
   }
 
   secuenciaRol=0
@@ -68,7 +95,7 @@ export class RolesComponent implements OnInit {
         this.data2=response['data'];
       },
       error=>{
-        console.log(error);
+        console.log(error.error.message);
       }
 
     );

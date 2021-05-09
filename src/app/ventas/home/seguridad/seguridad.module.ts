@@ -6,7 +6,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RolesComponent } from './roles/roles.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShareModule } from 'src/app/share/share.module';
 
 
@@ -18,7 +18,10 @@ import { ShareModule } from 'src/app/share/share.module';
     MatStepperModule,
     MatInputModule,
     ReactiveFormsModule,
-    ShareModule
+    ShareModule,
+    FormsModule,
+    CommonModule,
+    FormsModule  
   ]
 })
 export class SeguridadModule { }
