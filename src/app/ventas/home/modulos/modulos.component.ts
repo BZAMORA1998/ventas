@@ -50,6 +50,7 @@ export class ModulosComponent implements OnInit {
           this.data=Response['data'];
       },
       Error=>{
+        console.log(Error);
         this.sweetalert2Component.showModalError(Error.message);
       }
     );

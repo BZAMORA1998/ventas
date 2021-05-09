@@ -27,8 +27,11 @@
                           </table>
                     </div>
                 </div>
-                <h3><b>Privilegios</b></h3>
-                <ul>
+                <div class="justify-content-between top-2">
+                  <h3 class="inline"><b>Privilegios</b></h3>
+                  <button type="button" id="guardar" class="btn btn-primary inline float-right"></button>
+                </div>
+                <ul class="top-2">
                     <ng-template #recursiveList let-data>
                       <li *ngFor="let item of data ; index as i">
                         <div class="form-inline">
