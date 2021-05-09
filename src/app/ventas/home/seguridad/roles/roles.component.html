@@ -4,10 +4,10 @@
             <h1 class="text-center">Roles</h1>
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
             <mat-step [stepControl]="firstFormGroup" label="Lista de roles">
-                <h1 class="text-center">Lista de roles</h1>
+                <h1 class="text-center top-2">Lista de roles</h1>
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <table class="table text-center">
+                        <table class="table text-center top-2">
                             <thead>
                               <tr>
                                 <th>#</th>
@@ -17,7 +17,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr id="tr-{{i+1}}" (click)="seleccionarTr(i+1)" *ngFor="let item of data2;index as i" (click)=" consultarUrlPorRol(item.secuenciaRol)">
+                              <tr id="tr-{{i+1}}" (click)="seleccionarTr(i+1,item.secuenciaRol)" *ngFor="let item of data2;index as i" (click)=" consultarUrlPorRol(item.secuenciaRol)">
                                 <td>{{i+1}}</td>
                                 <td>{{item.secuenciaRol}}</td>
                                 <td>{{item.descripcion | titlecase}}</td>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="justify-content-between top-2">
                   <h3 class="inline"><b>Privilegios</b></h3>
-                  <button type="button" id="guardar" class="btn btn-primary inline float-right"></button>
+                  <button type="button" id="guardar" (click)="guardar()" class="btn btn-primary inline float-right"></button>
                 </div>
                 <ul class="top-2">
                     <ng-template #recursiveList let-data>
@@ -45,7 +45,7 @@
                             </div>    
                           </div>
                   
-                          <input  (click)='evento(item.id)' class="form-check-input {{item.id}}"  [checked]="item.esSelect" type="checkbox" id="d-{{item.id}}">
+                          <input (change)="check(item.secuenciaRuta)" class="form-check-input {{item.id}}" [checked]="item.esSelect" type="checkbox" id="d-{{item.id}}">
                           <label class="form-check-label" for="d-{{item.nombre}}-{{item.id}}">
                             {{item.secuenciaRuta}}:{{item.description}}
                           </label>

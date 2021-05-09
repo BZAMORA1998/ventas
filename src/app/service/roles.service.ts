@@ -6,6 +6,11 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class RolesService {
+  postGuardarRutasPorRol(secuenciaRol, data) {
+    var json = JSON.stringify(data);
+    console.log("JSON",json);
+    return this.apiService.ApiCallSpring("PUT","/roles/ruta/usuario/"+secuenciaRol,json,null);
+  }
 
   constructor(private apiService: ApiService,private http: HttpClient){}
   
