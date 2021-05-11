@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GeneralService } from 'src/app/service/general.service';
 import { RolesService } from 'src/app/service/roles.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
 declare var $:any;
@@ -8,7 +9,7 @@ declare var $:any;
   selector: 'app-roles',
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.css'],
-  providers:[RolesService]
+  providers:[RolesService,GeneralService]
 })
 export class RolesComponent implements OnInit {
 
@@ -19,10 +20,12 @@ export class RolesComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
     private _rolesService:RolesService,
+    private _generalService: GeneralService,
     private sweetalert2Component:Sweetalert2Component,) {}
 
   ngOnInit() {
     this.consultarRoles();
+    this.getModulos();
     // this.firstFormGroup = this._formBuilder.group({
     //   firstCtrl: ['', Validators.required]
     // });
@@ -45,6 +48,23 @@ export class RolesComponent implements OnInit {
       }
     );
   }
+
+    /**
+     * @author Bryan Zamora
+     * @description Genero
+     */
+    modulos=[];
+    getModulos(){
+      this._generalService.getModulos().subscribe(
+          Response=>{
+            this.modulos=Response.data;
+            console.log(Response.data);
+          },
+          error=>{
+            console.log(error.error.message);
+          }
+      ); 
+    }
 
   validaSiEsVacion(){
     console.log(" Nombre",this.nombre);
@@ -70,6 +90,7 @@ export class RolesComponent implements OnInit {
     });
   }
 
+  secuenciaModul:Number;
   postGuardarRutasPorRol(){
     this.sweetalert2Component.loading(true);
     this._rolesService.postGuardarRutasPorRol(this.secuenciaRol,this.dataGuardar).subscribe(

@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class GeneralService{
+  getModulos() {
+    return this.apiService.ApiCallNodeJS("GET","/general/modulos",null,null);
+  }
   getConsultarEdad(fechaNacimiento: string) {
     return this.apiService.ApiCallSpring("GET",`/general/calcularEdad?fechaNacimiento=${fechaNacimiento}`,null,null);
   }
