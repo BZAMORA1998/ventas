@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  // apiUrlSpring:"https://sistemas-ventas-api.herokuapp.com/ventas/v1",
-  apiUrlNodeJS:"https://com-general-api.herokuapp.com",
+  apiUrlSpring:"https://sistemas-ventas-api.herokuapp.com/ventas/v1",
+  apiUrlNodeJS:"https://sistema-general-api.herokuapp.com",
   // apiUrlNodeJS:"http://localhost:9090",
-  apiUrlSpring:"http://localhost:8080/ventas/v1",
+ // apiUrlSpring:"http://localhost:8080/ventas/v1",
  // token:"Bearer "+JSON.parse(localStorage.getItem("token")),
   languaje:"es"
 };

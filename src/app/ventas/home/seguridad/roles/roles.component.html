@@ -69,7 +69,7 @@
                       <div class="form-group">
                         <label for="formGroupExampleInput">Nombre de rol</label>
                         <input  (change)="validaSiEsVacion()" type="text" 
-                        class="form-control" id="formGroupExampleInput" placeholder="Example input"
+                        class="form-control" id="formGroupExampleInput" placeholder="Nombre de rol"
                         name="nombreRol" #nombreRol="ngModel" [(ngModel)]="nombre">
                       </div>
                       <div class="form-group">
@@ -78,6 +78,17 @@
                         disabled>Guardar</button>
                       </div>
                     </form>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Nombre de rol</label>
+                      <select class="custom-select">
+                        <option selected>Seleccionar</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
                   </div>
               </div>
 

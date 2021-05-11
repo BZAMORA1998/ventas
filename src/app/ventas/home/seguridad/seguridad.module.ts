@@ -20,8 +20,7 @@ import { ShareModule } from 'src/app/share/share.module';
     ReactiveFormsModule,
     ShareModule,
     FormsModule,
-    CommonModule,
-    FormsModule  
+    CommonModule
   ]
 })
 export class SeguridadModule { }
