@@ -71,6 +71,7 @@
                 <th>Email</th>
                 <th>Usuario</th>
                 <th>Estado</th>
+                <th>Roles</th>
               </tr>
             </thead>
             <tbody>
@@ -83,7 +84,37 @@
                  <td ><div class="form-check form-switch">
                   <input type="checkbox" class="form-check-input" id="customSwitch-{{i}}" [checked]="d.estado" (change)="activarOInactivarUsuario(d.secuenciaUsuario)">
                   <label class="form-check-label" for="customSwitch-{{i}}"></label>
-                </div></td>
+                </div>
+              </td>
+              <td >
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button"  class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#exampleModalScrollable-'+(i+1)"> -->
+                  <img src="../../../../../../assets/img/plus.svg" width="25" height="25"
+                  data-toggle="modal" [attr.data-target]="'#exampleModalScrollable-'+(i+1)">
+                <!-- </button> -->
+
+              <!-- Modal -->
+              <div class="modal" id="exampleModalScrollable-{{i+1}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenteredLabel">{{d.usuario}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      {{d.usuario}}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </td>
               </tr>
           </table>
           <app-paginador *ngIf="mostrarPag" [totalDatos]="totalRows" [datosPorpagina]="perPage" (paginaSeleccionada)="getpaginacion($event)"></app-paginador>
