@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/service/general.service';
+import { RolesService } from 'src/app/service/roles.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
 declare var $:any;
@@ -9,13 +10,14 @@ declare var $:any;
   selector: 'app-listar-ususarios',
   templateUrl: './listar-ususarios.component.html',
   styleUrls: ['./listar-ususarios.component.css'],
-  providers:[UsuarioService,GeneralService]
+  providers:[UsuarioService,GeneralService,RolesService]
 })
 export class ListarUsusariosComponent implements OnInit {
 
   constructor(private _usuarioService:UsuarioService,
     private sweetalert2Component:Sweetalert2Component,
-    private _generalService:GeneralService) { }
+    private _generalService:GeneralService,
+    private _rolesService:RolesService) { }
 
   public data=[
     {
@@ -86,6 +88,19 @@ listarUsuario(){
       if(this.data.length>=this.perPage || this.page!=1){
         this.mostrarPag=true;
       }
+    },
+    error=>{
+      console.log(error.error.message);
+    }
+  ); 
+}
+
+dataRolNOUsuario=[];
+listarRolNoUsuario(secuenciaUsuario){
+  this._rolesService.getConsultarRolesPorNoUsuario(secuenciaUsuario).subscribe(
+    Response=>{
+      console.log(Response);
+      this.dataRolNOUsuario=Response['data'];
     },
     error=>{
       console.log(error.error.message);

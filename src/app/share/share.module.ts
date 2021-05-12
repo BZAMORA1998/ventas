@@ -51,9 +51,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { ChipsComponent } from './chips/chips.component';
 
 @NgModule({
-  declarations: [Sweetalert2Component,PaginadorComponent, TablePaginationComponent, UsuariosCAComponent],
+  declarations: 
+  [Sweetalert2Component,
+    PaginadorComponent, 
+    TablePaginationComponent, 
+    UsuariosCAComponent, 
+    ChipsComponent],
   imports: [
     CommonModule,
     NgbPaginationModule,    
@@ -111,13 +117,15 @@ import {OverlayModule} from '@angular/cdk/overlay';
     Sweetalert2Component,
     PaginadorComponent,
     TablePaginationComponent,
-    UsuariosCAComponent
+    UsuariosCAComponent,
+    ChipsComponent
   ],
   exports:[
     Sweetalert2Component,
     PaginadorComponent,
     TablePaginationComponent,
-    UsuariosCAComponent
+    UsuariosCAComponent,
+    ChipsComponent
   ]
 })
 export class ShareModule { }

@@ -24,6 +24,10 @@ export class RolesService {
     return this.apiService.ApiCallSpring("GET","/roles/usuario",null,null);
   }
 
+  getConsultarRolesPorNoUsuario(idUsuario) {
+    return this.apiService.ApiCallSpring("GET",`/roles/noUsuario/${idUsuario}`,null,null);
+  }
+
   getConsultarRoles() {
     return this.apiService.ApiCallSpring("GET","/roles",null,null);
   }
