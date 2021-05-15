@@ -105,19 +105,19 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <h5 class="w-100 text-left">Roles a asignar</h5>
+                      <h5 class="w-100 text-left">Roles por asignar</h5>
                       <div class="form-check">
-                        <div class="form-check form-check-inline" *ngFor="let a of d.noRoles">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="a.secuenciaRol">
-                            <label class="form-check-label" for="inlineCheckbox1">{{a.nombre}}</label>
+                        <div class="form-check form-check-inline" *ngFor="let a of d.noRoles;index as j">
+                            <input class="form-check-input checkboxRol" type="checkbox" id="inlineCheckbox-{{j+1}}" value="{{a.secuenciaRol}}">
+                            <label class="form-check-label" for="inlineCheckbox-{{i+1}}">{{a.nombre}}</label>
                         </div>
                         <hr>
                       </div>
-                      <app-chips [cabecera]="'Roles'" [data]="d.roles"></app-chips>
+                      <app-chips (dataEliminado)="dataEliminado($event)" [cabecera]="'Roles asignados'" [data]="d.roles"></app-chips>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                      <button (click)="guardar()"  type="button" class="btn btn-primary">Guardar Cambios</button>
                     </div>
                   </div>
                 </div>

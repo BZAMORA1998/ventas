@@ -78,6 +78,15 @@ estadoUsuario(){
   this.listarUsuario();
 }
 
+guardar(){
+  console.log(this.rolesElimnado);
+  $(document).ready(function() {
+    $(".checkboxRol:checked").each(function() {
+      console.log($(this).val());
+    });
+  });
+}
+
 listarUsuario(){
   this._usuarioService.getConsultaUsuario(this.page,this.perPage,this.valor,this.estado).subscribe(
     Response=>{
@@ -106,6 +115,12 @@ listarRolNoUsuario(secuenciaUsuario){
       console.log(error.error.message);
     }
   ); 
+}
+
+rolesElimnado=[];
+dataEliminado(data){
+  console.log(data);
+  this.rolesElimnado=data;
 }
 
 activarOInactivarUsuario(secuenciaUsuario){

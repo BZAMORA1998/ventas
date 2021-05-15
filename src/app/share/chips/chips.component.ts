@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
@@ -10,9 +10,10 @@ export class ChipsComponent implements OnInit  {
 
   @Input() data=[];
   @Input() cabecera;
+  @Output() dataEliminado = new EventEmitter<any>();
   
   ngOnInit(): void {
-    
+
   }
   
   visible = true;
@@ -38,9 +39,10 @@ export class ChipsComponent implements OnInit  {
 
   remove(data): void {
     const index = this.data.indexOf(data);
-
+   
     if (index >= 0) {
       this.data.splice(index, 1);
+      this.dataEliminado.emit(this.data);
     }
   }
 

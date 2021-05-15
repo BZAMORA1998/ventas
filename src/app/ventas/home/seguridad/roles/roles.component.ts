@@ -84,13 +84,13 @@ export class RolesComponent implements OnInit {
     this.secuenciaRol=secuenciaRol;
         console.log(i);
     $(document).ready(function(){
-      $(`tr`).css("background-color","white")
+      $('tr').css("background-color","white")
       .css("color","black");
 
       $(`#tr-${i}`).css("background-color","#bdbdbd")
                    .css("color","white");
     });
-  }
+   }
 
   postGuardarRutasPorRol(){
     this.sweetalert2Component.loading(true);
@@ -126,11 +126,13 @@ export class RolesComponent implements OnInit {
 
   /*-------------------------------------------------------------*/
   data=[];
+  aparecerUrl:Boolean=false;
   public consultarUrlPorRol(idRol){
     this._rolesService.getConsultarRutasPorRol(idRol).subscribe(
       response=>{
         console.log("data: ",response['data']);
         this.data=response['data'];
+        this.aparecerUrl=true;
       },
       error=>{
         console.log(error);
