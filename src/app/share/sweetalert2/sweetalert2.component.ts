@@ -62,7 +62,9 @@ export class Sweetalert2Component implements OnInit {
       showConfirmButton: true,
     }).then((result) => {
       if (result.value) {
-        this.redirigir(url);
+        if(url!=null){
+         this.redirigir(url);
+        }
       }
      });
   }

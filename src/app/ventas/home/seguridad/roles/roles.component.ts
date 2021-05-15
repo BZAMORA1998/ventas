@@ -34,17 +34,19 @@ export class RolesComponent implements OnInit {
     // });
   }
 
+  secuenciaModul:Number;
   postRol(){
     this.sweetalert2Component.loading(true);
-    this._rolesService.postRol(this.nombre).subscribe(
+    this._rolesService.postRol(this.nombre,this.secuenciaModul).subscribe(
       response=>{
         this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalConfirmacion(response.message,null);
         this.consultarRoles();
       },
       error=>{
-        console.log(error.error.message);
+        console.log(error);
         this.sweetalert2Component.loading(false);
-        this.sweetalert2Component.showModalError(error.error.message);
+        this.sweetalert2Component.showModalError(error);
       }
     );
   }
@@ -90,7 +92,6 @@ export class RolesComponent implements OnInit {
     });
   }
 
-  secuenciaModul:Number;
   postGuardarRutasPorRol(){
     this.sweetalert2Component.loading(true);
     this._rolesService.postGuardarRutasPorRol(this.secuenciaRol,this.dataGuardar).subscribe(

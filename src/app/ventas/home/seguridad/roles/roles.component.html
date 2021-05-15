@@ -81,10 +81,10 @@
                   </div>
                   <div class="col-4">
                       <div class="form-group">
-                          <label for="formGroupExampleInput">Tipo de Identificación</label>
+                          <label for="formGroupExampleInput">Módulo</label>
                           <select class="custom-select" name="secuenciaModulo"  #secuenciaModulo="ngModel"  [(ngModel)]="secuenciaModul" ngControl="t.secuenciaModulo">
                               <option [selected] ="true">Seleccionar</option>
-                              <option [value]="t.secuenciaModulo==1" *ngFor="let t of modulos" >{{t.nombre | titlecase}}</option>
+                              <option [value]="t.secuenciaModulo" *ngFor="let t of modulos" >{{t.nombre | titlecase}}</option>
                           </select>
                       </div>
                   </div>
