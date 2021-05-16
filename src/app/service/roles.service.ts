@@ -20,6 +20,12 @@ export class RolesService {
     return this.apiService.ApiCallSpring("PUT","/roles/ruta/usuario/"+secuenciaRol,json,null);
   }
 
+  postGuardarUsuarioPorRol(secuenciaUsuario, data) {
+    var json = JSON.stringify(data);
+    console.log("JSON",json);
+    return this.apiService.ApiCallSpring("PUT",`/roles/usuario/${secuenciaUsuario}`,json,null);
+  }
+
   constructor(private apiService: ApiService,private http: HttpClient){}
   
   getConsultarRolesPorUsuario() {

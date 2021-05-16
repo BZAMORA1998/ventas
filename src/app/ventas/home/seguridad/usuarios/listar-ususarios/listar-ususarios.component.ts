@@ -78,13 +78,27 @@ estadoUsuario(){
   this.listarUsuario();
 }
 
-guardar(){
-  console.log(this.rolesElimnado);
-  $(document).ready(function() {
-    $(".checkboxRol:checked").each(function() {
-      console.log($(this).val());
-    });
+guardar(idUsuario){
+  var data=[];
+  $(".checkboxRol:checked").each(function() {
+    data.push($(this).val());
   });
+  console.log(data);
+  this.putGuardarRolesPorUsuario(idUsuario,data);
+}
+putGuardarRolesPorUsuario(idUsuario: any, data: any[]) {
+  this.sweetalert2Component.loading(true);
+  this._rolesService.postGuardarUsuarioPorRol(idUsuario,data).subscribe(
+    Response=>{
+      //this.listarUsuario();
+      this.sweetalert2Component.loading(false);
+    },
+    error=>{
+      console.log(error.error.message);
+      this.sweetalert2Component.loading(false);
+      this.sweetalert2Component.showModalError(error.error.message);
+    }
+  ); 
 }
 
 listarUsuario(){

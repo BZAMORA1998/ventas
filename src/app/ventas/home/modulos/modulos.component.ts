@@ -51,7 +51,7 @@ export class ModulosComponent implements OnInit {
       },
       Error=>{
         console.log(Error);
-        this.sweetalert2Component.showModalError(Error.message);
+        this.sweetalert2Component.showModalError(Error.error.message);
       }
     );
   }
