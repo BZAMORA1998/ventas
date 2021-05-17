@@ -5,3 +5,12 @@
 img{
     cursor: pointer;
 }
+
+.inline{
+    display: inline;
+}
+
+.roles{
+    margin-bottom: 30px; 
+    height: 30px; 
+}

@@ -48,4 +48,8 @@ export class RolesService {
     return this.apiService.ApiCallSpring("GET",`/roles/ruta/usuario/${idRol}`,null,null);
   }
 
+  getConsultarRolesPorUsuarioTodo(idPaciente) {
+    return this.apiService.ApiCallSpring("GET",`/roles/usuario/${idPaciente}`,null,null);
+  }
+
 }

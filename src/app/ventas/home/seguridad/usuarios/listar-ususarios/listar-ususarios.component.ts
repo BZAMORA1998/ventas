@@ -19,40 +19,11 @@ export class ListarUsusariosComponent implements OnInit {
     private _generalService:GeneralService,
     private _rolesService:RolesService) { }
 
-  public data=[
-    {
-        numeroIdentificacion: "",
-        primerNombre: "",
-        segundoNombre: "",
-        primerApellido: "",
-        segundoApellido: "",
-        usuario: "",
-        fechaNacimiento: null,
-        codigoTipoIdentificacion: null,
-        codigoGenero: null,
-        secuenciaUsuarioSistema: 0,
-        esActivo:"S"
-    }];
+  public data=[]
 
-  public dataAct={
-    numeroIdentificacion: "",
-    primerNombre: "",
-    segundoNombre: "",
-    primerApellido: "",
-    segundoApellido: "",
-    secuenciaTipoIdentificacion: 0,
-    secuenciaGenero: 0,
-    fechaNacimiento:null,
-    usuario:"",
-    secuenciaUsuarioSistema:0,
-    rolSistema:""
+  ngOnInit(): void {
+    this.listarUsuario();
   }
-
-  public data2:any;
-ngOnInit(): void {
-  this.data=null;
-  this.listarUsuario();
-}
 
 getpaginacion(page){
   this.page=page;
@@ -83,14 +54,13 @@ guardar(idUsuario){
   $(".checkboxRol:checked").each(function() {
     data.push($(this).val());
   });
-  console.log(data);
   this.putGuardarRolesPorUsuario(idUsuario,data);
 }
 putGuardarRolesPorUsuario(idUsuario: any, data: any[]) {
   this.sweetalert2Component.loading(true);
   this._rolesService.postGuardarUsuarioPorRol(idUsuario,data).subscribe(
     Response=>{
-      //this.listarUsuario();
+      //this.getConsultaRolPorUsuarioTodos(idUsuario);
       this.sweetalert2Component.loading(false);
     },
     error=>{
@@ -99,6 +69,22 @@ putGuardarRolesPorUsuario(idUsuario: any, data: any[]) {
       this.sweetalert2Component.showModalError(error.error.message);
     }
   ); 
+}
+
+getConsultaRolPorUsuarioTodos(idUsuario){
+  this._rolesService.getConsultarRolesPorUsuarioTodo(idUsuario).subscribe(
+    Response=>{
+      this.data.forEach(e=>{
+          if(e.secuenciaUsuario==idUsuario){
+            console.log(this.data);
+            e.roles=Response['data'];
+          }
+      });
+    },
+    error=>{
+      console.log(error.error.message);
+    }
+  );
 }
 
 listarUsuario(){

@@ -105,10 +105,18 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <h5 class="w-100 text-left">Roles por asignar</h5>
+                     
+                      <div class="roles">
+                        <h5 class="w-25 inline float-left">Roles</h5>
+                        <img class="w-25 inline float-right"src="../../../../../../assets/img/recargar.svg" width="25" height="25"
+                        data-toggle="modal" (click)="getConsultaRolPorUsuarioTodos(d.secuenciaUsuario)">
+                      </div>
+
                       <div class="form-check">
                         <div class="form-check form-check-inline" *ngFor="let a of d.roles;index as j">
-                            <input class="form-check-input checkboxRol" [checked]="a.esSelect==true" type="checkbox" id="inlineCheckbox-{{j+1}}" value="{{a.secuenciaRol}}">
+                            <input class="form-check-input checkboxRol" 
+                            [checked]="a.esSelect==true" type="checkbox" 
+                            id="inlineCheckbox-{{j+1}}" value="{{a.secuenciaRol}}">
                             <label class="form-check-label" for="inlineCheckbox-{{i+1}}">{{a.nombre}}</label>
                         </div>
                         <hr>
