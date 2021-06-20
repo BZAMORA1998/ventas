@@ -1,33 +1,38 @@
-<div class="container-fluid">
-    <div id="mySidebar" class="sidebar">
-        <div class="card justify-content-center" id="card-perfil">
-          <img class="card-img-top" id="marco-img" [src]="data.photo" alt="Card image">
-          <div class="card-body">
-            <h4 class="card-title p-0 m-0"><p class="ml-2">Nombre: {{data.primerNombre | titlecase}} {{data.primerApellido | titlecase}}</p></h4>
-            <h4 class="card-title p-0 m-0"><p class="ml-2">Usuario: {{data.usuario | titlecase}}</p></h4>
+<nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
+
+  <img id="img-home" src="../../../assets/img/ventas.svg" width="30" height="30">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+    <ul class="navbar-nav mr-auto w-100 position-relative">
+      <li class="nav-item active flex-grow-1">
+        <a class="nav-link" [routerLink]="['./modulos']">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{data.usuario}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="card">
+            <div class="d-flex flex-row justify-content-center">
+              <img id="img-home" src="../../../assets/img/user_icon-icons.com_57997.svg" width="40" height="50">
+              <div class="d-flex flex-column">
+                  <p>{{data.primerNombre |  titlecase}}</p>
+                  <p>{{data.primerApellido |  titlecase}}</p>
+              </div>
+            </div>
           </div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/login']">Cerrar Sesión</a>
         </div>
-      <hr style="background-color: white;">
-      <br>
-      <nav class="navbar navbar-expand-lg w-100">
-          <ul class="navbar-nav w-100 p-0">
-            <li class="nav-item dropdown w-100 p-0 mb-2">
-              <a class="nav-link  w-100 a-principal" [routerLink]="['./modulos']" href="#" role="button">
-                Modulos
-              </a>
-            </li>
-          </ul>
-      </nav>
-    </div>
-    
-    <div id="main" class="border-2">
-      <div class="d-flex" id="menu-principal">
-        <div class="p-2 mr-auto"> <button class="openbtn" (click)=" openOclose(true)">☰</button></div>
-        <div class="p-2 float-right"><a><img class="pointer mt-2"width="20" height="20" src="../../../assets/img/configuraciones.svg"></a></div>
-        <div class="p-2"><a [routerLink]="['/login']"><img class="pointer mt-2" width="20" height="20" src="../../../assets/img/boton-de-encendido-apagado.svg"></a></div>
-      </div>
-      <hr>  
-      <router-outlet></router-outlet>
-    </div>
-</div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+ 
 

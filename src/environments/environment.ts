@@ -4,19 +4,10 @@
 
 export const environment = {
   production: false,
- // apiUrlSpring:"https://sistemas-ventas-api.herokuapp.com/ventas/v1",
+  apiUrlSpring:"https://sistemas-seguridad-api.herokuapp.com/ventas/v1",
   apiUrlNodeJS:"https://sistema-general-api.herokuapp.com",
   //apiUrlNodeJS:"http://localhost:9090",
-  apiUrlSpring:"http://localhost:8080/ventas/v1",
- // token:"Bearer "+JSON.parse(localStorage.getItem("token")),
+  //apiUrlSpring:"http://localhost:8080/ventas/v1",
   languaje:"es"
 };
 
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.

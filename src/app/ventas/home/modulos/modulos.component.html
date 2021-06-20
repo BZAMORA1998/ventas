@@ -1,15 +1,17 @@
 <div class="container-fluid">
-    <h1 class="text-center mt-5">Módulos</h1>
-    <div class="d-flex flex-row justify-content-center text-center align-self-center">
-        <div *ngFor="let d of data" class="p-2 size-15" >
-            <div class="card" [routerLink]="[d.url]">
-              <h4 class="card-title">{{d.nombre}}</h4>
-              <div class="card-body">
-                <p class="card-text text-center align-self-center">
-                  <img width="100" height="100" src="../../../assets/img//group.svg">
-                </p>
-              </div>
+  <div class="modulo">
+        <h1 class="text-center">Módulos</h1>
+        <div class="d-flex flex-row justify-content-center text-center">
+            <div *ngFor="let d of data" class="p-2 size-15" >
+                <div class="card" [routerLink]="[d.url]">
+                  <h4 class="card-title">{{d.nombre}}</h4>
+                  <div class="card-body">
+                    <p class="card-text text-center align-self-center">
+                      <img width="100" height="100" src="../../../assets/img//group.svg">
+                    </p>
+                  </div>
+                </div>
             </div>
         </div>
-    </div>
+  </div>
 </div>

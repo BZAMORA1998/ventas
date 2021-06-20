@@ -20,28 +20,4 @@ export class HomeComponent implements OnInit {
     else
       this.data.photo="../../../assets/img/user_icon-icons.com_57997.svg";
   }
-
-
-  booOpen=false;
-  openOclose(booOpen){
-    if(this.booOpen!=booOpen){
-      this.openNav();
-      this.booOpen=true;
-    }else{
-      this.closeNav();
-      this.booOpen=false;
-    }
-  }
-  openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    document.getElementById("menu-principal").style.width = "82%";
-  }
-  
-  closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.getElementById("menu-principal").style.width = "100%";
-  }
-
 }

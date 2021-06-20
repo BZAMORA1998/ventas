@@ -25,6 +25,32 @@
                           </table>
                     </div>
                 </div>
+                <div class="row">
+                  <div class="col-4">
+                    <form >
+                      <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre de rol</label>
+                        <input  (change)="validaSiEsVacion()" type="text" 
+                        class="form-control" id="formGroupExampleInput" placeholder="Nombre de rol"
+                        name="nombreRol" #nombreRol="ngModel" [(ngModel)]="nombre">
+                      </div>
+                      <div class="form-group">
+                        <button id="aceptar"
+                        (click)="postRol()" type="button" class="btn btn-primary"
+                        disabled>Guardar</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-4">
+                      <div class="form-group">
+                          <label for="formGroupExampleInput">Módulo</label>
+                          <select class="custom-select" name="secuenciaModulo"  #secuenciaModulo="ngModel"  [(ngModel)]="secuenciaModul" ngControl="t.secuenciaModulo">
+                              <option [selected] ="true">Seleccionar</option>
+                              <option [value]="t.secuenciaModulo" *ngFor="let t of modulos" >{{t.nombre | titlecase}}</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
                 <div class="justify-content-between top-2">
                   <h3 class="inline"><b>Privilegios</b></h3>
                   <button type="button" id="guardar" (click)="guardar()" class="btn btn-primary inline float-right"></button>
@@ -89,28 +115,6 @@
                       </div>
                   </div>
               </div>
-              <h1 class="text-center">Lista de roles</h1>
-              <div class="row align-content-center justify-content-center">
-                  <div class="col-10">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Nombre del rol</th>
-                          <th>Módulo</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Seguridad</td>
-                          <td>Seguridad</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-
             </mat-step>
          </mat-horizontal-stepper>            
         </div>

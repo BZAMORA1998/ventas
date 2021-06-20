@@ -1,3 +1,8 @@
+.container-fluid{
+    position: relative;
+    padding-top: 10%;
+}
+
 .img-size{
     width:10px;
     text-align: center;
