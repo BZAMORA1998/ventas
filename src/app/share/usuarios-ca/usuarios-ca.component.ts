@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { GeneralService } from 'src/app/service/general.service';
@@ -20,6 +20,7 @@ export class UsuariosCAComponent implements OnInit {
   crearOActualizarUsuario(){
     this.valueResponse.emit(this.data);
   }
+
   constructor(
     private _generalService:GeneralService,
     private _usuarioService:UsuarioService,
@@ -34,6 +35,12 @@ export class UsuariosCAComponent implements OnInit {
         this.getConsultarUsuarioDisponible();
     
       console.log(this.data);
+   }
+
+   ngOnChanges(){
+    if(this.data.secuenciaPais!=null && this.data.secuenciaPais!=0){
+      this.getProvincia();
+    }
    }
 
    consultarEdad(){
@@ -62,8 +69,9 @@ export class UsuariosCAComponent implements OnInit {
    }
 
    photo:File=null;
-  data=
+   @Input() data=
     {
+      secuenciaUsuario:0,
       primerNombre:"",
       primerApellido:"",
       segundoNombre:"",
@@ -76,9 +84,11 @@ export class UsuariosCAComponent implements OnInit {
       secuenciaPais:0,
       secuenciaProvincia:0,
       secuenciaCiudad:0,
-      secuenciaRol:2,
       email:"",
-      edad:""
+      edad:"",
+      telefonoMovil:"",
+      telefonoFijo:"",
+      direccion:""
   }
 
   ngOnInit(): void {
@@ -201,6 +211,7 @@ export class UsuariosCAComponent implements OnInit {
           Response=>{
             this.provincia=Response.data;
             console.log(Response.data);
+            this.getCiudad();
           },
           error=>{
             console.log(error.error.message);

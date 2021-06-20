@@ -1,3 +1,6 @@
+.container-fluid{
+  padding-top: 150px;
+}
 .inline{
   display: inline;
 }
@@ -11,6 +14,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px 30px;
+}
+.img-clean{
+  margin-top: 30px;
 }
 
 .top-2{

@@ -24,6 +24,35 @@ export class ListarUsusariosComponent implements OnInit {
   ngOnInit(): void {
     this.listarUsuario();
   }
+  actualizarUsuario(data){
+      console.log("Actualizar ",data);
+      this.sweetalert2Component.loading(true);
+      this._usuarioService.putActualizarUsuario(data).subscribe(
+        Response=>{
+          this.dataUsuarioId=Response.data;
+          console.log(Response.data);
+          this.sweetalert2Component.showModalConfirmacion(Response.message,null);
+        },
+        error=>{
+          console.log(error.error.message);
+          this.sweetalert2Component.loading(false);
+          this.sweetalert2Component.showModalError(error.error.message);
+        }
+      ); 
+  }
+
+  dataUsuarioId=[];
+  getUsuarioXId(idUsuario){
+    this._usuarioService.getUsuarioXId(idUsuario).subscribe(
+      Response=>{
+        this.dataUsuarioId=Response.data;
+        console.log(Response.data);
+      },
+      error=>{
+        console.log(error.error.message);
+      }
+    ); 
+   }
 
 getpaginacion(page){
   this.page=page;

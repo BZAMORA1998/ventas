@@ -28,15 +28,7 @@
       </form>
     </div>
     <div class="p-2 align-self-center" >
-      <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Crear Usuario
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Empleado registrado</a>
-          <a class="dropdown-item" [routerLink]="['../crear-usuario']">Empleado no registrado</a>
-        </div>
-      </div>
+      <a [routerLink]="['../crear-usuario']"><img width="40" height="40" src="../../../../../../assets/img/follow.svg"></a>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -72,6 +64,7 @@
                 <th>Usuario</th>
                 <th>Estado</th>
                 <th>Roles</th>
+                <th>Actualizar</th>
               </tr>
             </thead>
             <tbody>
@@ -126,6 +119,34 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                       <button (click)="guardar(d.secuenciaUsuario)"  type="button" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </td>
+              <td >
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button"  class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#exampleModalScrollable-'+(i+1)"> -->
+                  <img (click)="getUsuarioXId(d.secuenciaUsuario)" src="../../../../../../assets/img/update-profile-user.svg" width="25" height="25"
+                  data-toggle="modal" [attr.data-target]="'#exampleModalScrollable1-'+(i+1)">
+                <!-- </button> -->
+
+              <!-- Modal -->
+              <div class="modal actualizar-usu" id="exampleModalScrollable1-{{i+1}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5>Actualizar Usuario</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <app-usuarios-ca (valueResponse)="actualizarUsuario($event)" [data]="dataUsuarioId"></app-usuarios-ca>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                   </div>
                 </div>

@@ -40,8 +40,8 @@ export class UsuarioService {
       return this.apiService.ApiCallSpring("POST","/usuarios/cambioContrasena",objcontrasenia,null);
     }
 
-    putActualizarUsuario(idUsuario,user):Observable<any>{
-      return this.apiService.ApiCallSpring("PUT",`/usuarios/${idUsuario}/actualizarUsuario`,user,null);
+    putActualizarUsuario(user):Observable<any>{
+      return this.apiService.ApiCallSpring("PUT",`/usuarios/actualizarUsuario`,user,null);
     }
 
     getConsultaUsuario(page,perPage,valor,estado):Observable<any>{

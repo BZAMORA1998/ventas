@@ -26,12 +26,6 @@ export class RolesComponent implements OnInit {
   ngOnInit() {
     this.consultarRoles();
     this.getModulos();
-    // this.firstFormGroup = this._formBuilder.group({
-    //   firstCtrl: ['', Validators.required]
-    // });
-    // this.secondFormGroup = this._formBuilder.group({
-    //   secondCtrl: ['', Validators.required]
-    // });
   }
 
   secuenciaModul:Number;
@@ -218,5 +212,19 @@ export class RolesComponent implements OnInit {
         console.log("Salio");
       }
      });
+  }
+
+  datosRol(item){
+    console.log("Modulos: ", this.modulos);
+    this.modulos.forEach(e=>{
+      if(e.esSelect==item.esSelect){
+        console.log("Entro");
+        e.esSelect=true;
+      }else{
+        console.log("Salio");
+        e.esSelect=false;
+      }
+    });
+    console.log("Item: ",item);
   }
 }
