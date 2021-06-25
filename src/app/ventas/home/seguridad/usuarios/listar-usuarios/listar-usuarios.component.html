@@ -66,6 +66,7 @@
                       <th>Estado</th>
                       <th>Roles</th>
                       <th>Actualizar</th>
+                      <th>Eliminar</th>
                     </tr>
                   </thead>
                  
@@ -154,6 +155,9 @@
                             </div>
                           </div>
                         </div>
+                        </td>
+                        <td matTooltip="Eliminar usuario"><img src="../../../../../../assets/img/eliminar.svg" width="25" height="25"
+                          data-toggle="modal" (click)="deleteEliminarUsuario(d.secuenciaUsuario)">
                         </td>
                         </tr>
                     </ng-template>

@@ -7,6 +7,10 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class UsuarioService {
+  
+  eliminarUsuario(secuenciaUsuario: any) {
+    return this.apiService.ApiCallSpring("DELETE",`/usuarios/${secuenciaUsuario}/eliminarUsuario`,null,null);
+  }
   putActivarOInactivarUsuario(secuenciaUsuario: any) {
     return this.apiService.ApiCallSpring("PUT",`/usuarios/activarOInactivarUsuario/${secuenciaUsuario}`,null,null);
   }

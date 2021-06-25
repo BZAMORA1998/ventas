@@ -144,4 +144,24 @@ activarOInactivarUsuario(secuenciaUsuario){
     }
   ); 
 }
+
+/**
+ * @author Bryan Zamora
+ * @param secuenciaUsuario 
+ * @description Elimina el usuario
+ */
+  deleteEliminarUsuario(secuenciaUsuario){ 
+    this.sweetalert2Component.loading(true);
+    this._usuarioService.eliminarUsuario(secuenciaUsuario).subscribe(
+      Response=>{
+        this.listarUsuario();
+        this.sweetalert2Component.loading(false);
+      },
+      error=>{
+        console.log(error.error.message);
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalError(error.error.message);
+      }
+    ); 
+  }
 }
