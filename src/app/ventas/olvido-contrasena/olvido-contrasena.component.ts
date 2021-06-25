@@ -20,7 +20,11 @@ export class OlvidoContrasenaComponent implements OnInit {
 
   correo:any="";
 
-  validaSiEsVacion(){
+  /**
+   * @description: Si el campo es null desabilita el input correo
+   * @author: Bryan Zamora
+   */
+  validaSiEsVacio(){
     if(this.correo!=""){
       console.log("Si");
       $("#aceptar").prop('disabled', false);
@@ -30,6 +34,10 @@ export class OlvidoContrasenaComponent implements OnInit {
     }
   }
 
+  /**
+   * @description: Hace el envio de la nueva contraseña al correo
+   * @author: Bryan Zamora
+   */
   recuperarContrasena(){
     this.sweetalert2Component.loading(true);
     this._usuarioService.postRecuperarContrasena(this.correo).subscribe(

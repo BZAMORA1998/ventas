@@ -19,21 +19,21 @@ export class CrearUsuarioComponent implements OnInit {
   public activeLang =JSON.parse(localStorage.getItem("languaje"));
 
   constructor(
-    private _generalService:GeneralService,
     private _usuarioService:UsuarioService,
-    private sweetalert2Component:Sweetalert2Component,
-    private _datePipe: DatePipe,
-    private translate: TranslateService,
-
+    private sweetalert2Component:Sweetalert2Component
   ) {
-    this.translate.setDefaultLang(environment.languaje);
+   
    }
-   photo:File=null;
-  
+
   ngOnInit(): void {
-    this.sweetalert2Component.showModalConfirmacion("OK","../ventas/home/seguridad/usuarios/listar-usuarios");
   }
   
+
+  /**
+   * @author Bryan Zamora
+   * @description Crea el usuario
+   * @param data 
+   */
   crearUsuario(data){
       this.sweetalert2Component.loading(true);
       this._usuarioService.postCrearUsuario(data).subscribe(

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import {Sweetalert2Component} from '../../share/sweetalert2/sweetalert2.component'
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
@@ -17,29 +17,16 @@ export class LoginComponent implements OnInit {
   public activeLang:string;
   
   constructor(
-    private _route:ActivatedRoute,
     private _router:Router,
     private sweetalert2Component:Sweetalert2Component,
     private translate: TranslateService,
-    private auth: AuthService,
-    
+    private auth: AuthService 
   ) { 
 
   }
-  
-  //   /**
-  //  * @author Bryan Zamora
-  //  * @description  Captura el evento del input select para cambiar el idioma.
-  //  **/
-  // public cambiarLenguaje(lang) {
-  //   this.translate.use(lang);
-  //   localStorage.setItem("languaje",JSON.stringify(lang));
-  // }
-
-
-    
-    typeInputF="password";
-    showPF:boolean=true;
+      
+   typeInputF="password";
+   showPF:boolean=true;
     mostrarPassword(){
   
       if(this.typeInputF=="text"){
@@ -71,7 +58,6 @@ export class LoginComponent implements OnInit {
     this.auth.loginP(this.usuario,this.contrasena).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
-          console.log(Response);
           if(Response['data'].esContrasenaPrimeraVez==null || Response['data'].esContrasenaPrimeraVez==false){
              this._router.navigate(['../ventas/home']);
           }else{

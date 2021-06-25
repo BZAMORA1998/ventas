@@ -19,6 +19,10 @@ export class CambiarContrasenaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   /**
+   * @author Bryan Zamora
+   * @description Valida el ojito de la contraseña
+   */
   typeInputF1="password";
   showPF1:boolean=true;
   contrasena1:any="";
@@ -33,6 +37,10 @@ export class CambiarContrasenaComponent implements OnInit {
     }
   }
 
+     /**
+   * @author Bryan Zamora
+   * @description Valida el ojito de la contraseña
+   */
   typeInputF2="password";
   showPF2:boolean=true;
   contrasena2:any="";
@@ -47,17 +55,25 @@ export class CambiarContrasenaComponent implements OnInit {
     }
   }
 
+  /**
+   * @author Bryan Zamora
+   * @description Compara las contraseña y valida si no son iguales para 
+   * habilitar el boton de envio de contraseña
+   */
   compararContrasena(){
     if(this.contrasena2!="" && this.contrasena1!=""
      && this.contrasena2==this.contrasena1){
-      console.log("Si");
       $("#aceptar").prop('disabled', false);
     }else{
-      console.log("No");
       $("#aceptar").prop('disabled', true);
     }
   }
 
+   /**
+   * @author Bryan Zamora
+   * @description Cambia la contraseña
+   * 
+   */
   cambiarContrasena(){
     this.sweetalert2Component.loading(true);
     this._usuarioService.postCambiarContrasena(this.contrasena1).subscribe(

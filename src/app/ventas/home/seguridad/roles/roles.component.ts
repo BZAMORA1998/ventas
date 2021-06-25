@@ -28,6 +28,10 @@ export class RolesComponent implements OnInit {
     this.getModulos();
   }
 
+     /**
+   * @author Bryan Zamora
+   * @description Guarda el rol por modulo
+   */
   secuenciaModul:Number;
   postRol(){
     this.sweetalert2Component.loading(true);
@@ -47,14 +51,13 @@ export class RolesComponent implements OnInit {
 
     /**
      * @author Bryan Zamora
-     * @description Genero
+     * @description Consulta los modulos
      */
     modulos=[];
     getModulos(){
       this._generalService.getModulos().subscribe(
           Response=>{
             this.modulos=Response.data;
-            console.log(Response.data);
           },
           error=>{
             console.log(error.error.message);
@@ -62,13 +65,15 @@ export class RolesComponent implements OnInit {
       ); 
     }
 
-  validaSiEsVacion(){
-    console.log(" Nombre",this.nombre);
+
+   /**
+   * @author Bryan Zamora
+   * @description valida si el campo nombre esta vacio para habilitar el boton
+   */
+  validaSiEsVacio(){
     if(this.nombre!=""){
-      console.log("Si");
       $("#aceptar").prop('disabled', false);
     }else{
-      console.log("No");
       $("#aceptar").prop('disabled', true);
     }
   }
@@ -117,8 +122,6 @@ export class RolesComponent implements OnInit {
     );
   }
 
-
-  /*-------------------------------------------------------------*/
   data=[];
   aparecerUrl:Boolean=false;
   public consultarUrlPorRol(idRol){
@@ -147,7 +150,6 @@ export class RolesComponent implements OnInit {
       }
 
     });
-    console.log("Data Param: ",this.dataGuardar);
     this.postGuardarRutasPorRol();
   }
 
@@ -205,26 +207,20 @@ export class RolesComponent implements OnInit {
       if($(`#check-${valor}-${i}`).css('display') == 'none'){
         $(`#check-${valor}-${i}`).show();
         $(`#img-${valor}-${i}`).attr("src","../../../assets/img/signo-menos.svg");
-        console.log("Entro");
       }else{
         $(`#check-${valor}-${i}`).hide();
         $(`#img-${valor}-${i}`).attr("src","../../../assets/img/mas.svg");
-        console.log("Salio");
       }
      });
   }
 
   datosRol(item){
-    console.log("Modulos: ", this.modulos);
     this.modulos.forEach(e=>{
       if(e.esSelect==item.esSelect){
-        console.log("Entro");
         e.esSelect=true;
       }else{
-        console.log("Salio");
         e.esSelect=false;
       }
     });
-    console.log("Item: ",item);
   }
 }

@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService,
               private router:Router,
               private _rolesService:RolesService
-              ){  console.log("Url Completa: ",this.router.url);
+              ){  
               }
 
   rolesUsu=[];
@@ -28,14 +28,6 @@ export class AuthGuard implements CanActivate {
 
         return  this._rolesService.getConsultarRolesPorUsuario().map(Response => {
             this.rolesUsu=Response['data'];
-
-            console.log(this.rolesUsu);
-            console.log("Roles: ",route.data.roles);
-            console.log("Url: ",route.url[0].path);
-
-            console.log("Rutas: ", this.rolesRut);
-            console.log("USUARIO: ", this.rolesUsu);
-            console.log("Entro",this.auth.estaAutenticado());
             if(this.auth.estaAutenticado()){
               this.entro=false;
               this.rolesUsu.forEach(a => {

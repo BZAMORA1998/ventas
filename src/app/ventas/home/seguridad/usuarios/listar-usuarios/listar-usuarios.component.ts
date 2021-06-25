@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/service/general.service';
 import { RolesService } from 'src/app/service/roles.service';
@@ -22,7 +21,6 @@ export class ListarUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarUsuario();
-
   }
   actualizarUsuario(data){
       this.sweetalert2Component.loading(true);
@@ -86,7 +84,6 @@ putGuardarRolesPorUsuario(idUsuario: any, data: any[]) {
   this.sweetalert2Component.loading(true);
   this._rolesService.postGuardarUsuarioPorRol(idUsuario,data).subscribe(
     Response=>{
-      //this.getConsultaRolPorUsuarioTodos(idUsuario);
       this.sweetalert2Component.loading(false);
     },
     error=>{
@@ -113,12 +110,15 @@ getConsultaRolPorUsuarioTodos(idUsuario){
   );
 }
 
+/**
+ * @author Bryan Zamora
+ * @description Consulta la lista de usuarios
+ */
 listarUsuario(){
   this._usuarioService.getConsultaUsuario(this.page,this.perPage,this.valor,this.estado).subscribe(
     Response=>{
       this.mostrarPag=false;
       this.data=Response["data"].rows;
-      console.log(this.data);
       this.totalRows=Response["data"].totalRows;
       if(this.data.length>=this.perPage || this.page!=1){
         this.mostrarPag=true;
@@ -130,30 +130,14 @@ listarUsuario(){
   ); 
 }
 
-dataRolNOUsuario=[];
-listarRolNoUsuario(secuenciaUsuario){
-  this._rolesService.getConsultarRolesPorNoUsuario(secuenciaUsuario).subscribe(
-    Response=>{
-      console.log(Response);
-      this.dataRolNOUsuario=Response['data'];
-    },
-    error=>{
-      console.log(error.error.message);
-    }
-  ); 
-}
-
-rolesElimnado=[];
-dataEliminado(data){
-  console.log(data);
-  this.rolesElimnado=data;
-}
-
+/**
+ * @author Bryan Zamora
+ * @description Activa o inactiva el usuario
+ */
 activarOInactivarUsuario(secuenciaUsuario){
   this._usuarioService.putActivarOInactivarUsuario(secuenciaUsuario).subscribe(
     Response=>{
       this.listarUsuario();
-      console.log("Ok");
     },
     error=>{
       console.log(error.error.message);

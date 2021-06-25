@@ -14,20 +14,14 @@ export class TokenService {
  token(){
 
    var data = JSON.parse(localStorage.getItem('data'));
-   console.log("token1: ",data['token']);
    var token=this.parseJwt(data['token']);
    var exp=new Date(1000*token.exp);
 
-   console.log(exp);
-   console.log(new Date());
-   
    if(exp<=new Date()){
        this.getRefreshToken(data['token']).subscribe(
            Response=>{
-              console.log("RenovarToken: ",Response);
               data['token']=Response['data'].token;
               localStorage.setItem('data',JSON.stringify(data)); 
-              console.log("token2: ",data['token']); 
            },
            error=>{
              console.log("Error: ",error.error);

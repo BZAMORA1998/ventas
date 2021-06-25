@@ -8,7 +8,7 @@
                 <form>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Email o Usuario</label>
-                        <input (change)="validaSiEsVacion()" type="text" class="form-control" id="formGroupExampleInput" placeholder="Email o Usuario" name="email" #email="ngModel" [(ngModel)]="correo" required>
+                        <input (change)="validaSiEsVacio()" type="text" class="form-control" id="formGroupExampleInput" placeholder="Email o Usuario" name="email" #email="ngModel" [(ngModel)]="correo" required>
                       </div>
                     <div class="form-group ">
                         <button (click)="recuperarContrasena()" id="aceptar" matTooltip="Info about the action" type="submit" class="btn btn-info w-100">Enviar Contraseña</button>
