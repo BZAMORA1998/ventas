@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { SeguridadRoutingModule } from './seguridad-routing.module';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RolesComponent } from './roles/roles.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShareModule } from 'src/app/share/share.module';
 
 
@@ -16,6 +17,7 @@ import { ShareModule } from 'src/app/share/share.module';
     SeguridadRoutingModule,
     MatStepperModule,
     MatInputModule,
+    ReactiveFormsModule,
     ShareModule,
     FormsModule,
     CommonModule
