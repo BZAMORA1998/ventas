@@ -7,12 +7,11 @@ import { FormsModule} from '@angular/forms';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ModulosComponent } from './modulos/modulos.component';
 import { SeguridadComponent } from './seguridad/seguridad.component';
-import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { ProductosComponent } from './productos/productos.component';
 
 
 @NgModule({
-  declarations: [ModulosComponent,SeguridadComponent, ProveedoresComponent, ProductosComponent],
+  declarations: [ModulosComponent,SeguridadComponent,ProductosComponent],
   imports: [
     CommonModule,
      HomeRoutingModule,

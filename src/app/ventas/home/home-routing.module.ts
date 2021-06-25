@@ -4,7 +4,6 @@ import { AuthGuard } from 'src/app/service/auth.guard';
 import { HomeComponent } from './home.component';
 import { ModulosComponent } from './modulos/modulos.component';
 import { ProductosComponent } from './productos/productos.component';
-import { ProveedoresComponent } from './proveedores/proveedores.component';
 
 const routes: Routes = [
   {
@@ -17,10 +16,8 @@ const routes: Routes = [
       },
       { 
         path: 'productos',  component: ProductosComponent,canActivate:[AuthGuard]
-      },
-      { 
-        path: 'proveedores',  component: ProveedoresComponent,canActivate:[AuthGuard]
-      },
+      }
+      ,
       {
         path: '', redirectTo: 'modulos'
       },

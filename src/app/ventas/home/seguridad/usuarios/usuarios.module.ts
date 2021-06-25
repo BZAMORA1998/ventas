@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ListarUsusariosComponent } from './listar-ususarios/listar-ususarios.component';
+import { ListarUsuariosComponent } from './listar-usuarios/listar-usuarios.component';
 import { ShareModule } from 'src/app/share/share.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
@@ -17,12 +17,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { PruebaComponent } from './prueba/prueba.component';
 
 
 
 @NgModule({
-  declarations: [CrearUsuarioComponent, ListarUsusariosComponent, PruebaComponent],
+  declarations: [CrearUsuarioComponent, ListarUsuariosComponent],
   imports: [
     CommonModule,
     UsuariosRoutingModule, 

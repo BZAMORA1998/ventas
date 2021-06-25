@@ -7,30 +7,28 @@ import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.comp
 declare var $:any;
 
 @Component({
-  selector: 'app-listar-ususarios',
-  templateUrl: './listar-ususarios.component.html',
-  styleUrls: ['./listar-ususarios.component.css'],
+  selector: 'app-listar-usuarios',
+  templateUrl: './listar-usuarios.component.html',
+  styleUrls: ['./listar-usuarios.component.css'],
   providers:[UsuarioService,GeneralService,RolesService]
 })
-export class ListarUsusariosComponent implements OnInit {
+export class ListarUsuariosComponent implements OnInit {
 
   constructor(private _usuarioService:UsuarioService,
     private sweetalert2Component:Sweetalert2Component,
-    private _generalService:GeneralService,
     private _rolesService:RolesService) { }
 
-  public data=[]
+  public data=null;
 
   ngOnInit(): void {
     this.listarUsuario();
+
   }
   actualizarUsuario(data){
-      console.log("Actualizar ",data);
       this.sweetalert2Component.loading(true);
       this._usuarioService.putActualizarUsuario(data).subscribe(
         Response=>{
           this.dataUsuarioId=Response.data;
-          console.log(Response.data);
           this.sweetalert2Component.showModalConfirmacion(Response.message,null);
         },
         error=>{
@@ -46,7 +44,6 @@ export class ListarUsusariosComponent implements OnInit {
     this._usuarioService.getUsuarioXId(idUsuario).subscribe(
       Response=>{
         this.dataUsuarioId=Response.data;
-        console.log(Response.data);
       },
       error=>{
         console.log(error.error.message);

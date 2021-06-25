@@ -83,7 +83,7 @@
                       <div class="form-group">
                           <label for="formGroupExampleInput">Módulo</label>
                           <select class="custom-select" name="secuenciaModulo"  #secuenciaModulo="ngModel"  [(ngModel)]="secuenciaModul" ngControl="t.secuenciaModulo">
-                              <option [selected] ="true">Seleccionar</option>
+                              <option selected >Seleccionar</option>
                               <option [value]="t.secuenciaModulo" [selected] ="t.esSelect" *ngFor="let t of modulos" >{{t.nombre | titlecase}}</option>
                           </select>
                       </div>

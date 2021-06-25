@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +16,6 @@ import Swal from 'sweetalert2';
 export class Sweetalert2Component implements OnInit {
 
   constructor(
-    private _route:ActivatedRoute,
     private _router:Router
   ) { 
   }
@@ -70,9 +70,6 @@ export class Sweetalert2Component implements OnInit {
   }
 
   public redirigir(url){
-    setTimeout(()=>{
-      window.location.reload();
-    }, 100);
     return this._router.navigate([url]);
   }
 

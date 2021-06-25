@@ -1,7 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { GeneralService } from 'src/app/service/general.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
@@ -32,38 +31,7 @@ export class CrearUsuarioComponent implements OnInit {
    photo:File=null;
   
   ngOnInit(): void {
-    
-  }
-
- 
-  /*
-  * Crooper 
-  * Link: https://www.npmjs.com/package/ngx-image-cropper
-  */
-  imageChangedEvent: any = '';
-  croppedImage: any = '../../../../assets/img/user_icon-icons.com_57997.svg';
-  selectedFiles: FileList;
-  currentFileUpload: File;
-  fileChangeEvent(event): void {
-      this.imageChangedEvent = event;
-      $(document).ready(function(){
-        ($('#exampleModalScrollable') as any).modal('show');
-      });
-      this.selectedFiles=event.target.files; 
-      this.currentFileUpload=this.selectedFiles.item(0);
-  }
-  imageCropped(event: ImageCroppedEvent) {
-      this.croppedImage = event.base64;
-      console.log("this.croppedImage",this.croppedImage);
-  }
-  imageLoaded(image: HTMLImageElement) {
-     
-  }
-  cropperReady() {
-      // cropper ready
-  }
-  loadImageFailed() {
-      // show message
+    this.sweetalert2Component.showModalConfirmacion("OK","../ventas/home/seguridad/usuarios/listar-usuarios");
   }
   
   crearUsuario(data){
@@ -71,7 +39,6 @@ export class CrearUsuarioComponent implements OnInit {
       this._usuarioService.postCrearUsuario(data).subscribe(
         Response=>{
           this.sweetalert2Component.loading(false);
-         // this.postPhoto(this.currentFileUpload,Response.data.secuenciaPersona);
           this.sweetalert2Component.showModalConfirmacion(Response.message,"../ventas/home/seguridad/usuarios/listar-usuarios");
         },
         error=>{
