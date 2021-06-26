@@ -15,7 +15,7 @@ const routes: Routes = [
         path: 'modulos',  component: ModulosComponent
       },
       { 
-        path: 'productos',  component: ProductosComponent,canActivate:[AuthGuard]
+        path: 'productos',  component: ProductosComponent,//canActivate:[AuthGuard]
       }
       ,
       {

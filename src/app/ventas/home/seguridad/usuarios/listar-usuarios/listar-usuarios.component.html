@@ -133,28 +133,9 @@
                           <!-- Button trigger modal -->
                           <!-- <button type="button"  class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#exampleModalScrollable-'+(i+1)"> -->
                             <img (click)="getUsuarioXId(d.secuenciaUsuario)" src="../../../../../../assets/img/update-profile-user.svg" width="25" height="25"
-                            data-toggle="modal" [attr.data-target]="'#exampleModalScrollable1-'+(i+1)">
+                            data-toggle="modal" data-target="#actualizarUsuario">
                           <!-- </button> -->
 
-                        <!-- Modal -->
-                        <div class="modal actualizar-usu" id="exampleModalScrollable1-{{i+1}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel1" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-scrollable" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5>Actualizar Usuario</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">×</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <app-usuarios-ca (valueResponse)="actualizarUsuario($event)" [data]="dataUsuarioId"></app-usuarios-ca>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                         </td>
                         <td matTooltip="Eliminar usuario"><img src="../../../../../../assets/img/eliminar.svg" width="25" height="25"
                           data-toggle="modal" (click)="deleteEliminarUsuario(d.secuenciaUsuario)">
@@ -170,4 +151,25 @@
         </ng-template>
         <br><br>
     </div>
+</div>
+
+
+ <!-- Modal -->
+ <div class="modal actualizar-usu" id="actualizarUsuario" tabindex="-1" role="dialog" aria-labelledby="actualizarUsuario" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Actualizar Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-usuarios-ca (valueResponse)="actualizarUsuario($event)" [data]="dataUsuarioId"></app-usuarios-ca>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

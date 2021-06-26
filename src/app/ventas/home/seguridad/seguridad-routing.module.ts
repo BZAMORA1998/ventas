@@ -10,7 +10,7 @@ const routes: Routes = [
   {
      path: '', component: SeguridadComponent, children: [
       { 
-          path: 'usuarios',loadChildren:()=> import('./usuarios/usuarios.module').then(m => m.UsuariosModule)
+          path: 'usuarios',loadChildren:()=> import('./usuarios/usuarios.module').then(m => m.UsuariosModule),canActivate:[AuthGuard]
       },
       { 
         path: 'roles',component: RolesComponent,canActivate:[AuthGuard]

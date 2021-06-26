@@ -91,6 +91,11 @@ export class RolesComponent implements OnInit {
     });
    }
 
+
+   /**
+   * @author Bryan Zamora
+   * @description guarda las rutas por rol
+   */
   postGuardarRutasPorRol(){
     this.sweetalert2Component.loading(true);
     this._rolesService.postGuardarRutasPorRol(this.secuenciaRol,this.dataGuardar).subscribe(
@@ -108,12 +113,29 @@ export class RolesComponent implements OnInit {
   }
   
 
-  data2=[];
+  public page:Number=1;
+  public perPage:Number=3;
+  public totalRows:Number=0;
+  public mostrarPag:Boolean=false;
+  getpaginacion(page){
+    this.page=page;
+    this.consultarRoles();
+  }
+
+  /**
+   * @author Bryan Zamora
+   * @description Consultar roles
+   */
+  data2=null;
   consultarRoles(){
-    this._rolesService.getConsultarRoles().subscribe(
-      response=>{
-        console.log(response);
-        this.data2=response['data'];
+    this._rolesService.getConsultarRoles(this.page,this.perPage).subscribe(
+      Response=>{
+        this.mostrarPag=false;
+        this.data2=Response["data"].rows;
+        this.totalRows=Response["data"].totalRows;
+        if(this.data2.length>=this.perPage || this.page!=1){
+          this.mostrarPag=true;
+        }
       },
       error=>{
         console.log(error.error.message);
@@ -212,15 +234,5 @@ export class RolesComponent implements OnInit {
         $(`#img-${valor}-${i}`).attr("src","../../../assets/img/mas.svg");
       }
      });
-  }
-
-  datosRol(item){
-    this.modulos.forEach(e=>{
-      if(e.esSelect==item.esSelect){
-        e.esSelect=true;
-      }else{
-        e.esSelect=false;
-      }
-    });
   }
 }

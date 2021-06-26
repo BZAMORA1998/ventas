@@ -8,6 +8,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShareModule } from 'src/app/share/share.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ShareModule } from 'src/app/share/share.module';
     ReactiveFormsModule,
     ShareModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    MatTooltipModule,
+    NgxSkeletonLoaderModule.forRoot(),
   ]
 })
 export class SeguridadModule { }
