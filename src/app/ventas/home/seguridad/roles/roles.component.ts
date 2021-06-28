@@ -16,7 +16,6 @@ export class RolesComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  nombre:String;
 
   constructor(private _formBuilder: FormBuilder,
     private _rolesService:RolesService,
@@ -28,6 +27,26 @@ export class RolesComponent implements OnInit {
     this.getModulos();
   }
 
+  /**
+   * @author Bryan Zamora
+   * @description Elimina el rol
+   */
+  eliminarRol(secuenciaRol){
+    this.sweetalert2Component.loading(true);
+    this._rolesService.eliminarRol(secuenciaRol).subscribe(
+      response=>{
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalConfirmacion(response.message,null);
+        this.consultarRoles();
+      },
+      error=>{
+        console.log(error);
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalError(error.error.message);
+      }
+    );
+  }
+
      /**
    * @author Bryan Zamora
    * @description Guarda el rol por modulo
@@ -35,7 +54,7 @@ export class RolesComponent implements OnInit {
   secuenciaModul:Number;
   postRol(){
     this.sweetalert2Component.loading(true);
-    this._rolesService.postRol(this.nombre,this.secuenciaModul).subscribe(
+    this._rolesService.postRol(this.nombreC,this.secuenciaModul).subscribe(
       response=>{
         this.sweetalert2Component.loading(false);
         this.sweetalert2Component.showModalConfirmacion(response.message,null);
@@ -49,11 +68,53 @@ export class RolesComponent implements OnInit {
     );
   }
 
+
+
+  /**
+   * @author Bryan Zamora
+   * @description Consulta rol id
+   */
+  dataRolId={
+    secuenciaRol:0,
+    nombre:"",
+    secuenciaModulo:0
+  };
+  getRolId(secuenciaRol){
+    this._rolesService.getRolId(secuenciaRol).subscribe(
+      response=>{
+        this.dataRolId=response['data'];
+        this.validaSiEsVacio('A');
+      },
+      error=>{
+        console.log(error.error.message);
+      }
+
+    );
+  }
+
+  putRol(){
+    this.sweetalert2Component.loading(true);
+    this._rolesService.putRol(this.dataRolId).subscribe(
+      response=>{
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalConfirmacion(response.message,null);
+      },
+      error=>{
+        console.log(error.error.message);
+        this.sweetalert2Component.loading(false);
+        this.sweetalert2Component.showModalError(error.error.message);
+      }
+
+    );
+  }
+
     /**
      * @author Bryan Zamora
      * @description Consulta los modulos
      */
-    modulos=[];
+    modulos=[{
+      secuenciaModulo:0
+    }];
     getModulos(){
       this._generalService.getModulos().subscribe(
           Response=>{
@@ -70,11 +131,21 @@ export class RolesComponent implements OnInit {
    * @author Bryan Zamora
    * @description valida si el campo nombre esta vacio para habilitar el boton
    */
-  validaSiEsVacio(){
-    if(this.nombre!=""){
-      $("#aceptar").prop('disabled', false);
+    nombreC:String;
+  validaSiEsVacio(text){
+
+    if(text=='A'){
+        if(this.dataRolId.nombre!=""){
+          $("#aceptarA").prop('disabled', false);
+        }else{
+          $("#aceptarA").prop('disabled', true);
+        }
     }else{
-      $("#aceptar").prop('disabled', true);
+      if(this.nombreC!=""){
+        $("#aceptarC").prop('disabled', false);
+      }else{
+        $("#aceptarC").prop('disabled', true);
+      }
     }
   }
 
@@ -100,7 +171,6 @@ export class RolesComponent implements OnInit {
     this.sweetalert2Component.loading(true);
     this._rolesService.postGuardarRutasPorRol(this.secuenciaRol,this.dataGuardar).subscribe(
       response=>{
-        console.log(response);
         this.sweetalert2Component.loading(false);
         this.consultarUrlPorRol(this.secuenciaRol);
       },
@@ -126,14 +196,14 @@ export class RolesComponent implements OnInit {
    * @author Bryan Zamora
    * @description Consultar roles
    */
-  data2=null;
+  dataRol=null;
   consultarRoles(){
     this._rolesService.getConsultarRoles(this.page,this.perPage).subscribe(
       Response=>{
         this.mostrarPag=false;
-        this.data2=Response["data"].rows;
+        this.dataRol=Response["data"].rows;
         this.totalRows=Response["data"].totalRows;
-        if(this.data2.length>=this.perPage || this.page!=1){
+        if(this.dataRol.length>=this.perPage || this.page!=1){
           this.mostrarPag=true;
         }
       },
