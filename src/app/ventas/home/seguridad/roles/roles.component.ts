@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/service/general.service';
 import { RolesService } from 'src/app/service/roles.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
+import Swal from 'sweetalert2';
 declare var $:any;
 
 @Component({
@@ -31,20 +32,33 @@ export class RolesComponent implements OnInit {
    * @author Bryan Zamora
    * @description Elimina el rol
    */
-  eliminarRol(secuenciaRol){
-    this.sweetalert2Component.loading(true);
-    this._rolesService.eliminarRol(secuenciaRol).subscribe(
-      response=>{
-        this.sweetalert2Component.loading(false);
-        this.sweetalert2Component.showModalConfirmacion(response.message,null);
-        this.consultarRoles();
-      },
-      error=>{
-        console.log(error);
-        this.sweetalert2Component.loading(false);
-        this.sweetalert2Component.showModalError(error.error.message);
+  eliminarRol(secuenciaRol,nombre){
+
+    Swal.fire({
+      title: "Está seguro que desea eliminar el rol "+nombre+".",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this._rolesService.eliminarRol(secuenciaRol).subscribe(
+          response=>{
+            Swal.fire(
+              'Eliminado!',
+              "Se ha eliminado el rol "+nombre+" con exito.",
+              'success'
+            )
+            this.consultarRoles();
+          },
+          error=>{
+            this.sweetalert2Component.showModalError(error.error.message);
+          }
+        );
       }
-    );
+    })
   }
 
      /**
@@ -61,9 +75,8 @@ export class RolesComponent implements OnInit {
         this.consultarRoles();
       },
       error=>{
-        console.log(error);
         this.sweetalert2Component.loading(false);
-        this.sweetalert2Component.showModalError(error);
+        this.sweetalert2Component.showModalError(error.error.message);
       }
     );
   }
@@ -98,6 +111,7 @@ export class RolesComponent implements OnInit {
       response=>{
         this.sweetalert2Component.loading(false);
         this.sweetalert2Component.showModalConfirmacion(response.message,null);
+        this.consultarRoles();
       },
       error=>{
         console.log(error.error.message);
@@ -152,7 +166,6 @@ export class RolesComponent implements OnInit {
   secuenciaRol=0
   seleccionarTr(i,secuenciaRol){
     this.secuenciaRol=secuenciaRol;
-        console.log(i);
     $(document).ready(function(){
       $('tr').css("background-color","white")
       .css("color","black");
@@ -219,7 +232,6 @@ export class RolesComponent implements OnInit {
   public consultarUrlPorRol(idRol){
     this._rolesService.getConsultarRutasPorRol(idRol).subscribe(
       response=>{
-        console.log("data: ",response['data']);
         this.data=response['data'];
         this.aparecerUrl=true;
       },

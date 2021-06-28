@@ -26,10 +26,8 @@ export class OlvidoContrasenaComponent implements OnInit {
    */
   validaSiEsVacio(){
     if(this.correo!=""){
-      console.log("Si");
       $("#aceptar").prop('disabled', false);
     }else{
-      console.log("No");
       $("#aceptar").prop('disabled', true);
     }
   }

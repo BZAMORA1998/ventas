@@ -54,7 +54,6 @@ export class UsuariosCAComponent implements OnInit {
         console.log(error.error.message);
       }
     ); 
-      console.log(this.data);
    }
 
    /**

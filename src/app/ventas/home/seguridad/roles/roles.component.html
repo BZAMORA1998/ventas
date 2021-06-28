@@ -47,7 +47,7 @@
                                       <img  (click)="getRolId(item.secuenciaRol)" src="../../../../../../assets/img/update-profile-user.svg" width="25" height="25"
                                       data-toggle="modal" data-target="#exampleModalScrollable1">
                                     </td>
-                                    <td matTooltip="Eliminar Rol"><img (click)="eliminarRol(item.secuenciaRol)" src="../../../../../../assets/img/eliminar.svg" width="25" height="25"/></td>
+                                    <td matTooltip="Eliminar Rol"><img (click)="eliminarRol(item.secuenciaRol,item.nombre)" src="../../../../../../assets/img/eliminar.svg" width="25" height="25"/></td>
                                   </tr>
                               </ng-template>
                               <ng-template #noResult> 

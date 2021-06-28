@@ -22,18 +22,15 @@ export class RolesService {
       "nombre":nombre,
       "secuenciaModulo":secuenciaModulo
     }
-    console.log(json);
     return this.apiService.ApiCallSpring("POST","/roles",JSON.stringify(json),null);
   }
   postGuardarRutasPorRol(secuenciaRol, data) {
     var json = JSON.stringify(data);
-    console.log("JSON",json);
     return this.apiService.ApiCallSpring("PUT","/roles/ruta/usuario/"+secuenciaRol,json,null);
   }
 
   postGuardarUsuarioPorRol(secuenciaUsuario, data) {
     var json = JSON.stringify(data);
-    console.log("JSON",json);
     return this.apiService.ApiCallSpring("PUT",`/roles/usuario/${secuenciaUsuario}`,json,null);
   }
 

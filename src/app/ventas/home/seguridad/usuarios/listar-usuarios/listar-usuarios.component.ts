@@ -3,6 +3,7 @@ import { GeneralService } from 'src/app/service/general.service';
 import { RolesService } from 'src/app/service/roles.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Sweetalert2Component } from 'src/app/share/sweetalert2/sweetalert2.component';
+import Swal from 'sweetalert2';
 declare var $:any;
 
 @Component({
@@ -22,12 +23,17 @@ export class ListarUsuariosComponent implements OnInit {
   ngOnInit(): void {
     this.listarUsuario();
   }
+
+  ngOnChanges(){
+    console.log(this.a);
+  }
   actualizarUsuario(data){
       this.sweetalert2Component.loading(true);
       this._usuarioService.putActualizarUsuario(data).subscribe(
         Response=>{
           this.dataUsuarioId=Response.data;
           this.sweetalert2Component.showModalConfirmacion(Response.message,null);
+          this.listarUsuario();
         },
         error=>{
           console.log(error.error.message);
@@ -151,18 +157,33 @@ activarOInactivarUsuario(secuenciaUsuario){
  * @param secuenciaUsuario 
  * @description Elimina el usuario
  */
-  deleteEliminarUsuario(secuenciaUsuario){ 
-    this.sweetalert2Component.loading(true);
-    this._usuarioService.eliminarUsuario(secuenciaUsuario).subscribe(
-      Response=>{
-        this.listarUsuario();
-        this.sweetalert2Component.loading(false);
-      },
-      error=>{
-        console.log(error.error.message);
-        this.sweetalert2Component.loading(false);
-        this.sweetalert2Component.showModalError(error.error.message);
+  a:any;
+  deleteEliminarUsuario(secuenciaUsuario,usuario){ 
+    Swal.fire({
+      title: "Está seguro que desea eliminar el usuario "+usuario+".",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._usuarioService.eliminarUsuario(secuenciaUsuario).subscribe(
+          Response=>{
+            this.listarUsuario();
+
+            Swal.fire(
+              'Eliminado!',
+              "Se ha eliminado el usuario "+usuario+" con exito.",
+              'success'
+            )
+          },
+          error=>{
+            console.log(error.error.message);
+            this.sweetalert2Component.showModalError(error.error.message);
+          }
+        ); 
       }
-    ); 
+    })
   }
 }
