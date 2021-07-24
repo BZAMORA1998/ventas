@@ -79,16 +79,21 @@ estadoUsuario(){
   this.listarUsuario();
 }
 
-guardar(idUsuario){
-  var data=[];
-  $(".checkboxRol:checked").each(function() {
-    data.push($(this).val());
+
+dataRoles=[];
+guardarRol(data){
+  this.dataRoles=[];
+  console.log(data);
+  data.forEach(element => {
+    if(element.esSelect==true)
+      this.dataRoles.push(element.secuenciaRol);
   });
-  this.putGuardarRolesPorUsuario(idUsuario,data);
 }
-putGuardarRolesPorUsuario(idUsuario: any, data: any[]) {
+
+putGuardarRolesPorUsuario(idUsuario: any) {
   this.sweetalert2Component.loading(true);
-  this._rolesService.postGuardarUsuarioPorRol(idUsuario,data).subscribe(
+  console.log(idUsuario);
+  this._rolesService.postGuardarUsuarioPorRol(idUsuario,this.dataRoles).subscribe(
     Response=>{
       this.sweetalert2Component.loading(false);
     },

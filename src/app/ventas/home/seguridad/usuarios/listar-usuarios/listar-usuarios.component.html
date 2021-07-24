@@ -112,7 +112,7 @@
                                 <div class="form-check">
                                   <div class="form-check form-check-inline" *ngFor="let a of d.roles;index as j">
                                       <input class="form-check-input checkboxRol" 
-                                      [checked]="a.esSelect==true" type="checkbox" 
+                                      [checked]="a.esSelect" (change)="guardarRol(d.roles)" type="checkbox" [(ngModel)]="a.esSelect"
                                       id="inlineCheckbox-{{j+1}}" value="{{a.secuenciaRol}}">
                                       <label class="form-check-label" for="inlineCheckbox-{{i+1}}">{{a.nombre}}</label>
                                   </div>
@@ -122,7 +122,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button (click)="guardar(d.secuenciaUsuario)"  type="button" class="btn btn-primary">Guardar Cambios</button>
+                                <button (click)="putGuardarRolesPorUsuario(d.secuenciaUsuario)"  type="button" class="btn btn-primary">Guardar Cambios</button>
                               </div>
                             </div>
                           </div>

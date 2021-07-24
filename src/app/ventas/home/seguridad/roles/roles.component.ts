@@ -301,7 +301,6 @@ export class RolesComponent implements OnInit {
         e.rutas=this.guardarParm(e.rutas);
       }
     });
-
     return data;
   }
 
